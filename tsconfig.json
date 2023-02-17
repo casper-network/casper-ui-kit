@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./build",
+    "target": "ESNext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": "./build",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "preserveConstEnums": true
+  },
+  "paths": {
+    "~/components": ["src/components"],
+    "~/hooks": ["src/hooks"],
+    "~/utils": ["src/utils"],
+    "~/constants": ["src/constants"],
+    "~/theme": ["src/styled-theme"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"],
+  "watchOptions": {
+    "excludeFiles": ["**/*.test.ts", "**.*spec.ts"]
+  }
+}
