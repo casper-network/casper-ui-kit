@@ -7,7 +7,7 @@ export default {
   component: Loader,
 } as ComponentMeta<typeof Loader>;
 
-// Create a master template for mapping args to render the Button component
+// Create a master template for mapping args to render the Loader component
 const Template: ComponentStory<typeof Loader> = (args: LoaderProps) => (
   <Loader {...args} />
 );
@@ -19,10 +19,10 @@ const Template: ComponentStory<typeof Loader> = (args: LoaderProps) => (
 //   console.log(`You've clicked the ${storyName} button`);
 // };
 
-const LoaderSize = 'md';
+// const LoaderSize = 'md';
 
 export const Base = Template.bind({});
 
 Base.args = {
-  size: LoaderSize,
+  //   size: LoaderSize,
 };
