@@ -4,7 +4,6 @@ import LoaderSVG from '../../assets/svg/icons/loader-icon.svg';
 
 export interface LoaderProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
-  test?: React.ReactNode;
 }
 
 export const Loader: React.FC<LoaderProps> = ({ size } = { size: 'lg' }) => {
