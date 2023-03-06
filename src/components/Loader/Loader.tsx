@@ -4,9 +4,12 @@ import { ReactComponent as LoaderSvg } from '../Icons/assets/loader-icon.svg';
 
 export interface LoaderProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
+  test?: React.ReactNode;
 }
 
-export const Loader: React.FC<LoaderProps> = ({ size } = { size: 'lg' }) => {
+export const Loader: React.FC<LoaderProps> = (
+  { size, test } = { size: 'lg', test: 'test' },
+) => {
   let loaderSize = '80px';
 
   switch (size) {
@@ -27,11 +30,12 @@ export const Loader: React.FC<LoaderProps> = ({ size } = { size: 'lg' }) => {
   }
 
   return (
-    <LoaderWrapper>
-      <LoaderStatus size={loaderSize} aria-label="Loading..." role="status">
-        <LoaderIcon data-testid="loader" size={loaderSize} />
-      </LoaderStatus>
-    </LoaderWrapper>
+    <div>{test}</div>
+    // <LoaderWrapper>
+    //   <LoaderStatus size={loaderSize} aria-label="Loading..." role="status">
+    //     <LoaderIcon data-testid="loader" size={loaderSize} />
+    //   </LoaderStatus>
+    // </LoaderWrapper>
   );
 };
 
