@@ -12,17 +12,6 @@ const Template: ComponentStory<typeof Loader> = (args: LoaderProps) => (
   <Loader {...args} />
 );
 
-// const ChildText = <p>Button</p>;
-
-// const clickActionShoutOut = (storyName: string) => {
-//   // eslint-disable-next-line no-console
-//   console.log(`You've clicked the ${storyName} button`);
-// };
-
-// const LoaderSize = 'md';
-
 export const Base = Template.bind({});
 
-Base.args = {
-  //   size: LoaderSize,
-};
+Base.args = {};
