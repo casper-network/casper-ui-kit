@@ -48,7 +48,7 @@ const LoaderStatus = styled.div<{ size: string }>`
   width: ${({ size }) => size};
 `;
 
-const LoaderIcon = styled.div<{ size: string }>`
+const LoaderIcon = styled(LoaderSVG)<{ size: string }>`
   height: ${({ size }) => size};
   width: ${({ size }) => size};
   animation: spin 1s linear infinite;
