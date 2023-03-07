@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Card, Children } from '../../components/Cards/FullWidthCard';
+import { Card, CardProps } from '../../components/Cards/Card';
 
 export default {
   title: 'Components/Card',
@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof Card>;
 
 // Create a master template for mapping args to render the Button component
-const Template: ComponentStory<typeof Card> = (args: Children) => (
+const Template: ComponentStory<typeof Card> = (args: CardProps) => (
   <Card {...args}>
     <Card.Header>Header</Card.Header>
     <Card.Footer>Footer</Card.Footer>
