@@ -2,22 +2,24 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 export interface DetailCardRow {
-  readonly key: React.Key;
-  readonly detailKey: React.ReactNode;
-  readonly value: React.ReactNode;
+  key: React.Key;
+  detailKey: React.ReactNode;
+  value: React.ReactNode;
 }
 
 export interface TwoColumnTableProps {
-  readonly rows: DetailCardRow[];
-  readonly noDividers?: boolean;
+  rows: DetailCardRow[];
+  noDividers?: boolean;
+  className?: string;
 }
 
 export const TwoColumnTable: React.FC<TwoColumnTableProps> = ({
   rows,
   noDividers,
+  className,
 }) => {
   return (
-    <TwoColumnTableWrapper>
+    <TwoColumnTableWrapper className={className}>
       <tbody>
         {rows.map(({ detailKey, value, key }, index) => {
           return (
