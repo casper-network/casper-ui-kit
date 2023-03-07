@@ -11,6 +11,7 @@ export default {
 const Template: ComponentStory<typeof Card> = (args: CardProps) => (
   <Card {...args}>
     <Card.Header>Header</Card.Header>
+    <Card.Body>Body</Card.Body>
     <Card.Footer>Footer</Card.Footer>
   </Card>
 );
