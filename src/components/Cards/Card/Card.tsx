@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import React from 'react';
 
 export interface Children {
@@ -16,7 +17,9 @@ export const Card = ({ children }: Children) => {
   });
 
   return (
-    <div className="card">{subComponents.map(component => component)}</div>
+    <CardContentWrapper className="card">
+      {subComponents.map(component => component)}
+    </CardContentWrapper>
   );
 };
 
@@ -34,3 +37,15 @@ const Footer: React.FC<Children> = ({ children }) => (
   <div className="body">{children}</div>
 );
 Card.Footer = Footer;
+
+export const CardContentWrapper = styled.div`
+  width: 100%;
+  background: white;
+  border: 1px solid #e3e3e9;
+  box-shadow: 0px 0.125rem 0.5rem rgba(127, 128, 149, 0.2);
+  border-radius: 0.35rem;
+  padding: 2rem;
+  overflow-x: auto;
+  max-width: calc(100vw - 4rem);
+  margin: 0 auto 2rem auto;
+`;
