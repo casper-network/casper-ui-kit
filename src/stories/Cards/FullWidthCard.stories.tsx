@@ -9,18 +9,12 @@ export default {
 
 // Create a master template for mapping args to render the Button component
 const Template: ComponentStory<typeof Card> = (args: Children) => (
-  <Card {...args} />
-);
-
-const CardChildren = (
-  <div>
+  <Card {...args}>
     <Card.Header>Header</Card.Header>
     <Card.Footer>Footer</Card.Footer>
-  </div>
+  </Card>
 );
 
 export const BaseFullWidthCard = Template.bind({});
 
-BaseFullWidthCard.args = {
-  children: CardChildren,
-};
+BaseFullWidthCard.args = {};
