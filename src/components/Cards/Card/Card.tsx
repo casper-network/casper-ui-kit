@@ -4,6 +4,8 @@ export interface Children {
   children: React.ReactNode;
 }
 
+export interface CardProps extends Children {}
+
 export const Card = ({ children }: Children) => {
   const subComponentList = Object.keys(Card);
 
