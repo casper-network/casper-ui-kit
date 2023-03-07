@@ -7,7 +7,7 @@ export interface Children {
 
 export interface CardProps extends Children {}
 
-export const Card = ({ children }: Children) => {
+export const Card = ({ children }: Children, className: string) => {
   const subComponentList = Object.keys(Card);
 
   const subComponents = subComponentList.map((key: string) => {
@@ -17,7 +17,7 @@ export const Card = ({ children }: Children) => {
   });
 
   return (
-    <CardContentWrapper className="card">
+    <CardContentWrapper className={className}>
       {subComponents.map(component => component)}
     </CardContentWrapper>
   );
