@@ -21,9 +21,9 @@ export const TwoColumnTable: React.FC<TwoColumnTableProps> = ({
   return (
     <TwoColumnTableWrapper className={className}>
       <tbody>
-        {rows.map(({ detailKey, value, key }) => {
+        {rows.map(({ detailKey, value, key }, index) => {
           return (
-            <tr key={key}>
+            <tr key={key} data-testid={index + 1}>
               <TableLabel noDividers={noDividers}>{detailKey}</TableLabel>
               <TableValue noDividers={noDividers}>{value}</TableValue>
             </tr>
