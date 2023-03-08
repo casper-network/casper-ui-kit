@@ -4,6 +4,7 @@
   "description": "Casper UI Kit",
   "main": "index.js",
   "scripts": {
+    "audit": "better-npm-audit audit",
     "lint": "eslint --ext .ts,.tsx src --max-warnings=0",
     "style:check": "prettier --check 'src/**/**/*.{ts,tsx}'",
     "style:fix": "prettier --write src/**/**/*.{ts,tsx}",
@@ -41,6 +42,7 @@
     "@typescript-eslint/parser": "^5.52.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.3.0",
+    "better-npm-audit": "^3.7.3",
     "eslint": "^8.34.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
