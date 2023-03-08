@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { pxToRem } from 'src/utils';
 
+// https://blog.logrocket.com/building-custom-checkbox-react/
+
 export type CheckboxState = 'checked' | 'unchecked' | 'disabled';
 
 export interface CheckboxProps {
@@ -40,14 +42,18 @@ const CheckboxWrapper = styled.div`
   background-color: lightpink;
 `;
 
-const StyledCheckbox = styled.input<CheckboxProps>`
+const StyledCheckbox = styled.input<{
+  isChecked: boolean;
+  stylesState: string;
+}>`
   /* removing default appearance */
   -webkit-appearance: none;
   appearance: none;
   /* creating a custom design */
   width: 1.6em;
   height: 1.6em;
-  background-color: ${({ isChecked }) => (isChecked ? `#007a7e` : '')};
+  background-color: ${({ isChecked, stylesState }) =>
+    (isChecked && `#007a7e`) || (stylesState === 'disabled' && `#FFF`)};
   position: ${({ isChecked }) => (isChecked ? `relative` : 'static')};
   border-radius: 0.15em;
   margin-right: 0.5em;
