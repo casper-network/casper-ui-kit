@@ -12,7 +12,7 @@ steps:
   - name: audit
     image: casperlabs/node-build-u1804
     commands:
-      - npm audit
+      - npm run audit
 
   - name: lint
     image: casperlabs/node-build-u1804
