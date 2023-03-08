@@ -1,0 +1,20 @@
+{
+  "1091181": {
+    "active": true,
+    "notes": "Ignored until we upgrade to Storybook 7 Beta",
+    "expiry": "31 March 2023",
+    "exclude": true
+  },
+  "1089867": {
+    "active": true,
+    "notes": "Ignored until we upgrade to Storybook 7 Beta",
+    "expiry": "31 March 2023",
+    "exclude": true
+  },
+  "1089490": {
+    "active": true,
+    "notes": "Ignored until we upgrade to Storybook 7 Beta",
+    "expiry": "31 March 2023",
+    "exclude": true
+  }
+}
