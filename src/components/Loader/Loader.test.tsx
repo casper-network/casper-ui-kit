@@ -7,7 +7,6 @@ describe('Loader', () => {
     const { queryAllByTestId } = render(<Loader />);
     const loaderSvg = queryAllByTestId('loaderSvg');
 
-    // TODO: Write less trivial test. Only for basic functionality
     expect(loaderSvg).toBeTruthy();
   });
 });
