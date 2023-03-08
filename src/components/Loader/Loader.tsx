@@ -6,23 +6,20 @@ export interface LoaderProps {
 }
 
 export const Loader: React.FC<LoaderProps> = ({ size } = { size: 'lg' }) => {
-  let loaderSize = '80px';
-  switch (size) {
-    case 'xs':
-      loaderSize = '2rem';
-      break;
-    case 'sm':
-      loaderSize = '2.25rem';
-      break;
-    case 'md':
-      loaderSize = '3rem';
-      break;
-    case 'lg':
-      loaderSize = '4rem';
-      break;
-    default:
-      break;
-  }
+  const getLoaderSize = (size?: LoaderProps['size']) => {
+    switch (size) {
+      case 'xs':
+        return '2rem';
+      case 'sm':
+        return '2.25rem';
+      case 'md':
+        return '3rem';
+      case 'lg':
+        return '4rem';
+      default:
+        return '80px';
+    }
+  };
 
   const tempSvg = (
     <svg viewBox="3 3 18 18">
@@ -39,8 +36,11 @@ export const Loader: React.FC<LoaderProps> = ({ size } = { size: 'lg' }) => {
 
   return (
     <LoaderWrapper>
-      <LoaderStatus size={loaderSize} aria-label="Loading..." role="status">
-        <LoaderIcon data-testid="loaderSvgWrapper" size={loaderSize}>
+      <LoaderStatus
+        size={getLoaderSize(size)}
+        aria-label="Loading..."
+        role="status">
+        <LoaderIcon data-testid="loaderSvgWrapper" size={getLoaderSize(size)}>
           {tempSvg}
         </LoaderIcon>
       </LoaderStatus>
