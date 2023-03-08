@@ -11,6 +11,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -81,7 +82,6 @@ module.exports = {
         devDependencies: true,
       },
     ],
-
     'react/prop-types': 0,
     'react/require-default-props': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.jsx', 'tsx'] }],
