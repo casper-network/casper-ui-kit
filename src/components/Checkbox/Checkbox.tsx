@@ -1,72 +1,81 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
-import { pxToRem } from 'src/utils';
-
-// https://blog.logrocket.com/building-custom-checkbox-react/
-
-export type CheckboxState = 'checked' | 'unchecked' | 'disabled';
+import { pxToRem } from '../../utils';
 
 export interface CheckboxProps {
   readonly label?: string;
   readonly disabled?: boolean;
   readonly checked?: boolean;
-  readonly stylesState?: CheckboxState;
+  readonly value?: string | number;
+  readonly name?: string;
+  readonly required?: boolean;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
-  label = 'test',
+  label = 'Checkbox Label',
   checked,
-  ...props
+  disabled,
+  value,
+  name,
+  required,
 }) => {
-  // specify whether or not a checkbox should be checked by default
-  const defaultChecked = checked ? checked : false;
   const [isChecked, setIsChecked] = useState(false);
+
   return (
     <CheckboxWrapper>
-      <label>
-        <StyledCheckbox
-          type="checkbox"
-          onChange={() => setIsChecked(prev => !prev)}
-          {...props}
-          checked={defaultChecked}
-          isChecked={isChecked}
-        />
-        <span>{label}</span>
-      </label>
-      <p>{isChecked ? 'Checked' : 'Unchecked'}</p>
+      <StyledCheckbox
+        type="checkbox"
+        isChecked={isChecked}
+        onChange={() => setIsChecked(!isChecked)}
+        checked={checked}
+        disabled={disabled}
+        value={value}
+        name={name}
+        required={required}
+      />
+      <label>{label}</label>
+      {/* <p>{isChecked ? 'Checked' : 'Unchecked'}</p> */}
     </CheckboxWrapper>
   );
 };
 
 const CheckboxWrapper = styled.div`
-  background-color: lightpink;
+  display: flex;
+
+  align-items: center;
+  gap: ${pxToRem(5)};
+  background-color: #fff;
 `;
 
 const StyledCheckbox = styled.input<{
-  isChecked: boolean;
-  stylesState: string;
+  isChecked: boolean | undefined;
+  disabled: boolean | undefined;
+  checked: boolean | undefined;
 }>`
-  /* removing default appearance */
-  -webkit-appearance: none;
-  appearance: none;
-  /* creating a custom design */
-  width: 1.6em;
-  height: 1.6em;
-  background-color: ${({ isChecked, stylesState }) =>
-    (isChecked && `#007a7e`) || (stylesState === 'disabled' && `#FFF`)};
-  position: ${({ isChecked }) => (isChecked ? `relative` : 'static')};
-  border-radius: 0.15em;
-  margin-right: 0.5em;
-  border: 0.15em solid #007a7e;
+  width: ${pxToRem(30)};
+  height: ${pxToRem(30)};
+  background-color: #fff;
+  position: ${({ isChecked, checked, disabled }) =>
+    !isChecked && !checked && !disabled ? 'static' : 'relative'};
+  border: ${({ disabled }) =>
+    disabled ? `0.15em solid #F1F1F4` : '0.15em solid #02c1b0'};
   outline: none;
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 
-  &:before {
-    content: '\\2714';
-    font-size: 1.5em;
-    color: #fff;
+  ::after {
+    /* factoring */
+    display: ${({ isChecked, checked, disabled }) =>
+      !isChecked && !checked && !disabled ? `none` : `inline-block`};
+
+    /* accessibility? */
     position: absolute;
-    right: 1px;
-    top: -4px;
+    right: ${pxToRem(1.35)};
+    top: ${pxToRem(-9.5)};
+
+    content: '\\00d7';
+    font-size: 2.5rem;
+    color: ${({ disabled }) => (disabled ? `#F1F1F4` : ' #02c1b0')};
   }
 `;
