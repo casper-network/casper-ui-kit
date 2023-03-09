@@ -29,4 +29,7 @@ module.exports = {
 
     return config;
   },
+  docs: {
+    autodocs: true
+  }
 };
