@@ -1,2 +1,1 @@
-export * from './Checkbox';
-export * from './CheckboxFactoring';
+export { Checkbox } from './Checkbox';
