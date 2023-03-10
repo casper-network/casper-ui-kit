@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { subComponentHelper } from '../../../utils';
 
 export interface Children {
   children: React.ReactNode;
@@ -10,13 +11,7 @@ export interface CardProps extends Children {}
 export const Card = ({ children }: Children, className: string) => {
   const subComponentList = Object.keys(Card);
 
-  const subComponents = subComponentList.map((key: string) => {
-    return React.Children.map(children, (child: any) => {
-      // TODO: Sort out typing: https://stackoverflow.com/questions/75242208/typescript-property-type-does-not-exist-on-type-string
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
-      return child?.type.name === key ? child : null;
-    });
-  });
+  const subComponents = subComponentHelper(subComponentList, children);
 
   return (
     <CardContentWrapper className={className}>
