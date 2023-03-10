@@ -17,22 +17,20 @@ export const TwoColumnTable: React.FC<TwoColumnTableProps> = ({
   rows,
   noDividers,
   className,
-}) => {
-  return (
-    <TwoColumnTableWrapper className={className}>
-      <tbody>
-        {rows.map(({ detailKey, value, key }) => {
-          return (
-            <tr key={key}>
-              <TableLabel noDividers={noDividers}>{detailKey}</TableLabel>
-              <TableValue noDividers={noDividers}>{value}</TableValue>
-            </tr>
-          );
-        })}
-      </tbody>
-    </TwoColumnTableWrapper>
-  );
-};
+}) => (
+  <TwoColumnTableWrapper className={className}>
+    <tbody>
+      {rows.map(({ detailKey, value, key }) => {
+        return (
+          <tr key={key}>
+            <TableLabel noDividers={noDividers}>{detailKey}</TableLabel>
+            <TableValue noDividers={noDividers}>{value}</TableValue>
+          </tr>
+        );
+      })}
+    </tbody>
+  </TwoColumnTableWrapper>
+);
 
 const TwoColumnTableWrapper = styled.table`
   width: 100%;
