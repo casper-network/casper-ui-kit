@@ -66,7 +66,7 @@ export const TypographyDisplay: React.FC = () => {
             handleDefaultColorChange(e, 'secondary');
           }}>
           {secondaryColors.map(color => (
-            <option key={`${color.value}`}>{color.value}</option>
+            <option key={color.value}>{color.value}</option>
           ))}
         </select>
         <select
@@ -74,7 +74,7 @@ export const TypographyDisplay: React.FC = () => {
             handleDefaultColorChange(e, 'primary');
           }}>
           {primaryColors.map(color => (
-            <option key={`${color.value}`}>{color.value}</option>
+            <option key={color.value}>{color.value}</option>
           ))}
         </select>
         <select
@@ -82,7 +82,7 @@ export const TypographyDisplay: React.FC = () => {
             handleDefaultColorChange(e, 'lowContrastSecondary');
           }}>
           {lowContrastColors.map(color => (
-            <option key={`${color.value}`}>{color.value}</option>
+            <option key={color.value}>{color.value}</option>
           ))}
         </select>
         <input
@@ -93,7 +93,7 @@ export const TypographyDisplay: React.FC = () => {
         />
         <select>
           {fonts.map(font => (
-            <option key={`${font}`}>{font}</option>
+            <option key={font}>{font}</option>
           ))}
         </select>
         <select
@@ -101,7 +101,7 @@ export const TypographyDisplay: React.FC = () => {
             handleFontWeightChange(e);
           }}>
           {weights.map(weight => (
-            <option key={`${weight}`}>{weight}</option>
+            <option key={weight}>{weight}</option>
           ))}
         </select>
       </TypographyOptions>
