@@ -12,6 +12,8 @@ export const Card = ({ children }: Children, className: string) => {
 
   const subComponents = subComponentList.map((key: string) => {
     return React.Children.map(children, (child: any) => {
+      // TODO: Sort out typing: https://stackoverflow.com/questions/75242208/typescript-property-type-does-not-exist-on-type-string
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
       return child?.type.name === key ? child : null;
     });
   });
