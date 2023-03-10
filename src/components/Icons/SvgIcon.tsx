@@ -27,28 +27,12 @@ const icons = {
   ValidatorsIcon: <ValidatorsIcon />,
 };
 
-export type strokeLinecapValues =
-  | 'inherit'
-  | 'butt'
-  | 'round'
-  | 'square'
-  | undefined;
-export type strokeLinejoinValues =
-  | 'inherit'
-  | 'round'
-  | 'miter'
-  | 'bevel'
-  | undefined;
-
 export interface SvgIconProps {
   readonly icon: keyof typeof icons;
   readonly title: string;
   readonly stroke?: string;
   readonly fill?: string;
   readonly width?: number;
-  readonly strokeWidth?: number;
-  readonly strokeLinecap?: strokeLinecapValues;
-  readonly strokeLinejoin?: strokeLinejoinValues;
 }
 
 export const SvgIcon: React.FC<SvgIconProps> = ({
@@ -90,6 +74,4 @@ export const SvgContainer = styled.div<{
   fill: ${({ fill }) => fill ?? 'initial'};
   stroke: ${({ stroke }) => stroke ?? 'initial'};
   stroke-width: ${({ strokeWidth }) => strokeWidth ?? 'initial'};
-  stroke-linecap: ${({ strokeLinecap }) => strokeLinecap};
-  stroke-linejoin: ${({ strokeLinejoin }) => strokeLinejoin};
 `;
