@@ -48,7 +48,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         />
         {(isChecked || checked) && (
           <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
-            {/* TODO: Create checkbox SVG "Ticket: ui-kit#11"*/}
             <StyledSvg
               color={color}
               disabled={disabled}
