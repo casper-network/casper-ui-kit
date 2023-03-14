@@ -8,6 +8,7 @@ export interface CheckboxProps {
   readonly checkmarkSize?: number;
   readonly color?: string;
   readonly borderWidth?: number;
+  readonly checked?: boolean;
   readonly disabled?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly required?: boolean;
@@ -21,6 +22,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   borderWidth = 2,
   checkmarkSize = 65,
   color = '#02c1b0',
+  checked = false,
   disabled,
   onChange,
   value,
@@ -38,14 +40,13 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           borderWidth={borderWidth}
           data-testid="checkbox"
           type="checkbox"
-          isChecked={isChecked}
           onChange={onChange}
           disabled={disabled}
           value={value}
           name={name}
           required={required}
         />
-        {isChecked && (
+        {(isChecked || checked) && (
           <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
             {/* TODO: Create checkbox SVG "Ticket: ui-kit#11"*/}
             <StyledSvg
@@ -111,6 +112,8 @@ const CheckboxSvgWrapper = styled.div<{
   left: 0;
   right: 0;
   width: ${({ checkmarkSize }) => `${checkmarkSize}%`};
+  max-width: ${({ width }) => pxToRem(width)};
+  cursor: pointer;
 `;
 
 const StyledSvg = styled.svg<{
