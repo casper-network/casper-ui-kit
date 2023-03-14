@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import LoaderSVG from '../../assets/svg/loader.svg';
+import LoaderSVG from '../../assets/svg/icons/loader-icon.svg';
 
 export interface LoaderProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
