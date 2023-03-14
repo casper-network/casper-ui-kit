@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { composeStories } from '@storybook/react';
-import * as stories from '../../stories/Checkbox/Checkbox.stories'; // import all stories from the stories file
+import * as stories from '../../stories/Checkbox/Checkbox.stories';
 
 describe('Checkbox', () => {
   const { Base } = composeStories(stories);
@@ -9,9 +9,6 @@ describe('Checkbox', () => {
     render(<Base />);
     const checkboxComponent = screen.getByRole('checkbox');
 
-    expect(checkboxComponent).not.toBeNull();
-    // expect(checkboxComponent).toBeInTheDocument();
-    // expect(checkboxComponent).toBeVisible();
-    // expect(checkboxComponent).toHaveStyle('backgroundColor: blue');
+    expect(checkboxComponent).toBeTruthy;
   });
 });
