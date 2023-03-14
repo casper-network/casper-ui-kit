@@ -59,12 +59,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         />
         {isChecked && (
           <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
-            <StyledSvg
-              checkmarkColor={checkmarkColor}
-              disabled={disabled}
-              required={required}>
-              <CheckboxSvg />
-            </StyledSvg>
+            <StyledCheckboxSvg color={checkmarkColor} disabled={disabled} required={required} />
           </CheckboxSvgWrapper>
         )}
       </CheckboxContainer>
@@ -135,10 +130,10 @@ const CheckboxSvgWrapper = styled.div<{
   cursor: pointer;
 `;
 
-const StyledSvg = styled.svg<{
-  checkmarkColor: string;
-  disabled?: boolean;
-  required?: boolean;
+const StyledCheckboxSvg = styled(CheckboxSvg)<{
+  disabled: boolean | undefined;
+  required: boolean | undefined;
+  color: string | undefined;
 }>`
   fill: ${({ disabled, required, checkmarkColor }) =>
     disabled ? '#F1F1F4' : required ? '#FF0000' : checkmarkColor};
