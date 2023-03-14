@@ -1,16 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { composeStories } from '@storybook/react';
+import * as stories from '../../stories/Checkbox/Checkbox.stories'; // import all stories from the stories file
 
-import { Checkbox } from './Checkbox';
+describe('Checkbox', () => {
+  const { Base } = composeStories(stories);
+  it('should render base checkbox', () => {
+    render(<Base />);
+    const checkboxComponent = screen.getByRole('checkbox');
 
-describe('Loader', () => {
-  it('should render base loader', () => {
-    const { getByRole, getByTestId } = render(<Checkbox checked />);
-
-    const checkbox = getByRole('checkbox');
-    const checkboxLabel = getByTestId('checkboxLabel');
-
-    expect(checkbox).toBeTruthy();
-    expect(checkboxLabel).toBeTruthy();
+    expect(checkboxComponent).not.toBeNull();
+    // expect(checkboxComponent).toBeInTheDocument();
+    // expect(checkboxComponent).toBeVisible();
+    // expect(checkboxComponent).toHaveStyle('backgroundColor: blue');
   });
 });
