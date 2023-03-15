@@ -12,6 +12,12 @@ const Template: StoryFn<typeof SvgLogo> = (args: SvgLogoProps) => (
   <SvgLogo {...args} />
 );
 
+export const RedBlackCasperLogo = Template.bind({});
+
+RedBlackCasperLogo.args = {
+  logoName: 'RedBlackCasperLogo',
+};
+
 export const BlockExplorerGradientLogo = Template.bind({});
 
 BlockExplorerGradientLogo.args = {
@@ -22,12 +28,6 @@ export const BlueCasperLogo = Template.bind({});
 
 BlueCasperLogo.args = {
   logoName: 'BlueCasperLogo',
-};
-
-export const RedBlackCasperLogo = Template.bind({});
-
-RedBlackCasperLogo.args = {
-  logoName: 'RedBlackCasperLogo',
 };
 
 export const WhiteCasperLogo = Template.bind({});
