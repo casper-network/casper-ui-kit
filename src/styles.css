@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Inter';
+    src: local('Inter'), url(./assets/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf) format('ttf');
+}
+@font-face {
+    font-family: 'CasperSans';
+    src: local('CasperSans'), url(./assets/fonts/CasperSans/CasperSans-Regular.woff) format('woff');
+}
+@font-face {
+    font-family: 'HelveticaNue';
+    src: local('HelveticaNue'), url(./assets/fonts/HelveticaNue/HelveticaNeue\ Medium.ttf) format('ttf');
+}
