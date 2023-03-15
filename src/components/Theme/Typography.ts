@@ -2,7 +2,6 @@ export const Typography = {
   fonts: {
     // change in the future if body/header fonts are specified
     Inter: 'Inter, sans-serif',
-    Lausanne: 'Lausanne, sans-serif',
     HelveticaNeue: 'Helvetica Neue, sans-serif',
     CasperSans: 'Casper Sans, sans-serif',
   },
