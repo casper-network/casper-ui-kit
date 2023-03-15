@@ -14,14 +14,14 @@ import PeersIcon from '../../assets/svg/icons/peers-icon.svg';
 import SuccessIcon from '../../assets/svg/icons/success-icon.svg';
 import ValidatorsIcon from '../../assets/svg/icons/validators-icon.svg';
 
-export interface IconsProps {
+export interface SvgIconProps {
   readonly iconName: string;
   readonly stroke?: string;
   readonly fill?: string;
   readonly width?: number;
 }
 
-export const Icons: React.FC<IconsProps> = ({
+export const SvgIcon: React.FC<SvgIconProps> = ({
   iconName = 'BlocksIcon',
   stroke = '',
   fill = 'none',
@@ -29,62 +29,50 @@ export const Icons: React.FC<IconsProps> = ({
 }) => {
   const icons = [
     {
-      alt: 'Blocks Icon',
       comp: <BlocksIcon />,
       key: 'BlocksIcon',
     },
     {
-      alt: 'Button Icon',
       comp: <ButtonIcon />,
       key: 'ButtonIcon',
     },
     {
-      alt: 'Checkbox Icon',
       comp: <CheckboxIcon />,
       key: 'CheckboxIcon',
     },
     {
-      alt: 'CloseMenu Icon',
       comp: <CloseMenuIcon />,
       key: 'CloseMenuIcon',
     },
     {
-      alt: 'Deploys Icon',
       comp: <DeploysIcon />,
       key: 'DeploysIcon',
     },
     {
-      alt: 'Error Icon',
       comp: <ErrorIcon />,
       key: 'ErrorIcon',
     },
     {
-      alt: 'Failure Icon',
       comp: <FailureIcon />,
       key: 'FailureIcon',
     },
     {
-      alt: 'Loader Icon',
       comp: <LoaderIcon />,
       key: 'LoaderIcon',
     },
     {
-      alt: 'OpenMenu Icon',
       comp: <OpenMenuIcon />,
       key: 'OpenMenuIcon',
     },
     {
-      alt: 'Peers Icon',
       comp: <PeersIcon />,
       key: 'PeersIcon',
     },
     {
-      alt: 'Success Icon',
       comp: <SuccessIcon />,
       key: 'SuccessIcon',
     },
     {
-      alt: 'Validators Icon',
       comp: <ValidatorsIcon />,
       key: 'ValidatorsIcon',
     },

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import { Icons, IconsProps } from '../../components/Icons/Icons';
+import { SvgIcon, SvgIconProps } from '../../components/Icons/SvgIcon';
 
 export default {
-  title: 'Components/Icons',
-  component: Icons,
-} as Meta<typeof Icons>;
+  title: 'Components/SvgIcon',
+  component: SvgIcon,
+} as Meta<typeof SvgIcon>;
 
-// Create a master template for mapping args to render the Icons component
-const Template: StoryFn<typeof Icons> = (args: IconsProps) => (
-  <Icons {...args} />
+// Create a master template for mapping args to render the SvgIcon component
+const Template: StoryFn<typeof SvgIcon> = (args: SvgIconProps) => (
+  <SvgIcon {...args} />
 );
 
 export const BlocksIcon = Template.bind({});
