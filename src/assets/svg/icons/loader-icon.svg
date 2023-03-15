@@ -3,7 +3,7 @@
   xmlnsXlink='http://www.w3.org/1999/xlink' 
   data-testid="loader" 
   viewBox="3 3 18 18"
-  role="image">
+  role="img">
   <title>Loader Icon</title>
   <path
     fill="#0421CB"
