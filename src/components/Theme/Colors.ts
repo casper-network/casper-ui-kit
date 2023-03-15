@@ -12,10 +12,16 @@ export const NormalPalette = {
     CasperBrown: '#4F282B',
     CasperBrightPink: '#F622E6',
     CasperPalePink: '#F9AACA',
-    White: '#FFFFF',
+    White: '#FFF',
   },
   lowContrastSecondary: {
     CasperLightPurple: '#AD53E5',
     CasperLightBlue: '#4589F6',
   },
 };
+
+export enum ColorType {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  LowContrastSecondary = 'lowContrastSecondary',
+}
