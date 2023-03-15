@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import '../../styles.css';
 import { Typography } from './Typography';
-import { NormalPalette } from './Colors';
+import { NormalPalette, ColorType } from './Colors';
 
 export const TypographyDisplay: React.FC = () => {
-  const [color, setColor] = useState<string>('');
-  const [font, setFont] = useState();
-  const [fontWeight, setFontWeight] = useState('');
+  const [color, setColor] = useState('');
+  const [font, setFont] = useState(Typography.fonts.Inter);
+  const [fontWeight, setFontWeight] = useState(0);
 
   const handleDefaultColorChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    colorType: string,
+    e: React.ChangeEvent<HTMLSelectElement>,
+    colorType: ColorType,
   ) => {
-    const selectedColor: string = e.target.value;
+    const selectedColor = e.target
+      .value as keyof (typeof NormalPalette)[ColorType];
     setColor(NormalPalette[colorType][selectedColor]);
   };
 
@@ -21,33 +23,39 @@ export const TypographyDisplay: React.FC = () => {
     setColor(selectedColor);
   };
 
-  const handleFontWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedWeight = e.target.value;
+  const handleFontChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedFont = e.target.value as keyof typeof Typography.fonts;
+    setFont(Typography.fonts[selectedFont]);
+  };
+
+  const handleFontWeightChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedWeight = e.target
+      .value as keyof typeof Typography.fontWeights;
     setFontWeight(Typography.fontWeights[selectedWeight]);
   };
 
   const primaryColors = [
-    { value: 'CasperRed', type: 'primary' },
-    { value: 'Black', type: 'primary' },
-    { value: 'CasperWhite', type: 'primary' },
+    { value: 'CasperRed' },
+    { value: 'Black' },
+    { value: 'CasperWhite' },
   ];
 
   const secondaryColors = [
-    { value: 'CasperYellow', type: 'secondary' },
-    { value: 'CasperGreen', type: 'secondary' },
-    { value: 'CasperPurple', type: 'secondary' },
-    { value: 'CasperBlue', type: 'secondary' },
-    { value: 'CasperBrown', type: 'secondary' },
-    { value: 'CasperBrightPink', type: 'secondary' },
-    { value: 'CasperPalePink', type: 'secondary' },
-    { value: 'White', type: 'secondary' },
+    { value: 'CasperYellow', type: 'primary' },
+    { value: 'CasperGreen' },
+    { value: 'CasperPurple' },
+    { value: 'CasperBlue' },
+    { value: 'CasperBrown' },
+    { value: 'CasperBrightPink' },
+    { value: 'CasperPalePink' },
+    { value: 'White' },
   ];
   const lowContrastColors = [
-    { value: 'CasperLightPurple', type: 'lowContrastSecondary' },
-    { value: 'CasperLightBlue', type: 'lowContrastSecondary' },
+    { value: 'CasperLightPurple' },
+    { value: 'CasperLightBlue' },
   ];
 
-  const fonts = ['Inter', 'Lausanne', 'HelveticaNeue', 'CasperSans'];
+  const fonts = ['Inter', 'HelveticaNeue', 'CasperSans'];
   const weights = [
     'thin',
     'light',
@@ -62,44 +70,31 @@ export const TypographyDisplay: React.FC = () => {
     <TypographyWrapper fontWeight={fontWeight} font={font} color={color}>
       <TypographyOptions>
         <select
-          onChange={e => {
-            handleDefaultColorChange(e, 'secondary');
-          }}>
+          onChange={e => handleDefaultColorChange(e, ColorType.Secondary)}>
           {secondaryColors.map(color => (
             <option key={color.value}>{color.value}</option>
           ))}
         </select>
-        <select
-          onChange={e => {
-            handleDefaultColorChange(e, 'primary');
-          }}>
+        <select onChange={e => handleDefaultColorChange(e, ColorType.Primary)}>
           {primaryColors.map(color => (
             <option key={color.value}>{color.value}</option>
           ))}
         </select>
         <select
-          onChange={e => {
-            handleDefaultColorChange(e, 'lowContrastSecondary');
-          }}>
+          onChange={e =>
+            handleDefaultColorChange(e, ColorType.LowContrastSecondary)
+          }>
           {lowContrastColors.map(color => (
             <option key={color.value}>{color.value}</option>
           ))}
         </select>
-        <input
-          onChange={e => {
-            handleCustomColorChange(e);
-          }}
-          type="color"
-        />
-        <select>
+        <input onChange={e => handleCustomColorChange(e)} type="color" />
+        <select onChange={e => handleFontChange(e)}>
           {fonts.map(font => (
             <option key={font}>{font}</option>
           ))}
         </select>
-        <select
-          onChange={e => {
-            handleFontWeightChange(e);
-          }}>
+        <select onChange={e => handleFontWeightChange(e)}>
           {weights.map(weight => (
             <option key={weight}>{weight}</option>
           ))}
@@ -149,11 +144,11 @@ const TypographyOptions = styled.div`
 `;
 
 const TypographyWrapper = styled.div<{
-  color: string;
-  font: string;
-  fontWeight: number;
+  color?: string;
+  font?: string;
+  fontWeight?: number;
 }>`
   color: ${({ color }) => color};
-  font: ${({ font }) => font};
+  font-family: ${({ font }) => font};
   font-weight: ${({ fontWeight }) => fontWeight};
 `;
