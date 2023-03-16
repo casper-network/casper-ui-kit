@@ -4,10 +4,11 @@ import { pxToRem } from '../../utils';
 import CheckboxSvg from '../../assets/svg/checkbox.svg';
 
 export interface CheckboxProps {
+  readonly boxColor: string;
+  readonly checkmarkColor: string;
   readonly label?: string;
   readonly width?: number;
   readonly checkmarkSize?: number;
-  readonly color?: string;
   readonly borderWidth?: number;
   readonly checked?: boolean;
   readonly disabled?: boolean;
@@ -18,11 +19,12 @@ export interface CheckboxProps {
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
+  boxColor = '#02c1b0',
+  checkmarkColor = '#02c1b0',
   label = 'Checkbox Label',
   width = 30,
   borderWidth = 2,
   checkmarkSize = 65,
-  color = '#02c1b0',
   checked = false,
   disabled,
   onChange,
@@ -36,10 +38,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     <LabelCheckboxContainer>
       <CheckboxContainer onClick={() => setIsChecked(!isChecked)} width={width}>
         <StyledCheckbox
-          color={color}
+          boxColor={boxColor}
           width={width}
           borderWidth={borderWidth}
-          data-testid="checkbox"
           type="checkbox"
           onChange={onChange}
           disabled={disabled}
@@ -49,11 +50,15 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         />
         {(isChecked || checked) && (
           <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
-            <StyledSvg color={color} disabled={disabled} required={required} />
+            <StyledSvg
+              checkmarkColor={checkmarkColor}
+              disabled={disabled}
+              required={required}
+            />
           </CheckboxSvgWrapper>
         )}
       </CheckboxContainer>
-      <label data-testid="checkboxLabel">{label}</label>
+      <label>{label}</label>
     </LabelCheckboxContainer>
   );
 };
@@ -74,7 +79,7 @@ const CheckboxContainer = styled.div<{ width: number }>`
 `;
 
 const StyledCheckbox = styled.input<{
-  color: string | undefined;
+  boxColor: string;
   disabled: boolean | undefined;
   required: boolean | undefined;
   borderWidth: number;
@@ -83,10 +88,10 @@ const StyledCheckbox = styled.input<{
   height: 100%;
   padding: 0;
   margin: 0;
-  border: ${({ disabled, required, borderWidth, color }) =>
+  border: ${({ disabled, required, borderWidth, boxColor }) =>
     (disabled && `${pxToRem(borderWidth)} solid #F1F1F4`) ||
     (required && `${pxToRem(borderWidth)}  solid red`) ||
-    `${pxToRem(borderWidth)}  solid ${color}`};
+    `${pxToRem(borderWidth)}  solid ${boxColor}`};
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
@@ -109,10 +114,11 @@ const CheckboxSvgWrapper = styled.div<{
 `;
 
 const StyledSvg = styled(CheckboxSvg)<{
+  checkmarkColor: string;
   disabled: boolean | undefined;
   required: boolean | undefined;
-  color: string | undefined;
 }>`
-  fill: ${({ disabled, required, color }) =>
-    (disabled && `#F1F1F4`) || (required && `red`) || `${color}`};
+  fill: ${({ disabled, required, checkmarkColor }) =>
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    (disabled && '#F1F1F4') || (required && 'red') || checkmarkColor};
 `;
