@@ -10,10 +10,14 @@ export default {
   component: BaseToggle,
 } as ComponentMeta<typeof BaseToggle>;
 
-// Create a master template for mapping args to render the Button component
 const Template: ComponentStory<typeof BaseToggle> = (args: BaseToggleProps) => (
   <BaseToggle {...args} />
 );
+
+const clickActionShoutOut = (storyName: string) => {
+  // eslint-disable-next-line no-console
+  console.log(`You've clicked the ${storyName}`);
+};
 
 export const Toggle = Template.bind({});
 
@@ -22,4 +26,5 @@ Toggle.args = {
     left: 'Left Option',
     right: 'Right Option',
   },
+  onToggle: () => clickActionShoutOut('Toggle'),
 };

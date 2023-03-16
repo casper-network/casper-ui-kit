@@ -7,11 +7,13 @@ export interface BaseToggleProps {
     right: string;
   };
   className?: string;
+  onToggle?: () => void;
 }
 
 export const BaseToggle: React.FC<BaseToggleProps> = ({
   toggleOptions,
   className,
+  onToggle,
 }) => {
   const [selectedToggleOption, setSelectedToggleOption] = useState(
     toggleOptions.left,
@@ -21,6 +23,10 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
       setSelectedToggleOption(toggleOptions.right);
     } else {
       setSelectedToggleOption(toggleOptions.left);
+    }
+
+    if (onToggle) {
+      onToggle();
     }
   };
 
