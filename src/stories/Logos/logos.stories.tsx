@@ -16,21 +16,25 @@ export const RedBlackCasperLogo = Template.bind({});
 
 RedBlackCasperLogo.args = {
   logo: 'RedBlackCasperLogo',
+  title: 'Red and Black Casper Labs Logo',
 };
 
 export const BlockExplorerGradientLogo = Template.bind({});
 
 BlockExplorerGradientLogo.args = {
   logo: 'BlockExplorerGradientLogo',
+  title: 'Gradient Block Explorer Logo',
 };
 
 export const BlueCasperLogo = Template.bind({});
 
 BlueCasperLogo.args = {
   logo: 'BlueCasperLogo',
+  title: 'Blue Casper Labs Logo',
 };
 
 export const WhiteCasperLogo = Template.bind({});
 WhiteCasperLogo.args = {
   logo: 'WhiteCasperLogo',
+  title: 'White Casper Labs Logo',
 };

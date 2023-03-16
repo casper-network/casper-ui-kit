@@ -15,17 +15,22 @@ const logos = {
 
 export interface SvgLogoProps {
   readonly logo: keyof typeof logos;
+  readonly title: string;
   readonly width?: number;
 }
 
 export const SvgLogo: React.FC<SvgLogoProps> = ({
   logo = 'RedBlackCasperLogo',
+  title = 'Red and black Casper Labs Logo',
   width = 500,
 }) => {
   return (
     <LogoContainer>
       <LogoWrapper width={width}>
-        <StyledSvg>{logos[logo]}</StyledSvg>
+        <StyledSvg role="img">
+          <title>{title}</title>
+          {logos[logo]}
+        </StyledSvg>
       </LogoWrapper>
     </LogoContainer>
   );
