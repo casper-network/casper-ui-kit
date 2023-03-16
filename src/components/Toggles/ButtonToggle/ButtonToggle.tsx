@@ -19,7 +19,9 @@ export const ButtonToggle: React.FC<ButtonToggleProps> = ({
 
   const handleToggle = (toggleOption: string) => {
     setSelectedToggleOption(toggleOption);
-    onToggle?.();
+    if (onToggle) {
+      onToggle();
+    }
   };
   return (
     <div className={className}>
@@ -43,6 +45,7 @@ export const ToggleButton = styled.button`
   cursor: pointer;
   background-color: ${NormalPalette.secondary.White};
   min-width: 6rem;
+
   :disabled {
     background-color: ${NormalPalette.primary.CasperRed};
     color: ${NormalPalette.secondary.White};
