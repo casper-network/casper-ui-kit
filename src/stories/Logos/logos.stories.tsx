@@ -18,19 +18,19 @@ RedBlackCasperLogo.args = {
   logo: 'RedBlackCasperLogo',
 };
 
-// export const BlockExplorerGradientLogo = Template.bind({});
+export const BlockExplorerGradientLogo = Template.bind({});
 
-// BlockExplorerGradientLogo.args = {
-//   logoName: 'BlockExplorerGradientLogo',
-// };
+BlockExplorerGradientLogo.args = {
+  logo: 'BlockExplorerGradientLogo',
+};
 
-// export const BlueCasperLogo = Template.bind({});
+export const BlueCasperLogo = Template.bind({});
 
-// BlueCasperLogo.args = {
-//   logoName: 'BlueCasperLogo',
-// };
+BlueCasperLogo.args = {
+  logo: 'BlueCasperLogo',
+};
 
-// export const WhiteCasperLogo = Template.bind({});
-// WhiteCasperLogo.args = {
-//   logoName: 'WhiteCasperLogo',
-// };
+export const WhiteCasperLogo = Template.bind({});
+WhiteCasperLogo.args = {
+  logo: 'WhiteCasperLogo',
+};

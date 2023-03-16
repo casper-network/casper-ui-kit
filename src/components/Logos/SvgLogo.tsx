@@ -6,21 +6,15 @@ import BlueCasperLogo from '../../assets/svg/logos/blue-casper-logo.svg';
 import RedBlackCasperLogo from '../../assets/svg/logos/red-black-casper-logo.svg';
 import WhiteCasperLogo from '../../assets/svg/logos/white-casper-logo.svg';
 
-export type LogoNames =
-  | 'BlockExplorerGradientLogo'
-  | 'BlueCasperLogo'
-  | 'RedBlackCasperLogo'
-  | 'WhiteCasperLogo';
-
-export type Logos = {
-  BlockExplorerGradientLogo: LogoNames;
-  BlueCasperLogo: LogoNames;
-  RedBlackCasperLogo: LogoNames;
-  WhiteCasperLogo: LogoNames;
+const logos = {
+  RedBlackCasperLogo: <RedBlackCasperLogo />,
+  BlockExplorerGradientLogo: <BlockExplorerGradientLogo />,
+  BlueCasperLogo: <BlueCasperLogo />,
+  WhiteCasperLogo: <WhiteCasperLogo />,
 };
 
 export interface SvgLogoProps {
-  readonly logo: keyof Logos;
+  readonly logo: keyof typeof logos;
   readonly width?: number;
 }
 
@@ -28,19 +22,10 @@ export const SvgLogo: React.FC<SvgLogoProps> = ({
   logo = 'RedBlackCasperLogo',
   width = 500,
 }) => {
-  console.log(logo);
-
-  const logos = {
-    blockExplorerGradientLogo: <BlockExplorerGradientLogo />,
-    blueCasperLogo: <BlueCasperLogo />,
-    redBlackCasperLogo: <RedBlackCasperLogo />,
-    whiteCasperLogo: <WhiteCasperLogo />,
-  };
-
   return (
     <LogoContainer>
       <LogoWrapper width={width}>
-        <StyledSvg>{logos.logo}</StyledSvg>
+        <StyledSvg>{logos[logo]}</StyledSvg>
       </LogoWrapper>
     </LogoContainer>
   );
