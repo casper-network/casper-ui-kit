@@ -15,14 +15,14 @@ const Template: StoryFn<typeof SvgIcon> = (args: SvgIconProps) => (
 export const BlocksIcon = Template.bind({});
 
 BlocksIcon.args = {
-  iconName: 'BlocksIcon',
+  icon: 'BlocksIcon',
   stroke: '#7F8095',
 };
 
 export const ValidatorsIcon = Template.bind({});
 
 ValidatorsIcon.args = {
-  iconName: 'ValidatorsIcon',
+  icon: 'ValidatorsIcon',
   stroke: '#7F8095',
   fill: 'none',
 };
@@ -30,59 +30,61 @@ ValidatorsIcon.args = {
 export const DeploysIcon = Template.bind({});
 
 DeploysIcon.args = {
-  iconName: 'DeploysIcon',
+  icon: 'DeploysIcon',
   stroke: '#7F8095',
   fill: 'none',
 };
 
-export const CheckboxIcon = Template.bind({});
-
-CheckboxIcon.args = {
-  iconName: 'CheckboxIcon',
-  stroke: '#7F8095',
-  fill: '#7F8095',
-};
-
 export const OpenMenuIcon = Template.bind({});
 OpenMenuIcon.args = {
-  iconName: 'OpenMenuIcon',
+  icon: 'OpenMenuIcon',
+  stroke: '#8F9398',
+  strokeWidth: 3,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
 };
 
 export const CloseMenuIcon = Template.bind({});
 CloseMenuIcon.args = {
-  iconName: 'CloseMenuIcon',
+  icon: 'CloseMenuIcon',
+  stroke: '#8F9398',
+  strokeWidth: 3,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
 };
 
 export const ErrorIcon = Template.bind({});
 
 ErrorIcon.args = {
-  iconName: 'ErrorIcon',
+  icon: 'ErrorIcon',
   stroke: 'red',
   fill: 'none',
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
 };
 
 export const FailureIcon = Template.bind({});
 
 FailureIcon.args = {
-  iconName: 'FailureIcon',
+  icon: 'FailureIcon',
 };
 
 export const LoaderIcon = Template.bind({});
 
 LoaderIcon.args = {
-  iconName: 'LoaderIcon',
+  icon: 'LoaderIcon',
 };
 
 export const SuccessIcon = Template.bind({});
 
 SuccessIcon.args = {
-  iconName: 'SuccessIcon',
+  icon: 'SuccessIcon',
   fill: '#21DA11',
 };
 
 export const ButtonIcon = Template.bind({});
 
 ButtonIcon.args = {
-  iconName: 'ButtonIcon',
-  stroke: '#fff',
+  icon: 'ButtonIcon',
+  fill: '#7F8095',
 };

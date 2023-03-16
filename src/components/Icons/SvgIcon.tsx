@@ -3,7 +3,6 @@ import React from 'react';
 import { pxToRem } from '../../utils';
 import BlocksIcon from '../../assets/svg/icons/blocks-icon.svg';
 import ButtonIcon from '../../assets/svg/icons/button-icon.svg';
-import CheckboxIcon from '../../assets/svg/icons/checkbox-icon.svg';
 import CloseMenuIcon from '../../assets/svg/icons/close-menu-icon.svg';
 import DeploysIcon from '../../assets/svg/icons/deploys-icon.svg';
 import ErrorIcon from '../../assets/svg/icons/error-icon.svg';
@@ -14,81 +13,68 @@ import PeersIcon from '../../assets/svg/icons/peers-icon.svg';
 import SuccessIcon from '../../assets/svg/icons/success-icon.svg';
 import ValidatorsIcon from '../../assets/svg/icons/validators-icon.svg';
 
+const icons = {
+  BlocksIcon: <BlocksIcon />,
+  ButtonIcon: <ButtonIcon />,
+  CloseMenuIcon: <CloseMenuIcon />,
+  DeploysIcon: <DeploysIcon />,
+  ErrorIcon: <ErrorIcon />,
+  FailureIcon: <FailureIcon />,
+  LoaderIcon: <LoaderIcon />,
+  OpenMenuIcon: <OpenMenuIcon />,
+  PeersIcon: <PeersIcon />,
+  SuccessIcon: <SuccessIcon />,
+  ValidatorsIcon: <ValidatorsIcon />,
+};
+
+export type strokeLinecapValues =
+  | 'inherit'
+  | 'butt'
+  | 'round'
+  | 'square'
+  | undefined;
+export type strokeLinejoinValues =
+  | 'inherit'
+  | 'round'
+  | 'miter'
+  | 'bevel'
+  | undefined;
+
 export interface SvgIconProps {
-  readonly iconName: string;
+  readonly icon: keyof typeof icons;
+  readonly title: string;
   readonly stroke?: string;
   readonly fill?: string;
   readonly width?: number;
+  readonly strokeWidth?: number;
+  readonly strokeLinecap?: strokeLinecapValues;
+  readonly strokeLinejoin?: strokeLinejoinValues;
 }
 
 export const SvgIcon: React.FC<SvgIconProps> = ({
-  iconName = 'BlocksIcon',
-  stroke = '',
-  fill = 'none',
+  icon = 'BlocksIcon',
+  title = 'Blocks Icon',
+  stroke,
+  fill,
   width = 250,
+  strokeWidth,
+  strokeLinecap,
+  strokeLinejoin,
 }) => {
-  const icons = [
-    {
-      comp: <BlocksIcon />,
-      key: 'BlocksIcon',
-    },
-    {
-      comp: <ButtonIcon />,
-      key: 'ButtonIcon',
-    },
-    {
-      comp: <CheckboxIcon />,
-      key: 'CheckboxIcon',
-    },
-    {
-      comp: <CloseMenuIcon />,
-      key: 'CloseMenuIcon',
-    },
-    {
-      comp: <DeploysIcon />,
-      key: 'DeploysIcon',
-    },
-    {
-      comp: <ErrorIcon />,
-      key: 'ErrorIcon',
-    },
-    {
-      comp: <FailureIcon />,
-      key: 'FailureIcon',
-    },
-    {
-      comp: <LoaderIcon />,
-      key: 'LoaderIcon',
-    },
-    {
-      comp: <OpenMenuIcon />,
-      key: 'OpenMenuIcon',
-    },
-    {
-      comp: <PeersIcon />,
-      key: 'PeersIcon',
-    },
-    {
-      comp: <SuccessIcon />,
-      key: 'SuccessIcon',
-    },
-    {
-      comp: <ValidatorsIcon />,
-      key: 'ValidatorsIcon',
-    },
-  ];
-
   return (
     <IconsContainer>
-      {icons.map(({ key, comp }) => (
-        <IconsWrapper width={width} key={`Icons: key=${key}`}>
-          {iconName === key && (
-            <StyledSvg stroke={stroke} fill={fill}>
-              {comp}
-            </StyledSvg>
-          )}
-        </IconsWrapper>
-      ))}
+      <IconsWrapper width={width}>
+        <StyledSvg
+          fill={fill}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          strokeLinecap={strokeLinecap}
+          strokeLinejoin={strokeLinejoin}
+          role="img">
+          <title>{title}</title>
+          {icons[icon]}
+        </StyledSvg>
+      </IconsWrapper>
     </IconsContainer>
   );
 };
@@ -108,10 +94,15 @@ export const IconsWrapper = styled.li<{ width: number }>`
 export const StyledSvg = styled.svg<{
   stroke: string | undefined;
   fill: string | undefined;
+  strokeWidth: number | undefined;
+  strokeLinecap: strokeLinecapValues;
+  strokeLinejoin: strokeLinejoinValues;
 }>`
   display: block;
-  stroke: ${({ stroke }) => stroke ?? '#7F8095'};
-  fill: ${({ fill }) => fill ?? 'none'};
   width: 100%;
-  height: auto;
+  fill: ${({ fill }) => fill ?? 'none'};
+  stroke: ${({ stroke }) => stroke ?? 'none'};
+  stroke-width: ${({ strokeWidth }) => strokeWidth ?? 'none'};
+  stroke-linecap: ${({ strokeLinecap }) => strokeLinecap};
+  stroke-linejoin: ${({ strokeLinejoin }) => strokeLinejoin};
 `;
