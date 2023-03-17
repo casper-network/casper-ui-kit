@@ -36,7 +36,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
   return (
     <LabelCheckboxContainer>
-      <CheckboxContainer onClick={() => setIsChecked(!isChecked)} width={width}>
+      <CheckboxContainer
+        onClick={() => setIsChecked(prev => !prev)}
+        width={width}>
         <StyledCheckbox
           boxColor={boxColor}
           width={width}
@@ -53,8 +55,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             <StyledSvg
               checkmarkColor={checkmarkColor}
               disabled={disabled}
-              required={required}
-            />
+              required={required}>
+              <CheckboxSvg />
+            </StyledSvg>
           </CheckboxSvgWrapper>
         )}
       </CheckboxContainer>
@@ -80,8 +83,8 @@ const CheckboxContainer = styled.div<{ width: number }>`
 
 const StyledCheckbox = styled.input<{
   boxColor: string;
-  disabled: boolean | undefined;
-  required: boolean | undefined;
+  disabled?: boolean;
+  required?: boolean;
   borderWidth: number;
 }>`
   width: 100%;
@@ -89,10 +92,11 @@ const StyledCheckbox = styled.input<{
   padding: 0;
   margin: 0;
   border: ${({ disabled, required, borderWidth, boxColor }) =>
-    (disabled && `${pxToRem(borderWidth)} solid #F1F1F4`) ||
-    (required && `${pxToRem(borderWidth)}  solid red`) ||
-    `${pxToRem(borderWidth)}  solid ${boxColor}`};
-  cursor: pointer;
+    disabled
+      ? `${pxToRem(borderWidth)} solid #F1F1F4`
+      : required
+      ? `${pxToRem(borderWidth)} solid #FF0000`
+      : `${pxToRem(borderWidth)}  solid ${boxColor}`};
   -webkit-appearance: none;
   appearance: none;
 `;
@@ -113,12 +117,11 @@ const CheckboxSvgWrapper = styled.div<{
   cursor: pointer;
 `;
 
-const StyledSvg = styled(CheckboxSvg)<{
+const StyledSvg = styled.svg<{
   checkmarkColor: string;
-  disabled: boolean | undefined;
-  required: boolean | undefined;
+  disabled?: boolean;
+  required?: boolean;
 }>`
   fill: ${({ disabled, required, checkmarkColor }) =>
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    (disabled && '#F1F1F4') || (required && 'red') || checkmarkColor};
+    disabled ? '#F1F1F4' : required ? '#FF0000' : checkmarkColor};
 `;
