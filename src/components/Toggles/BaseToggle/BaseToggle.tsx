@@ -19,15 +19,12 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
     toggleOptions.left,
   );
   const handleChange = () => {
-    if (selectedToggleOption === toggleOptions.left) {
-      setSelectedToggleOption(toggleOptions.right);
-    } else {
-      setSelectedToggleOption(toggleOptions.left);
-    }
-
-    if (onToggle) {
-      onToggle();
-    }
+    setSelectedToggleOption(
+      selectedToggleOption === toggleOptions.left
+        ? toggleOptions.right
+        : toggleOptions.left,
+    );
+    onToggle?.();
   };
 
   return (
