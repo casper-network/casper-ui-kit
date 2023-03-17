@@ -79,9 +79,9 @@ const LabelCheckboxContainer = styled.div<{
   display: flex;
   flex-direction: ${({ labelPosition }) => {
     if (labelPosition === 'top') return 'column';
-    else if (labelPosition === 'right') return 'row-reverse';
-    else if (labelPosition === 'bottom') return 'column-reverse';
-    else return 'row';
+    if (labelPosition === 'right') return 'row-reverse';
+    if (labelPosition === 'bottom') return 'column-reverse';
+    return 'row';
   }};
   justify-content: center;
   align-items: center;
@@ -112,8 +112,8 @@ const StyledCheckbox = styled.input<{
     const requiredStyles = `${pxToRem(borderWidth)} solid #FF0000`;
 
     if (disabled) return disabledStyles;
-    else if (required) return requiredStyles;
-    else return `${pxToRem(borderWidth)}  solid ${boxColor}`;
+    if (required) return requiredStyles;
+    return `${pxToRem(borderWidth)}  solid ${boxColor}`;
   }};
   -webkit-appearance: none;
   appearance: none;
