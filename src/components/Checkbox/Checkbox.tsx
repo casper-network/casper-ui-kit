@@ -77,14 +77,12 @@ const LabelCheckboxContainer = styled.div<{
   gapSize: number;
 }>`
   display: flex;
-  flex-direction: ${({ labelPosition }) =>
-    labelPosition === 'top'
-      ? 'column'
-      : labelPosition === 'right'
-      ? 'row-reverse'
-      : labelPosition === 'bottom'
-      ? 'column-reverse'
-      : 'row'};
+  flex-direction: ${({ labelPosition }) => {
+    if (labelPosition === 'top') return 'column';
+    else if (labelPosition === 'right') return 'row-reverse';
+    else if (labelPosition === 'bottom') return 'column-reverse';
+    else return 'row';
+  }};
   justify-content: center;
   align-items: center;
   gap: ${({ gapSize }) => `${pxToRem(gapSize)}`};
@@ -114,9 +112,8 @@ const StyledCheckbox = styled.input<{
     const requiredStyles = `${pxToRem(borderWidth)} solid #FF0000`;
 
     if (disabled) return disabledStyles;
-    else if (required) {
-      return requiredStyles;
-    } else return `${pxToRem(borderWidth)}  solid ${boxColor}`;
+    else if (required) return requiredStyles;
+    else return `${pxToRem(borderWidth)}  solid ${boxColor}`;
   }};
   -webkit-appearance: none;
   appearance: none;
