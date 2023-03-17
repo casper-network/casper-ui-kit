@@ -18,15 +18,13 @@ export const ButtonToggle: React.FC<ButtonToggleProps> = ({
 
   const handleToggle = (toggleOption: string) => {
     setSelectedToggleOption(toggleOption);
-    if (onToggle) {
-      onToggle();
-    }
+    onToggle?.();
   };
   return (
     <div className={className}>
       {toggleOptions.map(toggleOption => (
         <ToggleButton
-          key=""
+          key={toggleOption}
           type="submit"
           onClick={() => handleToggle(toggleOption)}
           disabled={toggleOption === selectedToggleOption}>
