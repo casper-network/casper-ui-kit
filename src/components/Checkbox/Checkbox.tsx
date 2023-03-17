@@ -16,10 +16,10 @@ export interface CheckboxProps {
   readonly borderWidth?: number;
   readonly overrideChecked?: boolean;
   readonly disabled?: boolean;
-  readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly required?: boolean;
   readonly name?: string;
   readonly value?: string | number;
+  readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -109,12 +109,15 @@ const StyledCheckbox = styled.input<{
   height: 100%;
   padding: 0;
   margin: 0;
-  border: ${({ disabled, required, borderWidth, boxColor }) =>
-    disabled
-      ? `${pxToRem(borderWidth)} solid #F1F1F4`
-      : required
-      ? `${pxToRem(borderWidth)} solid #FF0000`
-      : `${pxToRem(borderWidth)}  solid ${boxColor}`};
+  border: ${({ disabled, required, borderWidth, boxColor }) => {
+    const disabledStyles = `${pxToRem(borderWidth)} solid #F1F1F4`;
+    const requiredStyles = `${pxToRem(borderWidth)} solid #FF0000`;
+
+    if (disabled) return disabledStyles;
+    else if (required) {
+      return requiredStyles;
+    } else return `${pxToRem(borderWidth)}  solid ${boxColor}`;
+  }};
   -webkit-appearance: none;
   appearance: none;
 `;
