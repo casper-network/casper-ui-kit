@@ -60,24 +60,22 @@ export const SvgIcon: React.FC<SvgIconProps> = ({
   strokeWidth,
   strokeLinecap,
   strokeLinejoin,
-}) => {
-  return (
-    <IconsContainer>
-      <IconsWrapper width={width}>
-        <StyledSvg
-          fill={fill}
-          stroke={stroke}
-          strokeWidth={strokeWidth}
-          strokeLinecap={strokeLinecap}
-          strokeLinejoin={strokeLinejoin}
-          role="img">
-          <title>{title}</title>
-          {icons[icon]}
-        </StyledSvg>
-      </IconsWrapper>
-    </IconsContainer>
-  );
-};
+}) => (
+  <IconsContainer>
+    <IconsWrapper width={width}>
+      <StyledSvg
+        fill={fill}
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        strokeLinecap={strokeLinecap}
+        strokeLinejoin={strokeLinejoin}
+        role="img">
+        <title>{title}</title>
+        {icons[icon]}
+      </StyledSvg>
+    </IconsWrapper>
+  </IconsContainer>
+);
 
 export const IconsContainer = styled.ul`
   display: flex;
@@ -92,9 +90,9 @@ export const IconsWrapper = styled.li<{ width: number }>`
 `;
 
 export const StyledSvg = styled.svg<{
-  stroke: string | undefined;
-  fill: string | undefined;
-  strokeWidth: number | undefined;
+  stroke?: string;
+  fill?: string;
+  strokeWidth?: number;
   strokeLinecap: strokeLinecapValues;
   strokeLinejoin: strokeLinejoinValues;
 }>`

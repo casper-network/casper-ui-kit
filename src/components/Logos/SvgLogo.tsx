@@ -15,21 +15,24 @@ const logos = {
 
 export interface SvgLogoProps {
   readonly logo: keyof typeof logos;
+  readonly title: string;
   readonly width?: number;
 }
 
 export const SvgLogo: React.FC<SvgLogoProps> = ({
   logo = 'RedBlackCasperLogo',
+  title = 'Red and Black Casper Labs Logo',
   width = 500,
-}) => {
-  return (
-    <LogoContainer>
-      <LogoWrapper width={width}>
-        <StyledSvg>{logos[logo]}</StyledSvg>
-      </LogoWrapper>
-    </LogoContainer>
-  );
-};
+}) => (
+  <LogoContainer>
+    <LogoWrapper width={width}>
+      <StyledSvg role="img">
+        <title>{title}</title>
+        {logos[logo]}
+      </StyledSvg>
+    </LogoWrapper>
+  </LogoContainer>
+);
 
 export const LogoContainer = styled.ul`
   display: flex;
