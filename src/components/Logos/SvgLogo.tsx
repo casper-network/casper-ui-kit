@@ -21,7 +21,7 @@ export interface SvgLogoProps {
 
 export const SvgLogo: React.FC<SvgLogoProps> = ({
   logo = 'RedBlackCasperLogo',
-  title = 'Red and black Casper Labs Logo',
+  title = 'Red and Black Casper Labs Logo',
   width = 500,
 }) => (
   <LogoContainer>
