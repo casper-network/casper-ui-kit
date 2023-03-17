@@ -3,10 +3,14 @@ import React, { useState } from 'react';
 import { pxToRem } from '../../utils';
 import CheckboxSvg from '../../assets/svg/checkbox.svg';
 
+export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
+
 export interface CheckboxProps {
   readonly boxColor: string;
   readonly checkmarkColor: string;
   readonly label?: string;
+  readonly labelPosition?: LabelPositions;
+  readonly gapSize?: number;
   readonly width?: number;
   readonly checkmarkSize?: number;
   readonly borderWidth?: number;
@@ -22,6 +26,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   boxColor = '#02c1b0',
   checkmarkColor = '#02c1b0',
   label = 'Checkbox Label',
+  labelPosition = 'left',
+  gapSize = 10,
   width = 30,
   borderWidth = 2,
   checkmarkSize = 65,
@@ -35,7 +41,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const [isChecked, setIsChecked] = useState(false);
 
   return (
-    <LabelCheckboxContainer>
+    <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
+      <label>{label}</label>
       <CheckboxContainer
         onClick={() => setIsChecked(prev => !prev)}
         width={width}>
@@ -61,15 +68,26 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           </CheckboxSvgWrapper>
         )}
       </CheckboxContainer>
-      <label>{label}</label>
     </LabelCheckboxContainer>
   );
 };
 
-const LabelCheckboxContainer = styled.div`
+const LabelCheckboxContainer = styled.div<{
+  labelPosition: LabelPositions;
+  gapSize: number;
+}>`
   display: flex;
+  flex-direction: ${({ labelPosition }) =>
+    labelPosition === 'top'
+      ? 'column'
+      : labelPosition === 'right'
+      ? 'row-reverse'
+      : labelPosition === 'bottom'
+      ? 'column-reverse'
+      : 'row'};
+  justify-content: center;
   align-items: center;
-  gap: ${pxToRem(10)};
+  gap: ${({ gapSize }) => `${pxToRem(gapSize)}`};
 `;
 
 const CheckboxContainer = styled.div<{ width: number }>`
