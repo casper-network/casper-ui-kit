@@ -14,7 +14,7 @@ export interface CheckboxProps {
   readonly width?: number;
   readonly checkmarkSize?: number;
   readonly borderWidth?: number;
-  readonly checked?: boolean;
+  readonly overrideChecked?: boolean;
   readonly disabled?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly required?: boolean;
@@ -31,7 +31,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   width = 30,
   borderWidth = 2,
   checkmarkSize = 65,
-  checked = false,
+  overrideChecked,
   disabled,
   onChange,
   value,
@@ -57,7 +57,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           name={name}
           required={required}
         />
-        {(isChecked || checked) && (
+        {(isChecked || overrideChecked) && (
           <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
             <StyledSvg
               checkmarkColor={checkmarkColor}
