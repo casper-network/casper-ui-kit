@@ -23,18 +23,16 @@ export const SvgLogo: React.FC<SvgLogoProps> = ({
   logo = 'RedBlackCasperLogo',
   title = 'Red and black Casper Labs Logo',
   width = 500,
-}) => {
-  return (
-    <LogoContainer>
-      <LogoWrapper width={width}>
-        <StyledSvg role="img">
-          <title>{title}</title>
-          {logos[logo]}
-        </StyledSvg>
-      </LogoWrapper>
-    </LogoContainer>
-  );
-};
+}) => (
+  <LogoContainer>
+    <LogoWrapper width={width}>
+      <StyledSvg role="img">
+        <title>{title}</title>
+        {logos[logo]}
+      </StyledSvg>
+    </LogoWrapper>
+  </LogoContainer>
+);
 
 export const LogoContainer = styled.ul`
   display: flex;
