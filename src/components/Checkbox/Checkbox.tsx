@@ -89,9 +89,9 @@ const StyledCheckbox = styled.input<{
   padding: 0;
   margin: 0;
   border: ${({ disabled, required, borderWidth, boxColor }) =>
-    (disabled && `${pxToRem(borderWidth)}  #F1F1F4`) ||
-    (required && `${pxToRem(borderWidth)}   red`) ||
-    `${pxToRem(borderWidth)} ${boxColor}`};
+    (disabled && `${pxToRem(borderWidth)} solid #F1F1F4`) ||
+    (required && `${pxToRem(borderWidth)}  solid red`) ||
+    `${pxToRem(borderWidth)}  solid ${boxColor}`};
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
