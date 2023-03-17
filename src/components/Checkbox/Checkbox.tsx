@@ -59,7 +59,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         />
         {isChecked && (
           <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
-            <StyledCheckboxSvg color={checkmarkColor} disabled={disabled} required={required} />
+            <StyledCheckboxSvg
+              color={checkmarkColor}
+              disabled={disabled}
+              required={required}
+            />
           </CheckboxSvgWrapper>
         )}
       </CheckboxContainer>
@@ -110,6 +114,7 @@ const StyledCheckbox = styled.input<{
     if (required) return requiredStyles;
     return `${pxToRem(borderWidth)}  solid ${boxColor}`;
   }};
+  cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
 `;
