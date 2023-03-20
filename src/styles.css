@@ -1,0 +1,153 @@
+@font-face {
+    font-family: 'Inter';
+    src: local('./assets/fonts/Inter/Inter-Thin.woff2') format('woff2'),
+        local('./assets/fonts/Inter/Inter-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: local('./assets/fonts/Inter/Inter-ExtraLight.woff2') format('woff2'),
+        local('./assets/fonts/Inter/Inter-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: local('./assets/fonts/Inter/Inter-Light.woff2') format('woff2'),
+        local('./assets/fonts/Inter/Inter-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: local('./assets/fonts/Inter/Inter-Regular.woff2') format('woff2'),
+        local('./assets/fonts/Inter/Inter-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: local('./assets/fonts/Inter/Inter-Medium.woff2') format('woff2'),
+        local('./assets/fonts/Inter/Inter-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: local('./assets/fonts/Inter/Inter-SemiBold.woff2') format('woff2'),
+        local('./assets/fonts/Inter/Inter-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: local('./assets/fonts/Inter/Inter-Black.woff2') format('woff2'),
+        local('./assets/fonts/Inter/Inter-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: local('./assets/fonts/Inter/Inter-Bold.woff2') format('woff2'),
+        local('./assets/fonts/Inter/Inter-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: local('./assets/fonts/Inter/Inter-ExtraBold.woff2') format('woff2'),
+        local('./assets/fonts/Inter/Inter-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: local('./assets/fonts/HelveticaNue/HelveticaNeueThin.woff2') format('woff2'),
+    local('HelveticaNeueThin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: local('./assets/fonts/HelveticaNue/HelveticaNeueLight.woff2') format('woff2'),
+    local('./assets/fonts/HelveticaNue/HelveticaNeueLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: local('./assets/fonts/HelveticaNue/HelveticaNeueMedium.woff2') format('woff2'),
+    local('./assets/fonts/HelveticaNue/HelveticaNeueMedium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: local('./assets/fonts/HelveticaNue/HelveticaNeueHeavy.woff2') format('woff2'),
+    local('./assets/fonts/HelveticaNue/HelveticaNeueHeavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: local('./assets/fonts/HelveticaNue/HelveticaNeueBold.woff2') format('woff2'),
+    local('./assets/fonts/HelveticaNue/HelveticaNeueBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CasperSans';
+    src: local('./assets/fonts/CasperSans/CasperSans-Light.woff2') format('woff2'),
+    local('./assets/fonts/CasperSans/CasperSans-Light.woff') format('woff')
+    ;
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CasperSans';
+    src: local('./assets/fonts/CasperSans/CasperSans-Regular.woff2') format('woff2'),
+    local('./assets/fonts/CasperSans/CasperSans-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CasperSans';
+    src: local('./assets/fonts/CasperSans/CasperSans-Regular.woff2') format('woff2'),
+    local('./assets/fonts/CasperSans/CasperSans-Regular.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
