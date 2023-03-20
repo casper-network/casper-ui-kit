@@ -5,6 +5,11 @@ import { Checkbox, CheckboxProps } from '../../components/Checkbox/Checkbox';
 export default {
   title: 'Components/Checkbox',
   component: Checkbox,
+  argTypes: {
+    initialChecked: {
+      control: false,
+    },
+  },
 } as Meta<typeof Checkbox>;
 
 // Create a master template for mapping args to render the Checkbox component

@@ -31,7 +31,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   width = 30,
   borderWidth = 2,
   checkmarkSize = 65,
-  initialChecked = true,
+  initialChecked = false,
   disabled,
   onChange,
   value,
