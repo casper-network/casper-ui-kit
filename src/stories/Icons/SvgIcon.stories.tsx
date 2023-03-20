@@ -18,6 +18,7 @@ BlocksIcon.args = {
   icon: 'BlocksIcon',
   title: 'Blocks Icon',
   stroke: '#7F8095',
+  fill: 'none',
 };
 
 export const ValidatorsIcon = Template.bind({});
