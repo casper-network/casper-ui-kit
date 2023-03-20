@@ -98,9 +98,9 @@ export const StyledSvg = styled.svg<{
 }>`
   display: block;
   width: 100%;
-  fill: ${({ fill }) => fill ?? 'none'};
-  stroke: ${({ stroke }) => stroke ?? 'none'};
-  stroke-width: ${({ strokeWidth }) => strokeWidth ?? 'none'};
+  fill: ${({ fill }) => fill ?? 'initial'};
+  stroke: ${({ stroke }) => stroke ?? 'initial'};
+  stroke-width: ${({ strokeWidth }) => strokeWidth ?? 'initial'};
   stroke-linecap: ${({ strokeLinecap }) => strokeLinecap};
   stroke-linejoin: ${({ strokeLinejoin }) => strokeLinejoin};
 `;
