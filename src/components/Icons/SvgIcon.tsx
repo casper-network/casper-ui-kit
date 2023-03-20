@@ -89,7 +89,7 @@ export const IconsWrapper = styled.li<{ width: number }>`
   width: ${({ width }) => `${pxToRem(width)}`};
 `;
 
-export const StyledSvg = styled.svg<{
+export const StyledSvg = styled.div<{
   stroke?: string;
   fill?: string;
   strokeWidth?: number;
