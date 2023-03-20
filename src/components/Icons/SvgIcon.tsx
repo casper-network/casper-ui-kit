@@ -63,7 +63,7 @@ export const SvgIcon: React.FC<SvgIconProps> = ({
 }) => (
   <IconsContainer>
     <IconsWrapper width={width}>
-      <StyledSvg
+      <SvgContainer
         fill={fill}
         stroke={stroke}
         strokeWidth={strokeWidth}
@@ -72,7 +72,7 @@ export const SvgIcon: React.FC<SvgIconProps> = ({
         role="img">
         <title>{title}</title>
         {icons[icon]}
-      </StyledSvg>
+      </SvgContainer>
     </IconsWrapper>
   </IconsContainer>
 );
@@ -89,7 +89,7 @@ export const IconsWrapper = styled.li<{ width: number }>`
   width: ${({ width }) => `${pxToRem(width)}`};
 `;
 
-export const StyledSvg = styled.div<{
+export const SvgContainer = styled.div<{
   stroke?: string;
   fill?: string;
   strokeWidth?: number;
