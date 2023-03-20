@@ -57,19 +57,10 @@ export const SvgIcon: React.FC<SvgIconProps> = ({
   stroke = '',
   fill = 'none',
   width = 250,
-  strokeWidth,
-  strokeLinecap,
-  strokeLinejoin,
 }) => (
   <IconsContainer>
     <IconsWrapper width={width}>
-      <SvgContainer
-        fill={fill}
-        stroke={stroke}
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLinecap}
-        strokeLinejoin={strokeLinejoin}
-        role="img">
+      <SvgContainer fill={fill} stroke={stroke} role="img">
         <title>{title}</title>
         {icons[icon]}
       </SvgContainer>
@@ -93,8 +84,6 @@ export const SvgContainer = styled.div<{
   stroke?: string;
   fill?: string;
   strokeWidth?: number;
-  strokeLinecap: strokeLinecapValues;
-  strokeLinejoin: strokeLinejoinValues;
 }>`
   display: block;
   width: 100%;
