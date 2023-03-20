@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
+import { NormalPalette } from '../../Theme';
 
 export interface BaseToggleProps {
   toggleOptions: {
@@ -59,10 +60,10 @@ const Switch = styled.div<{
   position: relative;
   width: 3.75rem;
   height: 2rem;
-  background: white;
+  background: ${NormalPalette.secondary.White};
   border-radius: 2rem;
   padding: 0.25rem;
-  border: 3px #02c1b0 solid;
+  border: 3px ${NormalPalette.primary.CasperRed} solid;
   transition: 300ms all;
   margin: 0 1.25rem;
 
@@ -75,7 +76,7 @@ const Switch = styled.div<{
     border-radius: 2.25rem;
     top: 50%;
     left: 0.25rem;
-    background: #02c1b0;
+    background: ${NormalPalette.primary.CasperRed};
     transform: translate(
       ${({ currentFilter, toggleSettings }) =>
         currentFilter === toggleSettings.left ? 0 : '2rem'},
