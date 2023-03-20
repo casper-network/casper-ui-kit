@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { NormalPalette } from '../../Theme';
 
 export interface ButtonToggleProps {
   toggleOptions: string[];
@@ -36,14 +37,14 @@ export const ButtonToggle: React.FC<ButtonToggleProps> = ({
 };
 
 export const ToggleButton = styled.button`
-  border: #64748b 2px solid;
+  border: ${NormalPalette.primary.CasperWhite} 2px solid;
   text-align: center;
   padding: 0.25rem 1rem;
   cursor: pointer;
-  background-color: white;
+  background-color: ${NormalPalette.secondary.White};
   min-width: 6rem;
   :disabled {
-    background-color: #64748b;
-    color: white;
+    background-color: ${NormalPalette.primary.CasperRed};
+    color: ${NormalPalette.secondary.White};
   }
 `;
