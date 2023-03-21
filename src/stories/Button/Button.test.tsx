@@ -16,25 +16,23 @@ describe('Button', () => {
   });
   it('should render the red button', () => {
     render(
-      <RedButton type="button" {...Base.args}>
+      <RedButton type="button" {...RedButton.args}>
         button
       </RedButton>,
     );
     expect(screen.getByRole('button')).toHaveTextContent('button');
-    // expect(screen.getByRole('button')).toHaveStyle('background-color: red');
-    // expect(screen.getByRole('button')).toHaveStyle(
-    //   `background-color: ${RedButton.args?.color!}`,
-    // );
+    expect(screen.getByRole('button')).toHaveStyle('background-color: red');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
   it('should render the disabled button', () => {
     render(
-      <DisabledButton type="button" {...Base.args}>
+      <DisabledButton type="button" {...DisabledButton.args}>
         button
       </DisabledButton>,
     );
 
     expect(screen.getByRole('button')).toHaveTextContent('button');
+    expect(screen.getByRole('button')).toHaveStyle('background-color: purple');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 });
