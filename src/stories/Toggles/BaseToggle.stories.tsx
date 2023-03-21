@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import {
   BaseToggle,
   BaseToggleProps,
@@ -8,9 +8,9 @@ import {
 export default {
   title: 'Components/Toggles',
   component: BaseToggle,
-} as ComponentMeta<typeof BaseToggle>;
+} as Meta<typeof BaseToggle>;
 
-const Template: ComponentStory<typeof BaseToggle> = (args: BaseToggleProps) => (
+const Template: StoryFn<typeof BaseToggle> = (args: BaseToggleProps) => (
   <BaseToggle {...args} />
 );
 
