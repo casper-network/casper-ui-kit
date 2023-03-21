@@ -23,12 +23,12 @@ export const Loader: React.FC<LoaderProps> = ({ size } = { size: 'lg' }) => {
   };
 
   return (
-    <LoaderWrapper data-test-id="loaderWrapper">
+    <LoaderWrapper>
       <LoaderStatus
         size={getLoaderSize(size)}
         aria-label="Loading..."
         role="status">
-        <LoaderIcon data-testid="loaderSvgWrapper" size={getLoaderSize(size)}>
+        <LoaderIcon size={getLoaderSize(size)}>
           <LoaderSVG />
         </LoaderIcon>
       </LoaderStatus>
