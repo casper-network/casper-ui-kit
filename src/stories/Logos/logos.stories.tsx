@@ -1,5 +1,7 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { Meta, StoryFn } from '@storybook/react';
+import { pxToRem } from '../../utils';
 import { SvgLogo, SvgLogoProps } from '../../components/Logos/SvgLogo';
 
 export default {
@@ -9,15 +11,10 @@ export default {
 
 // Create a master template for mapping args to render the SvgLogo component
 const Template: StoryFn<typeof SvgLogo> = (args: SvgLogoProps) => (
-  <SvgLogo {...args} />
+  <StoryContainer>
+    <SvgLogo {...args} />
+  </StoryContainer>
 );
-
-export const RedBlackCasperLogo = Template.bind({});
-
-RedBlackCasperLogo.args = {
-  logo: 'RedBlackCasperLogo',
-  title: 'Red and Black Casper Labs Logo',
-};
 
 export const BlockExplorerGradientLogo = Template.bind({});
 
@@ -38,3 +35,10 @@ WhiteCasperLogo.args = {
   logo: 'WhiteCasperLogo',
   title: 'White Casper Logo',
 };
+
+const StoryContainer = styled.div`
+  width: 100%;
+  max-width: ${pxToRem(400)};
+  padding: 3rem;
+  background: #eee;
+`;
