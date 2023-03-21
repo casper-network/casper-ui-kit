@@ -14,7 +14,7 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toHaveStyle('background-color: blue');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
-  it('should render red button', () => {
+  it('should render the red button', () => {
     render(
       <RedButton type="button" {...Base.args}>
         button
