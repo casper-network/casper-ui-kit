@@ -23,7 +23,7 @@ export const Loader: React.FC<LoaderProps> = ({ size } = { size: 'lg' }) => {
   };
 
   return (
-    <LoaderWrapper>
+    <LoaderWrapper data-test-id="loaderWrapper">
       <LoaderStatus
         size={getLoaderSize(size)}
         aria-label="Loading..."
