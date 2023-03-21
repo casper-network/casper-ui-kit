@@ -58,7 +58,10 @@ export const IconsContainer = styled.ul`
   justify-content: center;
   align-items: center;
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 `;
+
 export const IconsWrapper = styled.li<{ width: number }>`
   display: block;
   width: ${({ width }) => `${pxToRem(width)}`};
