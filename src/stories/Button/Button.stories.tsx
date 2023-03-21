@@ -1,14 +1,14 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { Button, ButtonProps } from '../../components/Button';
 
 export default {
   title: 'Components/Button',
   component: Button,
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
 // Create a master template for mapping args to render the Button component
-const Template: ComponentStory<typeof Button> = (args: ButtonProps) => (
+const Template: StoryFn<typeof Button> = (args: ButtonProps) => (
   <Button {...args} />
 );
 
