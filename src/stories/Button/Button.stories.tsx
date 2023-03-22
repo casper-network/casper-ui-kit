@@ -1,5 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
+// import { within } from '@storybook/testing-library';
+// import { expect } from '@storybook/jest';
 import { Button, ButtonProps } from '../../components/Button';
 
 export default {
@@ -26,6 +28,12 @@ Base.args = {
   onClick: () => clickActionShoutOut('Base'),
   type: 'button',
 };
+
+// Base.play = async ({ canvasElement }) => {
+//   const canvas = within(canvasElement);
+//   const baseButton = await canvas.getByRole('button');
+//   await expect(baseButton).toHaveStyle('background-color: blue');
+// };
 
 export const RedButton = Template.bind({});
 
