@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import {
   TwoColumnTable,
   TwoColumnTableProps,
@@ -8,10 +8,10 @@ import {
 export default {
   title: 'Components/Tables',
   component: TwoColumnTable,
-} as ComponentMeta<typeof TwoColumnTable>;
+} as Meta<typeof TwoColumnTable>;
 
 // Create a master template for mapping args to render the Button component
-const Template: ComponentStory<typeof TwoColumnTable> = (
+const Template: StoryFn<typeof TwoColumnTable> = (
   args: TwoColumnTableProps,
 ) => <TwoColumnTable {...args} />;
 
