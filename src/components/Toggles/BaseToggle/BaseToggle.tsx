@@ -96,14 +96,13 @@ const Input = styled.input`
 
 const AssetToggleWrapper = styled.div`
   display: flex;
-  padding-top: 1.3rem;
-  padding-bottom: 0.9rem;
-  padding-right: 8.25rem;
+  padding: 1rem 0;
+  align-items: center;
 `;
 
 const ToggleLabel = styled.p`
   font-size: 1rem;
   font-weight: 500;
   padding-right: 0.25rem;
-  margin-bottom: 0;
+  margin: 0;
 `;
