@@ -29,7 +29,7 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
   };
 
   return (
-    <AssetToggleWrapper className={className}>
+    <BaseToggleWrapper data-testid="baseToggle" className={className}>
       <ToggleLabel>{toggleOptions.left}</ToggleLabel>
       <Label>
         <Input type="checkbox" onChange={handleChange} />
@@ -39,7 +39,7 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
         />
       </Label>
       <ToggleLabel>{toggleOptions.right}</ToggleLabel>
-    </AssetToggleWrapper>
+    </BaseToggleWrapper>
   );
 };
 
@@ -90,7 +90,7 @@ const Input = styled.input`
   position: absolute;
 `;
 
-const AssetToggleWrapper = styled.div`
+const BaseToggleWrapper = styled.div`
   display: flex;
   padding-top: 1.3rem;
   padding-bottom: 0.9rem;
