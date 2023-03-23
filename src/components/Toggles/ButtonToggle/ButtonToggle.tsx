@@ -4,7 +4,7 @@ import { NormalPalette } from '../../Theme';
 
 export interface ButtonToggleProps {
   toggleOptions: string[];
-  className: string;
+  className?: string;
   onToggle?: () => void;
 }
 
