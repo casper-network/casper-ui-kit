@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { withTests } from '@storybook/addon-jest';
+// eslint-disable-next-line import/extensions
 import results from '../../../.jest-test-results.json';
 import { Loader, LoaderProps } from '../../components/Loader';
 
@@ -16,5 +17,8 @@ const Template: StoryFn<typeof Loader> = (args: LoaderProps) => (
 );
 
 export const Base = Template.bind({});
+Base.parameters = {
+  jest: ['Loader.test.tsx'],
+};
 
 Base.args = {};

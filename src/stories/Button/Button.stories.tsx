@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { withTests } from '@storybook/addon-jest';
+// eslint-disable-next-line import/extensions
 import results from '../../../.jest-test-results.json';
 import { Button, ButtonProps } from '../../components/Button';
 
