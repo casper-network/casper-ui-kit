@@ -5,8 +5,8 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Base, RequiredCheckbox, DisabledCheckbox } from './Checkbox.stories';
 
-describe('Checkbox', () => {
-  it('should render the base checkbox', async () => {
+describe('Checkbox.stories', () => {
+  it('should render the Base checkbox', async () => {
     const user = userEvent.setup();
     render(<Base boxColor="#02c1b0" checkmarkColor="#02c1b0" {...Base.args} />);
 
@@ -18,7 +18,7 @@ describe('Checkbox', () => {
     expect(screen.getByRole('checkbox')).toBeInTheDocument();
   });
 
-  it('should render the required checkbox', async () => {
+  it('should render the Required Checkbox', async () => {
     const user = userEvent.setup();
     render(
       <RequiredCheckbox
@@ -36,7 +36,7 @@ describe('Checkbox', () => {
     expect(screen.getByRole('checkbox')).toBeInTheDocument();
   });
 
-  it('should render the disabled checkbox', async () => {
+  it('should render the Disabled Checkbox', async () => {
     const user = userEvent.setup();
     render(
       <DisabledCheckbox

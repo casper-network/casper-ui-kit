@@ -14,7 +14,7 @@ import {
   ButtonIcon,
 } from './SvgIcon.stories';
 
-describe('SvgIcon', () => {
+describe('SvgIcon.stories', () => {
   it('should render the BlocksIcon', () => {
     render(
       <BlocksIcon
@@ -27,7 +27,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the ValidatorsIcon', () => {
+  it('should render the Validators Icon', () => {
     render(
       <ValidatorsIcon
         icon="ValidatorsIcon"
@@ -39,7 +39,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the DeploysIcon', () => {
+  it('should render the Deploys Icon', () => {
     render(
       <DeploysIcon
         icon="DeploysIcon"
@@ -51,7 +51,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the OpenMenuIcon', () => {
+  it('should render the Open Menu Icon', () => {
     render(
       <OpenMenuIcon
         icon="OpenMenuIcon"
@@ -63,7 +63,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the CloseMenuIcon', () => {
+  it('should render the Close Menu Icon', () => {
     render(
       <CloseMenuIcon
         icon="CloseMenuIcon"
@@ -75,7 +75,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the ErrorIcon', () => {
+  it('should render the Error Icon', () => {
     render(
       <ErrorIcon icon="ErrorIcon" title="ErrorIcon" {...ErrorIcon.args} />,
     );
@@ -83,7 +83,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the FailureIcon', () => {
+  it('should render the Failure Icon', () => {
     render(
       <FailureIcon
         icon="FailureIcon"
@@ -95,7 +95,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the LoaderIcon', () => {
+  it('should render the Loader Icon', () => {
     render(
       <LoaderIcon icon="LoaderIcon" title="LoaderIcon" {...LoaderIcon.args} />,
     );
@@ -103,7 +103,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the SuccessIcon', () => {
+  it('should render the Success Icon', () => {
     render(
       <SuccessIcon
         icon="SuccessIcon"
@@ -114,7 +114,7 @@ describe('SvgIcon', () => {
 
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
-  it('should render the ButtonIcon', () => {
+  it('should render the Button Icon', () => {
     render(
       <ButtonIcon icon="ButtonIcon" title="ButtonIcon" {...ButtonIcon.args} />,
     );

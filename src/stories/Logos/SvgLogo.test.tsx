@@ -8,8 +8,8 @@ import {
   WhiteCasperLogo,
 } from './SvgLogo.stories';
 
-describe('SvgIcon', () => {
-  it('should render the RedBlackCasperLogo', () => {
+describe('SvgIcon.stories', () => {
+  it('should render the Red Black Casper Logo', () => {
     render(
       <RedBlackCasperLogo
         logo="RedBlackCasperLogo"
@@ -21,7 +21,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the BlockExplorerGradientLogo', () => {
+  it('should render the Block Explorer Gradient Logo', () => {
     render(
       <BlockExplorerGradientLogo
         logo="BlockExplorerGradientLogo"
@@ -33,7 +33,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the BlueCasperLogo', () => {
+  it('should render the Blue Casper Logo', () => {
     render(
       <BlueCasperLogo
         logo="BlueCasperLogo"
@@ -45,7 +45,7 @@ describe('SvgIcon', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render the WhiteCasperLogo', () => {
+  it('should render the White Casper Logo', () => {
     render(
       <WhiteCasperLogo
         logo="WhiteCasperLogo"
