@@ -18,13 +18,21 @@ export const TwoColumnTable: React.FC<TwoColumnTableProps> = ({
   noDividers,
   className,
 }) => (
-  <TwoColumnTableWrapper className={className}>
+  <TwoColumnTableWrapper data-testid="twoColumTable" className={className}>
     <tbody>
       {rows.map(({ detailKey, value, key }) => {
         return (
           <tr key={key}>
-            <TableLabel noDividers={noDividers}>{detailKey}</TableLabel>
-            <TableValue noDividers={noDividers}>{value}</TableValue>
+            <TableLabel
+              data-testid="twoColumnTableLabel"
+              noDividers={noDividers}>
+              {detailKey}
+            </TableLabel>
+            <TableValue
+              data-testid="twoColumnTableValue"
+              noDividers={noDividers}>
+              {value}
+            </TableValue>
           </tr>
         );
       })}
