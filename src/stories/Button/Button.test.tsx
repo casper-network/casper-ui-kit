@@ -35,4 +35,14 @@ describe('Button.stories', () => {
     expect(screen.getByRole('button')).toHaveStyle('background-color: purple');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
+
+  it('should be disabled', () => {
+    render(
+      <DisabledButton type="button" {...DisabledButton.args}>
+        disabled button
+      </DisabledButton>,
+    );
+
+    expect(screen.getByRole('button')).toBeDisabled();
+  });
 });
