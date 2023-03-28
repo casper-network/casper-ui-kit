@@ -24,8 +24,6 @@ export interface PasswordInputProps {
   readonly pattern?: string;
   readonly disabled?: boolean;
   readonly required?: boolean;
-  readonly name?: string;
-  readonly value?: string | number;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
@@ -47,8 +45,6 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   maxPasswordLength = 20,
   pattern,
   onChange,
-  value,
-  name,
   required,
   disabled,
 }) => {
@@ -75,8 +71,6 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
           maxLength={maxPasswordLength}
           pattern={pattern}
           onChange={onChange}
-          value={value}
-          name={name}
           required={required}
           disabled={disabled}
         />
@@ -129,7 +123,7 @@ const StyledPasswordInput = styled.input<{
     fontSize ? `${pxToRem(fontSize)}` : '0.85rem'};
   color: ${({ fontColor }) => fontColor ?? '#000'};
   background-color: #fff;
-  width: ${({ width }) => (width ? `${pxToRem(width)}` : `${pxToRem(197)}`)};
+  width: ${({ width }) => (width ? `${pxToRem(width)}` : `${pxToRem(190)}`)};
   height: ${({ height }) => (height ? `${pxToRem(height)}` : `${pxToRem(36)}`)};
   box-shadow: ${({ boxShadowColor }) =>
     `inset 0px 1px 7px ${
