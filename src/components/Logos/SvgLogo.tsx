@@ -35,7 +35,7 @@ export const LogoContainer = styled.div`
   justify-content: center;
 `;
 
-export const StyledSvg = styled.svg<{ width: number }>`
+const StyledSvg = styled.svg<{ width: number }>`
   height: auto;
   width: ${({ width }) => pxToRem(width)};
 `;

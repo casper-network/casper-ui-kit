@@ -27,27 +27,52 @@ const icons = {
   ValidatorsIcon: <ValidatorsIcon />,
 };
 
+export type strokeLinecapValues =
+  | 'inherit'
+  | 'butt'
+  | 'round'
+  | 'square'
+  | undefined;
+export type strokeLinejoinValues =
+  | 'inherit'
+  | 'round'
+  | 'miter'
+  | 'bevel'
+  | undefined;
+
 export interface SvgIconProps {
   readonly icon: keyof typeof icons;
   readonly title: string;
   readonly stroke?: string;
   readonly fill?: string;
   readonly width?: number;
+  readonly strokeWidth?: number;
+  readonly strokeLinecap?: strokeLinecapValues;
+  readonly strokeLinejoin?: strokeLinejoinValues;
 }
 
 export const SvgIcon: React.FC<SvgIconProps> = ({
   icon = 'BlocksIcon',
   title = 'Blocks Icon',
-  stroke = '',
-  fill = 'none',
-  width = 250,
+  stroke,
+  fill,
+  width = 251,
+  strokeWidth,
+  strokeLinecap,
+  strokeLinejoin,
 }) => (
   <IconsContainer>
     <IconsWrapper width={width}>
-      <SvgContainer fill={fill} stroke={stroke} role="img">
+      <StyledSvg
+        fill={fill}
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        strokeLinecap={strokeLinecap}
+        strokeLinejoin={strokeLinejoin}
+        role="img">
         <title>{title}</title>
         {icons[icon]}
-      </SvgContainer>
+      </StyledSvg>
     </IconsWrapper>
   </IconsContainer>
 );
@@ -58,23 +83,24 @@ export const IconsContainer = styled.ul`
   justify-content: center;
   align-items: center;
   list-style-type: none;
-  padding: 0;
-  margin: 0;
 `;
-
 export const IconsWrapper = styled.li<{ width: number }>`
   display: block;
   width: ${({ width }) => `${pxToRem(width)}`};
 `;
 
-export const SvgContainer = styled.div<{
+export const StyledSvg = styled.svg<{
   stroke?: string;
   fill?: string;
   strokeWidth?: number;
+  strokeLinecap: strokeLinecapValues;
+  strokeLinejoin: strokeLinejoinValues;
 }>`
   display: block;
   width: 100%;
   fill: ${({ fill }) => fill ?? 'initial'};
   stroke: ${({ stroke }) => stroke ?? 'initial'};
   stroke-width: ${({ strokeWidth }) => strokeWidth ?? 'initial'};
+  stroke-linecap: ${({ strokeLinecap }) => strokeLinecap};
+  stroke-linejoin: ${({ strokeLinejoin }) => strokeLinejoin};
 `;
