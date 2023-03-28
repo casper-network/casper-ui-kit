@@ -22,7 +22,7 @@ export const ButtonToggle: React.FC<ButtonToggleProps> = ({
     onToggle?.();
   };
   return (
-    <div className={className}>
+    <div className={className} data-testid="buttonToggle">
       {toggleOptions.map(toggleOption => (
         <ToggleButton
           key={toggleOption}
