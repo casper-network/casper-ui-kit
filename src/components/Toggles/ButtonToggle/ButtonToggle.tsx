@@ -19,9 +19,7 @@ export const ButtonToggle: React.FC<ButtonToggleProps> = ({
 
   const handleToggle = (toggleOption: string) => {
     setSelectedToggleOption(toggleOption);
-    if (onToggle) {
-      onToggle();
-    }
+    onToggle?.();
   };
   return (
     <div className={className}>
