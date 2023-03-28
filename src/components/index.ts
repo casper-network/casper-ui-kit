@@ -5,4 +5,5 @@ export * from './Icons';
 export * from './Loader';
 export * from './Logos';
 export * from './Tables';
+export * from './Theme';
 export * from './Toggles';
