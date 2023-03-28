@@ -18,11 +18,7 @@ export const KeyValueTable: React.FC<KeyValueTableProps> = ({
   noDividers,
   className,
 }) => (
-<<<<<<< HEAD:src/components/Tables/TwoColumnTable/TwoColumnTable.tsx
-  <TwoColumnTableWrapper data-testid="twoColumTable" className={className}>
-=======
   <KeyValueTableWrapper className={className}>
->>>>>>> dev:src/components/Tables/KeyValueTable/KeyValueTable.tsx
     <tbody>
       {rows.map(({ detailKey, value, key }) => {
         return (
