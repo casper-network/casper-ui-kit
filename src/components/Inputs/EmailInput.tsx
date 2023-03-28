@@ -40,7 +40,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
   width,
   height,
   minEmailLength = 1,
-  maxEmailLength = 20,
+  maxEmailLength = 254,
   multiple,
   pattern,
   onChange,
