@@ -7,12 +7,14 @@ export interface BaseToggleProps {
     left: string;
     right: string;
   };
+  color?: string;
   className?: string;
   onToggle?: () => void;
 }
 
 export const BaseToggle: React.FC<BaseToggleProps> = ({
   toggleOptions,
+  color = 'black',
   className,
   onToggle,
 }) => {
@@ -38,6 +40,7 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
           onChange={handleChange}
         />
         <Switch
+          color={color}
           currentFilter={selectedToggleOption}
           toggleSettings={toggleOptions}
         />
@@ -56,6 +59,7 @@ const Label = styled.label`
 
 const Switch = styled.div<{
   currentFilter: string;
+  color: string;
   toggleSettings: {
     left: string;
     right: string;
@@ -67,7 +71,7 @@ const Switch = styled.div<{
   background: ${NormalPalette.secondary.White};
   border-radius: 2rem;
   padding: 0.25rem;
-  border: 3px ${NormalPalette.primary.CasperRed} solid;
+  border: 3px ${({ color }) => color} solid;
   transition: 300ms all;
   margin: 0 1.25rem;
 
@@ -80,7 +84,7 @@ const Switch = styled.div<{
     border-radius: 2.25rem;
     top: 50%;
     left: 0.25rem;
-    background: ${NormalPalette.primary.CasperRed};
+    background: ${({ color }) => color};
     transform: translate(
       ${({ currentFilter, toggleSettings }) =>
         currentFilter === toggleSettings.left ? 0 : '2rem'},
@@ -96,14 +100,13 @@ const Input = styled.input`
 
 const BaseToggleWrapper = styled.div`
   display: flex;
-  padding-top: 1.3rem;
-  padding-bottom: 0.9rem;
-  padding-right: 8.25rem;
+  padding: 1rem 0;
+  align-items: center;
 `;
 
 const ToggleLabel = styled.p`
   font-size: 1rem;
   font-weight: 500;
   padding-right: 0.25rem;
-  margin-bottom: 0;
+  margin: 0;
 `;

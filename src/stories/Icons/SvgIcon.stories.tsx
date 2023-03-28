@@ -1,6 +1,8 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { Meta, StoryFn } from '@storybook/react';
 import { SvgIcon, SvgIconProps } from '../../components/Icons/SvgIcon';
+import { pxToRem } from '../../utils';
 
 export default {
   title: 'Components/SvgIcon',
@@ -9,7 +11,9 @@ export default {
 
 // Create a master template for mapping args to render the SvgIcon component
 const Template: StoryFn<typeof SvgIcon> = (args: SvgIconProps) => (
-  <SvgIcon {...args} />
+  <StoryContainer>
+    <SvgIcon {...args} />
+  </StoryContainer>
 );
 
 export const BlocksIcon = Template.bind({});
@@ -99,3 +103,10 @@ ButtonIcon.args = {
   title: 'Button icon',
   fill: '#7F8095',
 };
+
+const StoryContainer = styled.div`
+  width: 100%;
+  max-width: ${pxToRem(400)};
+  padding: 3rem;
+  background: white;
+`;
