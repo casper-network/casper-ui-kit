@@ -48,9 +48,10 @@ const LoaderStatus = styled.div<{ size: string }>`
   width: ${({ size }) => size};
 `;
 
-const LoaderIcon = styled.div<{ size: string }>`
-  height: ${({ size }) => size};
-  width: ${({ size }) => size};
+const LoaderIcon = styled(LoaderSVG)<{ size: string }>`
+  // TODO: figure out why TS doesn't know the type here
+  height: ${({ size }) => size as string};
+  width: ${({ size }) => size as string};
   animation: spin 1s linear infinite;
 
   @keyframes spin {
