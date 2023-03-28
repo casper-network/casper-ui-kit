@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React from 'react';
 import { NormalPalette } from '../../Theme';
 
 export interface BaseToggleProps {
@@ -16,7 +16,7 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
   className,
   onToggle,
 }) => {
-  const [selectedToggleOption, setSelectedToggleOption] = useState(
+  const [selectedToggleOption, setSelectedToggleOption] = React.useState(
     toggleOptions.left,
   );
   const handleChange = () => {
@@ -32,7 +32,11 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
     <BaseToggleWrapper data-testid="baseToggle" className={className}>
       <ToggleLabel>{toggleOptions.left}</ToggleLabel>
       <Label>
-        <Input type="checkbox" onChange={handleChange} />
+        <Input
+          data-testid="baseToggleCheckbox"
+          type="checkbox"
+          onChange={handleChange}
+        />
         <Switch
           currentFilter={selectedToggleOption}
           toggleSettings={toggleOptions}
