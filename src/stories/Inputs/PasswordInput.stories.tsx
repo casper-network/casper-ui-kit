@@ -6,7 +6,7 @@ import {
 } from '../../components/Inputs/PasswordInput';
 
 export default {
-  title: 'Components/Inputs',
+  title: 'Components/PasswordInput',
   component: PasswordInput,
   argTypes: {
     // initialChecked: {
