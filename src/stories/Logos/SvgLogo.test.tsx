@@ -2,25 +2,12 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render, screen } from '@testing-library/react';
 import {
-  RedBlackCasperLogo,
   BlockExplorerGradientLogo,
   BlueCasperLogo,
   WhiteCasperLogo,
 } from './SvgLogo.stories';
 
 describe('SvgIcon.stories', () => {
-  it('should render the Red Black Casper Logo', () => {
-    render(
-      <RedBlackCasperLogo
-        logo="RedBlackCasperLogo"
-        title='icon="RedBlackCasperLogo'
-        {...RedBlackCasperLogo.args}
-      />,
-    );
-
-    expect(screen.getByRole('img')).toBeInTheDocument();
-  });
-
   it('should render the Block Explorer Gradient Logo', () => {
     render(
       <BlockExplorerGradientLogo
