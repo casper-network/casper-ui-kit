@@ -34,12 +34,13 @@ export const Button: React.FC<ButtonProps> = ({
 };
 
 const StyledButton = styled.button<{ bgColor: string; disabled: boolean }>`
+  font-size: 1rem;
   color: white;
   background-color: ${({ bgColor }) => bgColor};
   text-align: center;
-  padding: 10px;
+  padding: 0.5rem 1.25rem;
   border-radius: ${pxToRem(10)};
   border: none;
   opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'initial')};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
