@@ -49,7 +49,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   required,
   disabled,
 }) => {
-  const [passwordIsVisible, setPasswordIsVisible] = useState<boolean>();
+  const [passwordIsVisible, setPasswordIsVisible] = useState<boolean>(false);
 
   return (
     <LabelPasswordInputContainer
