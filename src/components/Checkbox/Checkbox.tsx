@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { pxToRem } from '../../utils';
-import CheckboxSvg from '../../assets/svg/checkbox.svg';
+import CheckboxSvg from '../../assets/svg/icons/checkbox.svg';
 
 export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
