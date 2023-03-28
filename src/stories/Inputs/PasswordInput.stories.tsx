@@ -8,11 +8,6 @@ import {
 export default {
   title: 'Components/PasswordInput',
   component: PasswordInput,
-  argTypes: {
-    // initialChecked: {
-    //   control: false,
-    // },
-  },
 } as Meta<typeof PasswordInput>;
 
 // Create a master template for mapping args to render the PasswordInput component
