@@ -13,8 +13,5 @@ const Template: StoryFn<typeof Loader> = (args: LoaderProps) => (
 );
 
 export const Base = Template.bind({});
-Base.parameters = {
-  jest: ['Loader.test.tsx'],
-};
 
 Base.args = {};
