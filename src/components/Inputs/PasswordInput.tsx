@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { pxToRem } from '../../utils';
-import TogglePasswordViewIcon from '../../assets/svg/icons/view-password-icon.svg';
+import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
+import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 
 export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
@@ -79,7 +80,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
           svgColor={svgColor}
           focusBorderColor={focusBorderColor}
           focusBorderWidth={focusBorderWidth}>
-          <TogglePasswordViewIcon />
+          {passwordIsVisible ? <ViewPasswordIcon /> : <HidePasswordIcon />}
         </ViewPasswordButton>
       </InputIconContainer>
     </LabelPasswordInputContainer>
