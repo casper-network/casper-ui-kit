@@ -19,6 +19,7 @@ export interface EmailInputProps {
   readonly height?: number;
   readonly minEmailLength?: number;
   readonly maxEmailLength?: number;
+  readonly multiple?: boolean;
   readonly pattern?: string;
   readonly disabled?: boolean;
   readonly required?: boolean;
@@ -40,37 +41,35 @@ export const EmailInput: React.FC<EmailInputProps> = ({
   height,
   minEmailLength = 1,
   maxEmailLength = 20,
+  multiple,
   pattern,
   onChange,
   required,
   disabled,
-}) => {
-  return (
-    <LabelPasswordInputContainer
-      labelPosition={labelPosition}
-      gapSize={gapSize}>
-      <label>{label}</label>
-      <StyledPasswordInput
-        fontSize={fontSize}
-        fontColor={fontColor}
-        boxShadowColor={boxShadowColor}
-        focusBorderColor={focusBorderColor}
-        focusBorderWidth={focusBorderWidth}
-        width={width}
-        height={height}
-        placeholder={placeholder}
-        placeholderColor={placeholderColor}
-        type="email"
-        minLength={minEmailLength}
-        maxLength={maxEmailLength}
-        pattern={pattern}
-        onChange={onChange}
-        required={required}
-        disabled={disabled}
-      />
-    </LabelPasswordInputContainer>
-  );
-};
+}) => (
+  <LabelPasswordInputContainer labelPosition={labelPosition} gapSize={gapSize}>
+    <label>{label}</label>
+    <StyledPasswordInput
+      fontSize={fontSize}
+      fontColor={fontColor}
+      boxShadowColor={boxShadowColor}
+      focusBorderColor={focusBorderColor}
+      focusBorderWidth={focusBorderWidth}
+      width={width}
+      height={height}
+      placeholder={placeholder}
+      placeholderColor={placeholderColor}
+      type="email"
+      minLength={minEmailLength}
+      maxLength={maxEmailLength}
+      multiple={multiple}
+      pattern={pattern}
+      onChange={onChange}
+      required={required}
+      disabled={disabled}
+    />
+  </LabelPasswordInputContainer>
+);
 
 const LabelPasswordInputContainer = styled.div<{
   labelPosition: LabelPositions;
