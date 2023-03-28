@@ -12,7 +12,7 @@ const Template: StoryFn<typeof Button> = (args: ButtonProps) => (
   <Button {...args} />
 );
 
-const ChildText = <p>Button</p>;
+const ChildText = 'Button';
 
 const clickActionShoutOut = (storyName: string) => {
   // eslint-disable-next-line no-console

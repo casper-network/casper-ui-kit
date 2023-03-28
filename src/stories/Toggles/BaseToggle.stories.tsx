@@ -1,9 +1,11 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { Meta, StoryFn } from '@storybook/react';
 import {
   BaseToggle,
   BaseToggleProps,
 } from '../../components/Toggles/BaseToggle';
+import { pxToRem } from '../../utils';
 
 export default {
   title: 'Components/Toggles',
@@ -11,7 +13,9 @@ export default {
 } as Meta<typeof BaseToggle>;
 
 const Template: StoryFn<typeof BaseToggle> = (args: BaseToggleProps) => (
-  <BaseToggle {...args} />
+  <StoryContainer>
+    <BaseToggle {...args} />
+  </StoryContainer>
 );
 
 const clickActionShoutOut = (storyName: string) => {
@@ -28,3 +32,10 @@ Toggle.args = {
   },
   onToggle: () => clickActionShoutOut('Toggle'),
 };
+
+const StoryContainer = styled.div`
+  width: 100%;
+  max-width: ${pxToRem(300)};
+  padding: 2rem;
+  background: white;
+`;
