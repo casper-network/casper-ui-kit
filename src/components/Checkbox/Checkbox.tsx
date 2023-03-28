@@ -59,12 +59,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         />
         {isChecked && (
           <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
-            <StyledSvg
-              checkmarkColor={checkmarkColor}
+            <StyledCheckboxSvg
+              color={checkmarkColor}
               disabled={disabled}
-              required={required}>
-              <CheckboxSvg />
-            </StyledSvg>
+              required={required}
+            />
           </CheckboxSvgWrapper>
         )}
       </CheckboxContainer>
@@ -115,6 +114,7 @@ const StyledCheckbox = styled.input<{
     if (required) return requiredStyles;
     return `${pxToRem(borderWidth)}  solid ${boxColor}`;
   }};
+  cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
 `;
@@ -135,11 +135,24 @@ const CheckboxSvgWrapper = styled.div<{
   cursor: pointer;
 `;
 
-const StyledSvg = styled.svg<{
-  checkmarkColor: string;
+interface StyledCheckboxSvgProps {
   disabled?: boolean;
   required?: boolean;
-}>`
-  fill: ${({ disabled, required, checkmarkColor }) =>
-    disabled ? '#F1F1F4' : required ? '#FF0000' : checkmarkColor};
+  color: string;
+}
+
+const StyledCheckboxSvg = styled(CheckboxSvg)<StyledCheckboxSvgProps>`
+  fill: ${({ disabled, required, color }) => {
+    // TODO: figure out why TS doesn't know type here
+    let fillColor: string = color as string;
+
+    if (disabled) {
+      fillColor = '#F1F1F4';
+      return fillColor;
+    }
+
+    if (required) return '#FF0000';
+
+    return fillColor;
+  }};
 `;

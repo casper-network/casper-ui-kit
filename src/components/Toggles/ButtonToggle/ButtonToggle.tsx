@@ -43,6 +43,7 @@ export const ToggleButton = styled.button`
   cursor: pointer;
   background-color: ${NormalPalette.secondary.White};
   min-width: 6rem;
+
   :disabled {
     background-color: ${NormalPalette.primary.CasperRed};
     color: ${NormalPalette.secondary.White};

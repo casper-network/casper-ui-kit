@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-export interface DetailCardRow {
+export interface KeyValueRow {
   key: React.Key;
   detailKey: React.ReactNode;
   value: React.ReactNode;
 }
 
-export interface TwoColumnTableProps {
-  rows: DetailCardRow[];
+export interface KeyValueTableProps {
+  rows: KeyValueRow[];
   noDividers?: boolean;
   className?: string;
 }
 
-export const TwoColumnTable: React.FC<TwoColumnTableProps> = ({
+export const KeyValueTable: React.FC<KeyValueTableProps> = ({
   rows,
   noDividers,
   className,
 }) => (
-  <TwoColumnTableWrapper className={className}>
+  <KeyValueTableWrapper className={className}>
     <tbody>
       {rows.map(({ detailKey, value, key }) => {
         return (
@@ -29,10 +29,10 @@ export const TwoColumnTable: React.FC<TwoColumnTableProps> = ({
         );
       })}
     </tbody>
-  </TwoColumnTableWrapper>
+  </KeyValueTableWrapper>
 );
 
-const TwoColumnTableWrapper = styled.table`
+const KeyValueTableWrapper = styled.table`
   width: 100%;
 `;
 
