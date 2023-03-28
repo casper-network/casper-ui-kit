@@ -11,6 +11,6 @@ describe('Checkbox', () => {
     );
     const checkboxComponent = getByRole('checkbox');
 
-    expect(checkboxComponent).toBeTruthy;
+    expect(checkboxComponent).toBeTruthy();
   });
 });

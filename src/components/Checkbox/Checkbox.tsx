@@ -135,11 +135,24 @@ const CheckboxSvgWrapper = styled.div<{
   cursor: pointer;
 `;
 
-const StyledCheckboxSvg = styled(CheckboxSvg)<{
-  disabled: boolean | undefined;
-  required: boolean | undefined;
-  color: string | undefined;
-}>`
-  fill: ${({ disabled, required, checkmarkColor }) =>
-    disabled ? '#F1F1F4' : required ? '#FF0000' : checkmarkColor};
+interface StyledCheckboxSvgProps {
+  disabled?: boolean;
+  required?: boolean;
+  color: string;
+}
+
+const StyledCheckboxSvg = styled(CheckboxSvg)<StyledCheckboxSvgProps>`
+  fill: ${({ disabled, required, color }) => {
+    // TODO: figure out why TS doesn't know type here
+    let fillColor: string = color as string;
+
+    if (disabled) {
+      fillColor = '#F1F1F4';
+      return fillColor;
+    }
+
+    if (required) return '#FF0000';
+
+    return fillColor;
+  }};
 `;

@@ -23,8 +23,6 @@ const Template: StoryFn<typeof Checkbox> = (args: CheckboxProps) => (
 
 export const Base = Template.bind({});
 
-const color = 'blue';
-
 Base.args = {};
 
 const StoryContainer = styled.div`
