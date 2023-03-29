@@ -1,0 +1,177 @@
+import React, { useState } from 'react';
+import styled from '@emotion/styled';
+import { pxToRem } from '../../utils';
+import ArrowUpIcon from '../../assets/svg/icons/arrow-up-icon.svg';
+import ArrowDownIcon from '../../assets/svg/icons/arrow-down-icon.svg';
+
+export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
+
+export interface NumberInputProps {
+  readonly label?: string;
+  readonly labelPosition?: LabelPositions;
+  readonly gapSize?: number;
+  readonly fontSize?: number;
+  //   readonly fontColor?: string;
+  //   readonly customPlaceholder?: string;
+  //   readonly placeholderColor?: string;
+  readonly arrowColor?: string;
+  readonly boxShadowColor?: string;
+  readonly focusBorderColor?: string;
+  readonly focusBorderWidth?: number;
+  readonly width?: number;
+  //   readonly height?: number;
+  readonly minNumberValue?: number;
+  readonly maxNumberValue?: number;
+  //   readonly pattern?: string;
+  //   readonly disabled?: boolean;
+  readonly required?: boolean;
+  //   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
+}
+
+export const NumberInput: React.FC<NumberInputProps> = ({
+  label = 'number input',
+  labelPosition,
+  gapSize,
+  fontSize,
+  boxShadowColor,
+  focusBorderColor,
+  focusBorderWidth,
+  width,
+  arrowColor,
+  minNumberValue = 0,
+  maxNumberValue = 5,
+  required,
+}) => {
+  const [inputValue, setInputValue] = useState(0);
+
+  const handleIncrement = () => setInputValue(prev => prev + 1);
+  const handleDecrement = () => setInputValue(prev => prev - 1);
+
+  return (
+    <LabelPasswordInputContainer
+      labelPosition={labelPosition}
+      gapSize={gapSize}>
+      <label>{label}</label>
+      <InputAndArrowsContainer boxShadowColor={boxShadowColor}>
+        <StyledInput
+          type="number"
+          fontSize={fontSize}
+          width={width}
+          min={minNumberValue}
+          max={maxNumberValue}
+          value={inputValue}
+          data-color="#21d99b"
+          focusBorderColor={focusBorderColor}
+          focusBorderWidth={focusBorderWidth}
+          required={required}
+        />
+        <ArrowsContainer>
+          <ArrowButton arrowColor={arrowColor} onClick={handleIncrement}>
+            <ArrowUpIcon />
+          </ArrowButton>
+          <ArrowButton arrowColor={arrowColor} onClick={handleDecrement}>
+            <ArrowDownIcon />
+          </ArrowButton>
+        </ArrowsContainer>
+      </InputAndArrowsContainer>
+    </LabelPasswordInputContainer>
+  );
+};
+
+const LabelPasswordInputContainer = styled.div<{
+  labelPosition?: LabelPositions;
+  gapSize?: number;
+}>`
+  display: flex;
+  flex-direction: ${({ labelPosition }) => {
+    if (labelPosition === 'top') return 'column';
+    if (labelPosition === 'right') return 'row-reverse';
+    if (labelPosition === 'bottom') return 'column-reverse';
+    return 'row';
+  }};
+  justify-content: center;
+  align-items: center;
+  gap: ${({ gapSize }) => (gapSize ? `${pxToRem(gapSize)}` : `${pxToRem(10)}`)};
+`;
+
+const InputAndArrowsContainer = styled.div<{
+  boxShadowColor?: string;
+}>`
+  display: flex;
+  box-shadow: ${({ boxShadowColor }) =>
+    `inset 0px 1px 7px ${
+      boxShadowColor ? `${boxShadowColor}4c` : 'rgba(127, 128, 149, 0.3)'
+    }`};
+  border-radius: ${pxToRem(8)};
+  padding: ${pxToRem(2)} ${pxToRem(5)};
+  margin: 0;
+`;
+
+const ArrowsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: ${pxToRem(24)};
+`;
+
+const ArrowButton = styled.button<{
+  arrowColor?: string;
+  focusBorderColor?: string;
+  focusBorderWidth?: number;
+}>`
+  display: flex;
+  fill: ${({ arrowColor }) => arrowColor ?? '#02c1b0'};
+  align-items: center;
+  background-color: transparent;
+  padding: 0;
+  border: ${({ focusBorderWidth }) =>
+    `solid transparent ${
+      focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem'
+    }`};
+  border-radius: ${pxToRem(8)};
+
+  &:focus {
+    border: ${({ focusBorderColor, focusBorderWidth }) => {
+      const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
+      const color = focusBorderColor ?? 'blue';
+      return `solid ${color} ${width} `;
+    }};
+    outline: none;
+  }
+`;
+
+const StyledInput = styled.input<{
+  fontSize?: number;
+  width?: number;
+  focusBorderColor?: string;
+  focusBorderWidth?: number;
+  required?: boolean;
+}>`
+  font-size: ${({ fontSize }) =>
+    fontSize ? `${pxToRem(fontSize)}` : `${pxToRem(14)}`};
+  background-color: transparent;
+  width: ${({ width }) => (width ? `${pxToRem(width)}` : `${pxToRem(35)}`)};
+  border: ${({ focusBorderWidth, required }) => {
+    const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
+    const color = required ? '#FF0000' : 'transparent';
+    return `solid ${color} ${width}`;
+  }};
+  border-radius: ${pxToRem(8)};
+  outline: none;
+  -moz-appearance: textfield;
+
+  ::-webkit-inner-spin-button,
+  -webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &:focus {
+    border: ${({ focusBorderColor, focusBorderWidth }) => {
+      const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
+      const color = focusBorderColor ?? 'blue';
+      return `solid ${color} ${width} `;
+    }};
+  }
+`;
