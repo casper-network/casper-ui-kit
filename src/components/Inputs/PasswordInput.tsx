@@ -131,10 +131,11 @@ const StyledPasswordInput = styled.input<{
       boxShadowColor ? `${boxShadowColor}4c` : 'rgba(127, 128, 149, 0.3)'
     }`};
   border-radius: ${pxToRem(8)};
-  border: ${({ focusBorderWidth, required }) =>
-    `solid ${required ? '#FF0000' : 'transparent'} ${
-      focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem'
-    } `};
+  border: ${({ focusBorderWidth, required }) => {
+    const color = required ? '#FF0000' : 'transparent';
+    const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
+    return `solid ${color} ${width}`;
+  }};
   border-radius: ${pxToRem(8)};
   padding-left: 1.5rem;
   -webkit-appearance: none;
@@ -145,10 +146,11 @@ const StyledPasswordInput = styled.input<{
   }
 
   &:focus {
-    border: ${({ focusBorderColor, focusBorderWidth }) =>
-      `solid ${focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem'} ${
-        focusBorderColor ?? 'blue'
-      }`};
+    border: ${({ focusBorderColor, focusBorderWidth }) => {
+      const color = focusBorderColor ?? 'blue';
+      const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
+      return `solid ${color} ${width}`;
+    }};
     outline: none;
   }
 `;
@@ -171,10 +173,11 @@ const ViewPasswordButton = styled.button<{
   appearance: none;
 
   &:focus {
-    border: ${({ focusBorderColor, focusBorderWidth }) =>
-      `solid ${focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem'} ${
-        focusBorderColor ?? 'blue'
-      }`};
+    border: ${({ focusBorderColor, focusBorderWidth }) => {
+      const color = focusBorderColor ?? 'blue';
+      const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
+      return `solid ${color} ${width}`;
+    }};
     border-radius: ${pxToRem(8)};
     outline: none;
   }
