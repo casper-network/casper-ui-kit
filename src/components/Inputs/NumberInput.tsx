@@ -11,21 +11,21 @@ export interface NumberInputProps {
   readonly labelPosition?: LabelPositions;
   readonly gapSize?: number;
   readonly fontSize?: number;
-  //   readonly fontColor?: string;
-  //   readonly customPlaceholder?: string;
-  //   readonly placeholderColor?: string;
+  readonly fontColor?: string;
   readonly arrowColor?: string;
   readonly boxShadowColor?: string;
   readonly focusBorderColor?: string;
   readonly focusBorderWidth?: number;
   readonly width?: number;
-  //   readonly height?: number;
+  readonly height?: number;
+  readonly readonly: boolean;
+  readonly defaultValue?: number;
+  readonly step?: number;
   readonly minNumberValue?: number;
   readonly maxNumberValue?: number;
-  //   readonly pattern?: string;
-  //   readonly disabled?: boolean;
+  readonly disabled?: boolean;
   readonly required?: boolean;
-  //   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
@@ -33,43 +33,87 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   labelPosition,
   gapSize,
   fontSize,
+  fontColor,
   boxShadowColor,
   focusBorderColor,
-  focusBorderWidth,
+  focusBorderWidth = 1,
   width,
+  height,
   arrowColor,
+  readonly = false,
+  defaultValue = '0',
+  step = 1,
   minNumberValue = 0,
-  maxNumberValue = 5,
+  maxNumberValue = 20,
   required,
+  disabled,
+  onChange = undefined,
 }) => {
-  const [inputValue, setInputValue] = useState(0);
+  const [inputValue, setInputValue] = useState<number>(0);
 
-  const handleIncrement = () => setInputValue(prev => prev + 1);
-  const handleDecrement = () => setInputValue(prev => prev - 1);
+  const defaultOnChangeHandler = (e: { target: { value: string | number } }) =>
+    setInputValue(+e.target.value);
+
+  const onChangeHandler = (e: { target: { value: string | number } }) => {
+    if (onChange === undefined) {
+      return onChange;
+    }
+    return defaultOnChangeHandler(e);
+  };
+
+  const handleIncrement = () => {
+    if (inputValue < maxNumberValue) {
+      setInputValue(prev => +prev + step);
+    } else setInputValue(maxNumberValue);
+  };
+
+  const handleDecrement = () => {
+    if (inputValue > maxNumberValue) {
+      setInputValue(maxNumberValue);
+    }
+    if (inputValue > minNumberValue) {
+      setInputValue(prev => +prev - step);
+    } else setInputValue(minNumberValue);
+  };
 
   return (
     <LabelPasswordInputContainer
       labelPosition={labelPosition}
       gapSize={gapSize}>
       <label>{label}</label>
-      <InputAndArrowsContainer boxShadowColor={boxShadowColor}>
+      <InputAndArrowsContainer height={height} boxShadowColor={boxShadowColor}>
         <StyledInput
           type="number"
           fontSize={fontSize}
+          fontColor={fontColor}
           width={width}
           min={minNumberValue}
           max={maxNumberValue}
-          value={inputValue}
-          data-color="#21d99b"
+          step={step}
+          value={inputValue.toFixed(0)}
+          readOnly={readonly}
+          defaultValue={defaultValue}
           focusBorderColor={focusBorderColor}
           focusBorderWidth={focusBorderWidth}
           required={required}
+          disabled={disabled}
+          onChange={onChangeHandler}
         />
         <ArrowsContainer>
-          <ArrowButton arrowColor={arrowColor} onClick={handleIncrement}>
+          <ArrowButton
+            arrowColor={arrowColor}
+            focusBorderColor={focusBorderColor}
+            focusBorderWidth={focusBorderWidth}
+            disabled={disabled}
+            onClick={handleIncrement}>
             <ArrowUpIcon />
           </ArrowButton>
-          <ArrowButton arrowColor={arrowColor} onClick={handleDecrement}>
+          <ArrowButton
+            arrowColor={arrowColor}
+            focusBorderColor={focusBorderColor}
+            focusBorderWidth={focusBorderWidth}
+            disabled={disabled}
+            onClick={handleDecrement}>
             <ArrowDownIcon />
           </ArrowButton>
         </ArrowsContainer>
@@ -96,11 +140,14 @@ const LabelPasswordInputContainer = styled.div<{
 
 const InputAndArrowsContainer = styled.div<{
   boxShadowColor?: string;
+  height?: number;
 }>`
   display: flex;
+  height: ${({ height }) => (height ? `${pxToRem(height)}` : `${pxToRem(25)}`)};
+  align-items: center;
   box-shadow: ${({ boxShadowColor }) =>
     `inset 0px 1px 7px ${
-      boxShadowColor ? `${boxShadowColor}4c` : 'rgba(127, 128, 149, 0.3)'
+      boxShadowColor ? `${boxShadowColor}` : 'rgba(127, 128, 149, 0.3)'
     }`};
   border-radius: ${pxToRem(8)};
   padding: ${pxToRem(2)} ${pxToRem(5)};
@@ -117,11 +164,16 @@ const ArrowsContainer = styled.div`
 
 const ArrowButton = styled.button<{
   arrowColor?: string;
+  disabled?: boolean;
   focusBorderColor?: string;
   focusBorderWidth?: number;
 }>`
   display: flex;
-  fill: ${({ arrowColor }) => arrowColor ?? '#02c1b0'};
+  fill: ${({ arrowColor, disabled }) => {
+    if (disabled) return 'grey';
+    if (arrowColor) return arrowColor;
+    return '#02c1b0';
+  }};
   align-items: center;
   background-color: transparent;
   padding: 0;
@@ -143,15 +195,18 @@ const ArrowButton = styled.button<{
 
 const StyledInput = styled.input<{
   fontSize?: number;
+  fontColor?: string;
   width?: number;
+  height?: number;
   focusBorderColor?: string;
   focusBorderWidth?: number;
   required?: boolean;
 }>`
   font-size: ${({ fontSize }) =>
     fontSize ? `${pxToRem(fontSize)}` : `${pxToRem(14)}`};
+  color: ${({ fontColor }) => fontColor ?? '#000'};
   background-color: transparent;
-  width: ${({ width }) => (width ? `${pxToRem(width)}` : `${pxToRem(35)}`)};
+  width: ${({ width }) => (width ? `${pxToRem(width)}` : `${pxToRem(20)}`)};
   border: ${({ focusBorderWidth, required }) => {
     const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
     const color = required ? '#FF0000' : 'transparent';
