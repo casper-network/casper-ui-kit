@@ -28,14 +28,16 @@ const Header: React.FC<Children> = ({ children }) => (
 Card.Header = Header;
 
 const Body: React.FC<Children> = ({ children }) => (
-  <div data-testid="baseCardFooter" className="body">
+  <div data-testid="baseCardBody" className="body">
     {children}
   </div>
 );
 Card.Body = Body;
 
 const Footer: React.FC<Children> = ({ children }) => (
-  <div className="body">{children}</div>
+  <div data-testid="baseCardFooter" className="footer">
+    {children}
+  </div>
 );
 Card.Footer = Footer;
 

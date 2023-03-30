@@ -6,9 +6,8 @@ import { KeyValueTable } from '../../components/Tables/KeyValueTable/KeyValueTab
 const testRows = [{ key: 1, detailKey: 'detail1', value: 'value1' }];
 describe('KeyValueTable', () => {
   it('should render key value table', () => {
-    const { queryAllByTestId } = render(<KeyValueTable rows={testRows} />);
-    const keyValueTable = queryAllByTestId('keyValueTable');
-    expect(keyValueTable).toBeTruthy();
+    render(<KeyValueTable rows={testRows} />);
+    expect(screen.getByTestId('keyValueTable')).toBeInTheDocument();
   });
 
   it('should render table key and value', () => {

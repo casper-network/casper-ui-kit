@@ -1,36 +1,35 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Card } from '../../components/Cards/Card/Card';
 
 describe('Card', () => {
   it('should render base card', () => {
-    const { queryAllByTestId } = render(
+    render(
       <Card>
         <Card.Body>Body</Card.Body>
       </Card>,
     );
-    const baseCard = queryAllByTestId('baseCard');
 
-    expect(baseCard).toBeTruthy();
+    expect(screen.getByTestId('baseCard')).toBeInTheDocument();
+    expect(screen.getByTestId('baseCardBody')).toBeInTheDocument();
   });
 
   it('should render base card with header', () => {
-    const { queryAllByTestId } = render(
+    render(
       <Card>
         <Card.Header>Header</Card.Header>
       </Card>,
     );
-    const baseCardHeader = queryAllByTestId('baseCardHeader');
-    expect(baseCardHeader).toBeTruthy();
+    expect(screen.getByTestId('baseCardHeader')).toBeInTheDocument();
   });
 
   it('should render base card with footer', () => {
-    const { queryAllByTestId } = render(
+    render(
       <Card>
         <Card.Footer>Footer</Card.Footer>
       </Card>,
     );
-    const baseCardFooter = queryAllByTestId('baseCardFooter');
-    expect(baseCardFooter).toBeTruthy();
+    expect(screen.getByTestId('baseCardFooter')).toBeInTheDocument();
   });
 });

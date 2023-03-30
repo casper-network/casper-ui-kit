@@ -1,5 +1,6 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { BaseToggle } from '../../components/Toggles/BaseToggle';
 
 const testToggleOptions = {
@@ -9,13 +10,9 @@ const testToggleOptions = {
 
 describe('BaseToggle', () => {
   it('should render base toggle', () => {
-    const { queryAllByTestId } = render(
-      <BaseToggle toggleOptions={testToggleOptions} />,
-    );
+    render(<BaseToggle toggleOptions={testToggleOptions} />);
 
-    const baseToggle = queryAllByTestId('baseToggle');
-
-    expect(baseToggle).toBeTruthy();
+    expect(screen.getByTestId('baseToggle')).toBeInTheDocument();
   });
 
   it('should be checked on click', () => {
