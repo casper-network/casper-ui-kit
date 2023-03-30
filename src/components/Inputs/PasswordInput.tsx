@@ -128,7 +128,7 @@ const StyledPasswordInput = styled.input<{
   height: ${({ height }) => (height ? `${pxToRem(height)}` : `${pxToRem(36)}`)};
   box-shadow: ${({ boxShadowColor }) =>
     `inset 0px 1px 7px ${
-      boxShadowColor ? `${boxShadowColor}4c` : 'rgba(127, 128, 149, 0.3)'
+      boxShadowColor ? `${boxShadowColor}` : 'rgba(127, 128, 149, 0.3)'
     }`};
   border-radius: ${pxToRem(8)};
   border: ${({ focusBorderWidth, required }) => {
