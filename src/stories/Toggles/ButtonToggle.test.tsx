@@ -20,8 +20,12 @@ describe('ButtonToggle', () => {
       <ButtonToggle toggleOptions={testToggleOptions} />,
     );
 
-    const testDeselectedOption = getByText('testOption1') as HTMLButtonElement;
-    const testSelectedOption = getByText('testOption2') as HTMLButtonElement;
+    const testDeselectedOption = getByText(
+      testToggleOptions[0],
+    ) as HTMLButtonElement;
+    const testSelectedOption = getByText(
+      testToggleOptions[1],
+    ) as HTMLButtonElement;
 
     fireEvent.click(testSelectedOption);
     expect(testSelectedOption.disabled).toEqual(true);

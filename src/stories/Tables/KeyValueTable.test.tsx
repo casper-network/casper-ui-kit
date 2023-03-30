@@ -13,8 +13,12 @@ describe('KeyValueTable', () => {
 
   it('should render table key and value', () => {
     render(<KeyValueTable rows={testRows} />);
-    expect(screen.getByTestId('tableKey')).toHaveTextContent('detail1');
-    expect(screen.getByTestId('tableValue')).toHaveTextContent('value1');
+    expect(screen.getByTestId('tableKey')).toHaveTextContent(
+      testRows[0].detailKey,
+    );
+    expect(screen.getByTestId('tableValue')).toHaveTextContent(
+      testRows[0].value,
+    );
   });
 
   it('should render with dividers', () => {
