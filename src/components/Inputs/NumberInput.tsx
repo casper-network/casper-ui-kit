@@ -54,18 +54,13 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   const defaultOnChangeHandler = (e: { target: { value: string | number } }) =>
     setInputValue(+e.target.value);
 
-  const onChangeHandler = (e: { target: { value: string | number } }) => {
-    if (onChange === undefined) {
-      return onChange;
-    }
-    return defaultOnChangeHandler(e);
-  };
+  const onChangeHandler = (e: { target: { value: string | number } }) =>
+    onChange === undefined ? onChange : defaultOnChangeHandler(e);
 
-  const handleIncrement = () => {
-    if (inputValue < maxNumberValue) {
-      setInputValue(prev => +prev + step);
-    } else setInputValue(maxNumberValue);
-  };
+  const handleIncrement = () =>
+    inputValue < maxNumberValue
+      ? setInputValue(prev => +prev + step)
+      : setInputValue(maxNumberValue);
 
   const handleDecrement = () => {
     if (inputValue > maxNumberValue) {
