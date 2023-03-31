@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Select, { PropsValue } from 'react-select';
 import { NormalPalette } from '../../Theme';
 
@@ -14,6 +14,7 @@ export interface DropDownSelectorProps {
   readonly defaultValue: PropsValue<SelectOptions>;
   readonly options: SelectOptions[];
   readonly onChange?: () => void;
+  readonly noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
   className?: string;
 }
 
@@ -24,6 +25,7 @@ export const DropDownSelector: React.FC<DropDownSelectorProps> = ({
   options,
   onChange,
   className,
+  noOptionsMessage = () => null,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentOption, setCurrentOption] = useState<null | SelectOptions>(
@@ -52,7 +54,7 @@ export const DropDownSelector: React.FC<DropDownSelectorProps> = ({
         options={options}
         onChange={handleChange}
         isSearchable={false}
-        noOptionsMessage={() => null}
+        noOptionsMessage={noOptionsMessage}
         classNamePrefix="react-select"
       />
     </SelectWrapper>
