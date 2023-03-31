@@ -4,11 +4,11 @@ import { pxToRem } from '../../utils';
 import ArrowUpIcon from '../../assets/svg/icons/arrow-up-icon.svg';
 import ArrowDownIcon from '../../assets/svg/icons/arrow-down-icon.svg';
 
-export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
+export type NumberLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
 export interface NumberInputProps {
   readonly label?: string;
-  readonly labelPosition?: LabelPositions;
+  readonly labelPosition?: NumberLabelPositions;
   readonly gapSize?: number;
   readonly fontSize?: number;
   readonly fontColor?: string;
@@ -18,7 +18,7 @@ export interface NumberInputProps {
   readonly focusBorderWidth?: number;
   readonly width?: number;
   readonly height?: number;
-  readonly readonly: boolean;
+  readonly readonly?: boolean;
   readonly defaultValue?: number;
   readonly step?: number;
   readonly minNumberValue?: number;
@@ -41,15 +41,15 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   height,
   arrowColor,
   readonly = false,
-  defaultValue = '0',
+  defaultValue = 0,
   step = 1,
   minNumberValue = 0,
   maxNumberValue = 20,
   required,
   disabled,
-  onChange = undefined,
+  onChange,
 }) => {
-  const [inputValue, setInputValue] = useState<number>(0);
+  const [inputValue, setInputValue] = useState(defaultValue);
 
   const defaultOnChangeHandler = (e: { target: { value: string | number } }) =>
     setInputValue(+e.target.value);
@@ -59,7 +59,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 
   const handleIncrement = () =>
     inputValue < maxNumberValue
-      ? setInputValue(prev => +prev + step)
+      ? setInputValue(prev => prev + step)
       : setInputValue(maxNumberValue);
 
   const handleDecrement = () => {
@@ -67,8 +67,10 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       setInputValue(maxNumberValue);
     }
     if (inputValue > minNumberValue) {
-      setInputValue(prev => +prev - step);
-    } else setInputValue(minNumberValue);
+      setInputValue(prev => prev - step);
+    } else {
+      setInputValue(minNumberValue);
+    }
   };
 
   return (
@@ -87,7 +89,6 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           step={step}
           value={inputValue.toFixed(0)}
           readOnly={readonly}
-          defaultValue={defaultValue}
           focusBorderColor={focusBorderColor}
           focusBorderWidth={focusBorderWidth}
           required={required}
@@ -118,7 +119,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 };
 
 const LabelPasswordInputContainer = styled.div<{
-  labelPosition?: LabelPositions;
+  labelPosition?: NumberLabelPositions;
   gapSize?: number;
 }>`
   display: flex;
@@ -138,7 +139,7 @@ const InputAndArrowsContainer = styled.div<{
   height?: number;
 }>`
   display: flex;
-  height: ${({ height }) => (height ? `${pxToRem(height)}` : `${pxToRem(25)}`)};
+  height: ${({ height }) => (height ? `${pxToRem(height)}` : `${pxToRem(27)}`)};
   align-items: center;
   box-shadow: ${({ boxShadowColor }) =>
     `inset 0px 1px 7px ${
