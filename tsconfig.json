@@ -36,7 +36,7 @@
     "~/constants": ["src/constants"],
     "~/theme": ["src/styled-theme"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "jest/__mocks__/styleMock.js", "jest/__mocks__/fileMock.js"],
   "exclude": ["node_modules", "build"],
   "watchOptions": {
     "excludeFiles": ["**/*.test.ts", "**.*spec.ts"]
