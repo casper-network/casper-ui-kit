@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { pxToRem } from '../../utils';
 
-export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
+export type EmailLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
 export interface EmailInputProps {
   readonly label?: string;
-  readonly labelPosition?: LabelPositions;
+  readonly labelPosition?: EmailLabelPositions;
   readonly gapSize?: number;
   readonly fontSize?: number;
   readonly fontColor?: string;
@@ -72,7 +72,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
 );
 
 const LabelPasswordInputContainer = styled.div<{
-  labelPosition: LabelPositions;
+  labelPosition: EmailLabelPositions;
   gapSize?: number;
 }>`
   display: flex;

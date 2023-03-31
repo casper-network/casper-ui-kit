@@ -4,11 +4,11 @@ import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
 import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 
-export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
+export type PasswordLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
 export interface PasswordInputProps {
   readonly label?: string;
-  readonly labelPosition?: LabelPositions;
+  readonly labelPosition?: PasswordLabelPositions;
   readonly gapSize?: number;
   readonly fontSize?: number;
   readonly fontColor?: string;
@@ -88,7 +88,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
 };
 
 const LabelPasswordInputContainer = styled.div<{
-  labelPosition: LabelPositions;
+  labelPosition: PasswordLabelPositions;
   gapSize?: number;
 }>`
   display: flex;
