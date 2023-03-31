@@ -4,7 +4,7 @@
   "description": "Casper UI Kit",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
-  "types": "lib/index.d.ts",
+  "types": "build/index.d.ts",
   "scripts": {
     "audit": "better-npm-audit audit",
     "build": "rm -rf build && rollup -c --bundleConfigAsCjs",
