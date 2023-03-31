@@ -10,7 +10,6 @@ export default {
   component: DropDownSelector,
 } as ComponentMeta<typeof DropDownSelector>;
 
-const testProps = {};
 const Template: ComponentStory<typeof DropDownSelector> = (
   args: DropDownSelectorProps,
 ) => <DropDownSelector {...args} />;
