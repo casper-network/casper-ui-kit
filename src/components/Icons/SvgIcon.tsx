@@ -56,7 +56,7 @@ export const SvgIcon: React.FC<SvgIconProps> = ({
   title = 'Blocks Icon',
   stroke,
   fill,
-  width = 251,
+  width = 250,
   strokeWidth,
   strokeLinecap,
   strokeLinejoin,
