@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import { Base } from './EmailInput.stories';
 
 describe('EmailInput.stories', () => {
-  it('should render the Base EmailInput with specified color', () => {
+  it('should render the Base EmailInput', () => {
     render(<Base />);
 
     expect(screen.getByRole('textbox')).toBeInTheDocument();
