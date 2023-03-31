@@ -67,6 +67,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
       onChange={onChange}
       required={required}
       disabled={disabled}
+      data-testid="email-input"
     />
   </LabelPasswordInputContainer>
 );
