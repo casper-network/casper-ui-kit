@@ -25,7 +25,6 @@ export interface NumberInputProps {
   readonly maxNumberValue?: number;
   readonly disabled?: boolean;
   readonly required?: boolean;
-  readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
@@ -47,15 +46,11 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   maxNumberValue = 20,
   required,
   disabled,
-  onChange,
 }) => {
   const [inputValue, setInputValue] = useState(defaultValue);
 
-  const defaultOnChangeHandler = (e: { target: { value: string | number } }) =>
-    setInputValue(+e.target.value);
-
   const onChangeHandler = (e: { target: { value: string | number } }) =>
-    onChange === undefined ? onChange : defaultOnChangeHandler(e);
+    setInputValue(+e.target.value);
 
   const handleIncrement = () =>
     inputValue < maxNumberValue
