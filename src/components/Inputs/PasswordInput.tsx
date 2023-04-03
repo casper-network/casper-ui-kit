@@ -74,6 +74,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
           onChange={onChange}
           required={required}
           disabled={disabled}
+          data-testid="password-input"
         />
         <ViewPasswordButton
           onClick={() => setPasswordIsVisible(prev => !prev)}
