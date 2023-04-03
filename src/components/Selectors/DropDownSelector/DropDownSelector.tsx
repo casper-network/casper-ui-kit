@@ -82,17 +82,12 @@ const SelectWrapper = styled.div<{ isMenuOpen: boolean }>`
   .react-select__value-container {
     height: 2.5rem;
     background-color: #fff;
-    padding: 0.65rem 0rem 0.65rem 0rem;
+    padding: 0.65rem 0rem;
     background-color: ${NormalPalette.secondary.White};
     margin: 0;
     border-radius: 0.375rem 0 0 0.375rem;
     box-shadow: inset 0px 1px 7px rgba(127, 128, 149, 0.2);
     position: relative;
-
-    /* Firefox Version 110.0b3 (Versions 69+) */
-    @supports selector(:-moz-is-html) {
-      height: 2.25rem;
-    }
   }
 
   .react-select__indicators {
@@ -101,11 +96,6 @@ const SelectWrapper = styled.div<{ isMenuOpen: boolean }>`
     top: 0.1rem;
     left: 7.5rem;
     padding: 0;
-
-    /* Firefox Version 110.0b3 (Versions 69+) */
-    @supports selector(:-moz-is-html) {
-      top: 0.05rem;
-    }
   }
 
   .react-select__value-container:hover {
@@ -119,20 +109,6 @@ const SelectWrapper = styled.div<{ isMenuOpen: boolean }>`
     text-align: left;
     padding: 0 2.3rem 0.35rem 1.5rem;
     margin: 0 auto;
-
-    /* Firefox Version 110.0b3 (Versions 69+) */
-    @supports selector(:-moz-is-html) {
-      padding: 0 2.3rem 0.6rem 1.5rem;
-    }
-  }
-
-  /* Safari Version 15.4 (11-15 up to Monterey)*/
-  @media not all and (min-resolution: 0.001dpcm) {
-    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-      .react-select__single-value {
-        padding: 0 2.3rem 0.5rem 1.5rem;
-      }
-    }
   }
 
   .react-select__dropdown-indicator svg {
