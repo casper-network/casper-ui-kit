@@ -84,17 +84,19 @@
     "webpack": "^5.76.0"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "webpack": "*",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-select": "^5.7.2",
+    "react-select-event": "^5.5.1",
+    "webpack": "*"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-select": "^5.7.2",
     "react-select-event": "^5.5.1"
   }
