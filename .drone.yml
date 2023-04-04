@@ -29,6 +29,11 @@ steps:
     commands:
       - npm run build-storybook
 
+  - name: build package
+    image: casperlabs/node-build-u1804
+    commands:
+      - npm run build
+
   - name: npm test
     image: casperlabs/node-build-u1804
     commands:
