@@ -142,9 +142,9 @@ const options = [
 const legend =
   'Color, size, label position, vertical padding are configurable in options[]';
 
-export const Larger = Template.bind({});
+export const StyleOptions = Template.bind({});
 
-Larger.args = {
+StyleOptions.args = {
   options,
   legendLabel: legend,
   orientation: 'column',
