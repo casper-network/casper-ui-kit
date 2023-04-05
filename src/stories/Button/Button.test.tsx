@@ -11,9 +11,10 @@ describe('Button.stories', () => {
       </Base>,
     );
     expect(screen.getByRole('button')).toHaveTextContent('base button');
-    expect(screen.getByRole('button')).toHaveStyle('background-color: blue');
+    expect(screen.getByRole('button')).toHaveStyle('background-color: #3EDC64');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
+
   it('should render the Red Button', () => {
     render(
       <RedButton type="button" {...RedButton.args}>
@@ -24,6 +25,7 @@ describe('Button.stories', () => {
     expect(screen.getByRole('button')).toHaveStyle('background-color: red');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
+
   it('should render the Disabled Button', () => {
     render(
       <DisabledButton type="button" {...DisabledButton.args}>

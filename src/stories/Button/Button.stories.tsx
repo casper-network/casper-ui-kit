@@ -32,7 +32,8 @@ export const RedButton = Template.bind({});
 RedButton.args = {
   children: ChildText,
   onClick: () => clickActionShoutOut('RedButton'),
-  color: 'red',
+  color: 'white',
+  bgColor: 'red',
   type: 'button',
 };
 
@@ -41,7 +42,8 @@ export const DisabledButton = Template.bind({});
 DisabledButton.args = {
   children: ChildText,
   onClick: () => clickActionShoutOut('DisabledButton'),
-  color: 'purple',
+  color: 'white',
+  bgColor: 'purple',
   type: 'button',
   isDisabled: true,
 };
