@@ -25,7 +25,7 @@ export const RadioButtons: React.FC<RadioButtonsProps> = ({
   );
 
   return (
-    <StyledFieldset>
+    <StyledFieldset data-testid="RadioButtonsContainer">
       <legend>{legendLabel}</legend>
       <RadioButtonGroup
         options={options}
