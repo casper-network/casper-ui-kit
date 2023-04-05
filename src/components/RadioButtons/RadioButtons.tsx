@@ -24,6 +24,9 @@ export const RadioButtons: React.FC<RadioButtonsProps> = ({
     [],
   );
 
+  // eslint-disable-next-line no-console
+  console.log(selectedValue);
+
   return (
     <StyledFieldset data-testid="RadioButtonsContainer">
       <legend>{legendLabel}</legend>
