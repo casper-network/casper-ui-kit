@@ -1,9 +1,7 @@
-<svg 
-    viewBox="0 0 35 40" 
-    fill="none" 
-    xmlns="http://www.w3.org/2000/svg">
-    <path d="M4.375 17.5H30.625" />
-    <path d="M4.375 8.75H30.625" />
-    <path d="M4.375 26.25H30.625" />
+<svg viewBox="0 0 35 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Hamburger menu open icon</title>
+  <path d="M4.375 17.5H30.625" />
+  <path d="M4.375 8.75H30.625" />
+  <path d="M4.375 26.25H30.625" />
 </svg>
 

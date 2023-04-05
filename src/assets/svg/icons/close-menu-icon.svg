@@ -1,7 +1,5 @@
-<svg
-    version='1.1'
-    xmlnsXlink='http://www.w3.org/1999/xlink' 
-    viewBox="0 0 46 43">
+<svg version='1.1' xmlnsXlink='http://www.w3.org/1999/xlink' viewBox="0 0 46 43">
+    <title>Close X icon</title>
     <path d="M34.5 11.5L11.5 34.5" />
     <path d="M11.5 11.5L34.5 34.5" />
 </svg>
