@@ -16,16 +16,14 @@ export const RadioButtons: React.FC<RadioButtonsProps> = ({
   orientation,
   width,
 }) => {
-  const [selectedValue, setSelectedValue] = useState<String>(options[0].label);
+  // eslint-disable-next-line unused-imports/no-unused-vars
+  const [selectedValue, setSelectedValue] = useState<string>(options[0].label);
 
   const updateRadioGroupSelection = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) =>
       setSelectedValue(event.target.value),
     [],
   );
-
-  // eslint-disable-next-line no-console
-  console.log(selectedValue);
 
   return (
     <StyledFieldset data-testid="RadioButtonsContainer">
