@@ -24,11 +24,3 @@ export interface OptionProps {
   readonly required?: boolean;
   readonly disabled?: boolean;
 }
-
-export interface OptionGroupProps {
-  readonly options: OptionProps[];
-  readonly width?: number;
-  readonly verticalPadding?: number;
-  readonly orientation?: string;
-  readonly onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}

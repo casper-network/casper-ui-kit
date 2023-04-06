@@ -3,19 +3,19 @@ import styled from '@emotion/styled';
 import { Meta, StoryFn } from '@storybook/react';
 import { pxToRem } from '../../utils';
 import {
-  RadioButtons,
-  RadioButtonsProps,
-} from '../../components/RadioButtons/RadioButtons';
+  RadioButtonGroup,
+  OptionGroupProps,
+} from '../../components/RadioButtons';
 
 export default {
-  title: 'Components/RadioButtons',
-  component: RadioButtons,
-} as Meta<typeof RadioButtons>;
+  title: 'Components/RadioButtonGroup',
+  component: RadioButtonGroup,
+} as Meta<typeof RadioButtonGroup>;
 
 // Create a master template for mapping args to render the RadioButtonGroup component
-const Template: StoryFn<typeof RadioButtons> = (args: RadioButtonsProps) => (
+const Template: StoryFn<typeof RadioButtonGroup> = (args: OptionGroupProps) => (
   <StoryContainer>
-    <RadioButtons {...args} />
+    <RadioButtonGroup {...args} />
   </StoryContainer>
 );
 
@@ -139,14 +139,10 @@ const options = [
   },
 ];
 
-const legend =
-  'Color, size, label position, vertical padding are configurable in options[]';
-
 export const StyleOptions = Template.bind({});
 
 StyleOptions.args = {
   options,
-  legendLabel: legend,
   orientation: 'column',
 };
 

@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { pxToRem } from '../../../utils';
-import {
-  OptionProps,
-  OptionGroupProps,
-  RadioButtonLabelPositions,
-} from '../RadioButtonTypes';
-import { BaseRadioButton } from './BaseRadioButton';
-import { NormalPalette } from '../../Theme';
+import { pxToRem } from '../../utils';
+import { OptionProps, RadioButtonLabelPositions } from './RadioButtonTypes';
+import { BaseRadioButton } from './Partials/BaseRadioButton';
+import { NormalPalette } from '../Theme';
+
+export interface OptionGroupProps {
+  readonly options: OptionProps[];
+  readonly width?: number;
+  readonly verticalPadding?: number;
+  readonly orientation?: string;
+  readonly onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
 export const RadioButtonGroup: React.FC<OptionGroupProps> = ({
   options,
