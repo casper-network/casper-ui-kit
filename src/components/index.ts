@@ -6,3 +6,6 @@ export * from './Loader';
 export * from './Logos';
 export * from './Tables';
 export * from './Toggles';
+export * from './Selectors';
+export * from './ProgressBar';
+export * from './SearchBar';
