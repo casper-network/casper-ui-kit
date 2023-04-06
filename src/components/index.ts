@@ -5,7 +5,6 @@ export * from './Icons';
 export * from './Inputs';
 export * from './Loader';
 export * from './Logos';
-export { DropDownSelector } from './Selectors';
 export * from './Tables';
 export * from './Theme';
 export * from './Toggles';
