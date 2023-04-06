@@ -45,6 +45,7 @@ export interface SvgIconProps {
   readonly title: string;
   readonly stroke?: string;
   readonly fill?: string;
+  readonly height?: number;
   readonly width?: number;
   readonly strokeWidth?: number;
   readonly strokeLinecap?: strokeLinecapValues;
@@ -56,12 +57,13 @@ export const SvgIcon: React.FC<SvgIconProps> = ({
   title = 'Blocks Icon',
   stroke,
   fill,
+  height = 250,
   width = 250,
   strokeWidth,
   strokeLinecap,
   strokeLinejoin,
 }) => (
-  <IconsContainer>
+  <IconsContainer height={height}>
     <IconsWrapper width={width}>
       <StyledSvg
         fill={fill}
@@ -77,12 +79,15 @@ export const SvgIcon: React.FC<SvgIconProps> = ({
   </IconsContainer>
 );
 
-export const IconsContainer = styled.ul`
+export const IconsContainer = styled.ul<{ height: number }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   list-style-type: none;
+  padding: 0;
+  height: ${({ height }) => `${pxToRem(height)}`};
+  margin: 0;
 `;
 export const IconsWrapper = styled.li<{ width: number }>`
   display: block;
