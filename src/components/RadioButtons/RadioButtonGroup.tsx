@@ -10,7 +10,7 @@ export interface OptionGroupProps {
   readonly width?: number;
   readonly verticalPadding?: number;
   readonly orientation?: string;
-  readonly onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  readonly onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const RadioButtonGroup: React.FC<OptionGroupProps> = ({
@@ -63,7 +63,10 @@ export const RadioButtonGroup: React.FC<OptionGroupProps> = ({
   };
 
   return (
-    <RadioButtonsContainer width={width} orientation={orientation}>
+    <RadioButtonsContainer
+      width={width}
+      orientation={orientation}
+      data-testid="RadioButtonsContainer">
       {renderOptions()}
     </RadioButtonsContainer>
   );

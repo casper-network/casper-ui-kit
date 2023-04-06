@@ -15,7 +15,7 @@ const options = [
 ];
 
 describe('RadioButton.stories', () => {
-  it('should render the Base RadioButtons', () => {
+  it('should render the Base RadioButtonGroup', () => {
     render(<Base options={options} {...Base.args} />);
 
     expect(screen.getByTestId('RadioButtonsContainer')).toBeInTheDocument();
