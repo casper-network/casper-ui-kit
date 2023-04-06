@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { Base, RequiredCheckbox, DisabledCheckbox } from './Checkbox.stories';
 
 describe('Checkbox.stories', () => {
-  it('should render the Base checkbox with specified color', async () => {
+  it('should render the Base checkbox with specified color', () => {
     render(<Base boxColor="#02c1b0" checkmarkColor="#02c1b0" {...Base.args} />);
 
     expect(screen.getByRole('checkbox')).toHaveStyle(

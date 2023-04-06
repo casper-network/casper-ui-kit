@@ -17,6 +17,7 @@ export const NormalPalette = {
   lowContrastSecondary: {
     CasperLightPurple: '#AD53E5',
     CasperLightBlue: '#4589F6',
+    CasperLightGrey: '#F4F4F4',
   },
 };
 
