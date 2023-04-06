@@ -21,7 +21,7 @@ const Template: StoryFn<typeof RadioButtons> = (args: RadioButtonsProps) => (
 
 const base = [
   {
-    label: 'OptionOne',
+    label: 'Option1',
     name: 'base-button-types',
   },
   {
@@ -29,11 +29,11 @@ const base = [
     name: 'base-button-types',
   },
   {
-    label: 'Opt3',
+    label: 'Option3',
     name: 'base-button-types',
   },
   {
-    label: '4',
+    label: 'Option4',
     name: 'base-button-types',
   },
 ];
@@ -47,7 +47,7 @@ Base.args = {
 
 const row = [
   {
-    label: 'OptionOne',
+    label: 'Option1',
     name: 'base-button-types',
   },
   {
@@ -55,7 +55,7 @@ const row = [
     name: 'base-button-types',
   },
   {
-    label: 'Opt3',
+    label: 'Option3',
     name: 'base-button-types',
   },
 ];
@@ -90,7 +90,7 @@ Disabled.args = {
 
 const requiredOptions = [
   {
-    label: 'OptionOne',
+    label: 'Option1',
     name: 'base-button-types',
     required: true,
   },
