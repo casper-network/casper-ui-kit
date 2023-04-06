@@ -7,6 +7,7 @@ import {
   RadioButtonLabelPositions,
 } from '../RadioButtonTypes';
 import { BaseRadioButton } from './BaseRadioButton';
+import { NormalPalette } from '../../Theme';
 
 export const RadioButtonGroup: React.FC<OptionGroupProps> = ({
   options,
@@ -94,6 +95,9 @@ const LabelRadioButtonContainer = styled.div<{
 `;
 
 export const StyledLabel = styled.label<{ disabled?: boolean }>`
-  color: ${({ disabled }) => (disabled ? '#c7c5c5' : '#000')};
+  color: ${({ disabled }) =>
+    disabled
+      ? `${NormalPalette.lowContrastSecondary.CasperLightGrey}`
+      : `${NormalPalette.primary.Black}`};
   text-align: right;
 `;
