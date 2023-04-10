@@ -6,8 +6,8 @@ import CheckboxSvg from '../../assets/svg/icons/checkbox.svg';
 export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
 export interface CheckboxProps {
-  readonly boxColor: string;
-  readonly checkmarkColor: string;
+  readonly boxColor?: string;
+  readonly checkmarkColor?: string;
   readonly label?: string;
   readonly labelPosition?: LabelPositions;
   readonly gapSize?: number;
@@ -60,7 +60,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         {isChecked && (
           <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
             <StyledCheckboxSvg
-              color={checkmarkColor}
+              checkmarkColor={checkmarkColor}
               disabled={disabled}
               required={required}
             />
@@ -138,13 +138,12 @@ const CheckboxSvgWrapper = styled.div<{
 interface StyledCheckboxSvgProps {
   disabled?: boolean;
   required?: boolean;
-  color: string;
+  checkmarkColor: string;
 }
 
-const StyledCheckboxSvg = styled(CheckboxSvg)<StyledCheckboxSvgProps>`
-  fill: ${({ disabled, required, color }) => {
-    // TODO: figure out why TS doesn't know type here
-    let fillColor: string = color as string;
+const StyledCheckboxSvg = styled(CheckboxSvg)`
+  fill: ${({ disabled, required, checkmarkColor }: StyledCheckboxSvgProps) => {
+    let fillColor = checkmarkColor;
 
     if (disabled) {
       fillColor = '#F1F1F4';
