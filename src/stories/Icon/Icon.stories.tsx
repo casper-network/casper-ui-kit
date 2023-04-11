@@ -19,58 +19,68 @@ export const BlocksIcon = Template.bind({});
 
 BlocksIcon.args = {
   icon: 'BlocksIcon',
+  width: 200,
 };
 
 export const ValidatorsIcon = Template.bind({});
 
 ValidatorsIcon.args = {
   icon: 'ValidatorsIcon',
+  width: 200,
 };
 
 export const DeploysIcon = Template.bind({});
 
 DeploysIcon.args = {
   icon: 'DeploysIcon',
+  width: 200,
 };
 
 export const OpenMenuIcon = Template.bind({});
 OpenMenuIcon.args = {
   icon: 'OpenMenuIcon',
+  width: 200,
 };
 
 export const CloseMenuIcon = Template.bind({});
 CloseMenuIcon.args = {
   icon: 'CloseMenuIcon',
+  width: 200,
 };
 
 export const ErrorIcon = Template.bind({});
 
 ErrorIcon.args = {
   icon: 'ErrorIcon',
+  width: 200,
 };
 
 export const FailureIcon = Template.bind({});
 
 FailureIcon.args = {
   icon: 'FailureIcon',
+  width: 200,
 };
 
 export const LoaderIcon = Template.bind({});
 
 LoaderIcon.args = {
   icon: 'LoaderIcon',
+  width: 200,
 };
 
 export const SuccessIcon = Template.bind({});
 
 SuccessIcon.args = {
   icon: 'SuccessIcon',
+  width: 200,
 };
 
 export const ButtonIcon = Template.bind({});
 
 ButtonIcon.args = {
   icon: 'ButtonIcon',
+  width: 200,
 };
 
 const StoryContainer = styled.div`

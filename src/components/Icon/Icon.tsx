@@ -31,21 +31,23 @@ export interface IconProps {
   readonly icon: keyof typeof icons;
   readonly width?: number;
   readonly color?: string;
+  readonly stroke?: string;
 }
 
 export const Icon: React.FC<IconProps> = ({
   icon = 'BlocksIcon',
   width = 32,
-  color = 'inherit',
+  color = 'white',
+  stroke = 'grey',
 }) => (
-  <IconsContainer data-testid="icon-component">
-    <IconsWrapper width={width} color={color}>
+  <IconContainer data-testid="icon-component">
+    <IconWrapper width={width} currentColor={color} stroke={stroke}>
       {icons[icon]}
-    </IconsWrapper>
-  </IconsContainer>
+    </IconWrapper>
+  </IconContainer>
 );
 
-export const IconsContainer = styled.div`
+export const IconContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,8 +56,15 @@ export const IconsContainer = styled.div`
   margin: 0;
 `;
 
-export const IconsWrapper = styled.div<{ width: number; color: string }>`
+export const IconWrapper = styled.svg<{
+  width: number;
+  currentColor: string;
+  stroke: string;
+}>`
   display: block;
   width: ${({ width }) => `${pxToRem(width)}`};
-  color: ${({ color }) => color};
+  fill: ${({ currentColor }) => currentColor};
+  color: ${({ currentColor }) => currentColor};
+  stroke: ${({ stroke }) => stroke};
+  background-color: transparent;
 `;
