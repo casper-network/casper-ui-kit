@@ -2,10 +2,11 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 import { PropsValue } from 'react-select';
-import { SvgIcon } from '../Icons';
 
 import { NormalPalette } from '../Theme';
 import { DropDownSelector, SelectOptions } from '../Selectors';
+import { SearchButtonIcon } from '../Icons/SearchButtonIcon';
+import { SearchErrorIcon } from '../Icons/SearchErrorIcon';
 
 export interface SearchBarProps {
   onClick: () => void;
@@ -47,29 +48,14 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           <InputAndButtonContainer>
             <SearchInput type="search" id="search" placeholder="" required />
             <SubmitButton type="submit">
-              <SvgIcon
-                width={20}
-                height={20}
-                icon="ButtonIcon"
-                title="Button icon"
-                fill={NormalPalette.secondary.White}
-              />
+              <SearchButtonIcon />
             </SubmitButton>
           </InputAndButtonContainer>
         </FormComponentsContainer>
         {errorMessage && (
           <ErrorMessageContainer>
             <ErrorSvgContainer>
-              <SvgIcon
-                width={30}
-                height={30}
-                icon="ErrorIcon"
-                title="Error icon"
-                stroke="red"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <SearchErrorIcon />
             </ErrorSvgContainer>
             <ErrorMessage data-testid="errorMessage">
               {errorMessage}
