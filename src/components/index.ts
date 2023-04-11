@@ -6,7 +6,6 @@ export * from './Inputs';
 export * from './Loader';
 export * from './Logos';
 export * from './Tables';
-export * from './Theme';
 export * from './Toggles';
 export * from './Selectors';
 export * from './ProgressBar';
