@@ -1,4 +1,4 @@
-export const Typography = {
+export const typography = {
   fonts: {
     // change in the future if body/header fonts are specified
     Inter: 'Inter, sans-serif',

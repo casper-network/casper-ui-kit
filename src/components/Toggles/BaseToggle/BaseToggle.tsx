@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { NormalPalette } from '../../Theme';
+import { defaultTheme } from '../../../theme';
 
 export interface BaseToggleProps {
   toggleOptions: {
@@ -21,6 +21,7 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
   const [selectedToggleOption, setSelectedToggleOption] = React.useState(
     toggleOptions.left,
   );
+
   const handleChange = () => {
     setSelectedToggleOption(
       selectedToggleOption === toggleOptions.left
@@ -68,10 +69,10 @@ const Switch = styled.div<{
   position: relative;
   width: 3.75rem;
   height: 2rem;
-  background: ${NormalPalette.secondary.White};
+  background: ${defaultTheme.colors.secondary.White};
   border-radius: 2rem;
   padding: 0.25rem;
-  border: 3px ${({ color }) => color} solid;
+  border: 0.1875rem ${({ color }) => color} solid;
   transition: 300ms all;
   margin: 0 1.25rem;
 
@@ -82,14 +83,10 @@ const Switch = styled.div<{
     width: 1.75rem;
     height: 1.75rem;
     border-radius: 2.25rem;
-    top: 50%;
-    left: 0.25rem;
+    top: -0.0625rem;
     background: ${({ color }) => color};
-    transform: translate(
-      ${({ currentFilter, toggleSettings }) =>
-        currentFilter === toggleSettings.left ? 0 : '2rem'},
-      -50%
-    );
+    left: ${({ currentFilter, toggleSettings }) =>
+      currentFilter === toggleSettings.left ? 0 : '50%'};
   }
 `;
 
