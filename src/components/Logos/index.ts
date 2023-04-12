@@ -1,1 +1,1 @@
-export * from './SvgLogo';
+export * from './Logo';

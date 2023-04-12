@@ -11,13 +11,13 @@ const logos = {
   WhiteCasperLogo: <WhiteCasperLogo />,
 };
 
-export interface SvgLogoProps {
+export interface LogoProps {
   readonly logo: keyof typeof logos;
   readonly title: string;
   readonly width?: number;
 }
 
-export const SvgLogo: React.FC<SvgLogoProps> = ({
+export const Logo: React.FC<LogoProps> = ({
   logo = 'BlockExplorerGradientLogo',
   title = 'Red and black Casper Labs Logo',
   width = 250,

@@ -2,17 +2,17 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Meta, StoryFn } from '@storybook/react';
 import { pxToRem } from '../../utils';
-import { SvgLogo, SvgLogoProps } from '../../components/Logos/SvgLogo';
+import { Logo, LogoProps } from '../../components/Logos/Logo';
 
 export default {
   title: 'Components/SvgLogo',
-  component: SvgLogo,
-} as Meta<typeof SvgLogo>;
+  component: Logo,
+} as Meta<typeof Logo>;
 
 // Create a master template for mapping args to render the SvgLogo component
-const Template: StoryFn<typeof SvgLogo> = (args: SvgLogoProps) => (
+const Template: StoryFn<typeof Logo> = (args: LogoProps) => (
   <StoryContainer>
-    <SvgLogo {...args} />
+    <Logo {...args} />
   </StoryContainer>
 );
 

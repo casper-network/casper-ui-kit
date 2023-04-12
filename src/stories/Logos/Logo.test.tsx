@@ -5,9 +5,9 @@ import {
   BlockExplorerGradientLogo,
   BlueCasperLogo,
   WhiteCasperLogo,
-} from './SvgLogo.stories';
+} from './Logo.stories';
 
-describe('SvgIcon.stories', () => {
+describe('Icon.stories', () => {
   it('should render the Block Explorer Gradient Logo', () => {
     render(
       <BlockExplorerGradientLogo
