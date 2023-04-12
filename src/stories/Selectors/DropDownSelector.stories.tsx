@@ -1,16 +1,13 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import {
-  DropDownSelector,
-  DropDownSelectorProps,
-} from '../../components/Selectors/DropDownSelector';
+import { Meta, StoryFn } from '@storybook/react';
+import { DropDownSelector, DropDownSelectorProps } from '../../components';
 
 export default {
   title: 'Components/Selectors',
   component: DropDownSelector,
-} as ComponentMeta<typeof DropDownSelector>;
+} as Meta<typeof DropDownSelector>;
 
-const Template: ComponentStory<typeof DropDownSelector> = (
+const Template: StoryFn<typeof DropDownSelector> = (
   args: DropDownSelectorProps,
 ) => <DropDownSelector {...args} />;
 

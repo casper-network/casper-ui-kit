@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { pxToRem } from '../../utils';
 import { OptionProps, RadioButtonLabelPositions } from './RadioButtonTypes';
 import { BaseRadioButton } from './Partials/BaseRadioButton';
-import { NormalPalette } from '../Theme';
+import { defaultTheme } from '../../theme';
 
 export interface OptionGroupProps {
   readonly options: OptionProps[];
@@ -104,7 +104,7 @@ const LabelRadioButtonContainer = styled.div<{
 export const StyledLabel = styled.label<{ disabled?: boolean }>`
   color: ${({ disabled }) =>
     disabled
-      ? `${NormalPalette.lowContrastSecondary.CasperLightGrey}`
-      : `${NormalPalette.primary.Black}`};
+      ? `${defaultTheme.colors.lowContrastSecondary.CasperLightGrey}`
+      : `${defaultTheme.colors.primary.Black}`};
   text-align: right;
 `;

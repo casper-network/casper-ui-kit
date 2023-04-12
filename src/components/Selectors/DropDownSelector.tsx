@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
 import Select, { PropsValue } from 'react-select';
-import { NormalPalette } from '../Theme';
+import { defaultTheme } from '../../theme';
 
 export interface SelectOptions {
   value: string;
@@ -83,7 +83,7 @@ const SelectWrapper = styled.div<{ isMenuOpen: boolean }>`
     height: 2.5rem;
     background-color: #fff;
     padding: 0.65rem 0rem;
-    background-color: ${NormalPalette.secondary.White};
+    background-color: ${defaultTheme.colors.secondary.White};
     margin: 0;
     border-radius: 0.375rem 0 0 0.375rem;
     box-shadow: inset 0px 1px 7px rgba(127, 128, 149, 0.2);
@@ -103,7 +103,7 @@ const SelectWrapper = styled.div<{ isMenuOpen: boolean }>`
   }
 
   .react-select__single-value {
-    color: ${NormalPalette.primary.Black};
+    color: ${defaultTheme.colors.primary.Black};
     font-weight: 500;
     font-size: 1rem;
     text-align: left;
@@ -112,7 +112,7 @@ const SelectWrapper = styled.div<{ isMenuOpen: boolean }>`
   }
 
   .react-select__dropdown-indicator svg {
-    color: ${NormalPalette.primary.Black};
+    color: ${defaultTheme.colors.primary.Black};
     width: 1.6rem;
     transition: all 200ms ease-in;
     transform: ${({ isMenuOpen }) => (isMenuOpen ? 'rotate(180deg)' : null)};
@@ -125,13 +125,13 @@ const SelectWrapper = styled.div<{ isMenuOpen: boolean }>`
 
   .react-select__indicator {
     display: block;
-    color: ${NormalPalette.primary.Black};
+    color: ${defaultTheme.colors.primary.Black};
     width: 5px;
     padding: 0.5rem 0.4rem 0.5rem 0;
   }
 
   .react-select__menu-list {
-    color: ${NormalPalette.primary.Black};
+    color: ${defaultTheme.colors.primary.Black};
     font-size: clamp(1rem, 1.2vw, 1.4rem);
     padding: 0;
     margin: 0;
@@ -140,14 +140,14 @@ const SelectWrapper = styled.div<{ isMenuOpen: boolean }>`
 
   .react-select__menu {
     text-align: center;
-    background-color: ${NormalPalette.secondary.White};
+    background-color: ${defaultTheme.colors.secondary.White};
     border-radius: 0.375rem;
     width: 9.9rem;
   }
 
   .react-select__option:hover,
   .react-select__option:focus {
-    color: ${NormalPalette.primary.CasperRed};
+    color: ${defaultTheme.colors.primary.CasperRed};
     transition: ease-in-out, font-weight, color, 400ms;
     font-weight: 700;
   }

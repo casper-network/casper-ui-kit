@@ -1,5 +1,6 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
+import styled from '@emotion/styled';
 import {
   ProgressBar,
   ProgressBarProps,
@@ -8,11 +9,13 @@ import {
 export default {
   title: 'Components/ProgressBar',
   component: ProgressBar,
-} as ComponentMeta<typeof ProgressBar>;
+} as Meta<typeof ProgressBar>;
 
-const Template: ComponentStory<typeof ProgressBar> = (
-  args: ProgressBarProps,
-) => <ProgressBar {...args} />;
+const Template: StoryFn<typeof ProgressBar> = (args: ProgressBarProps) => (
+  <StoryContainer>
+    <ProgressBar {...args} />
+  </StoryContainer>
+);
 
 export const BaseProgressBar = Template.bind({});
 
@@ -20,3 +23,9 @@ BaseProgressBar.args = {
   currentStep: 'test',
   processSteps: ['build', 'test', 'deploy'],
 };
+
+const StoryContainer = styled.div`
+  width: 100%;
+  padding: 3rem;
+  background: white;
+`;

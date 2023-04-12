@@ -1,4 +1,4 @@
-export const NormalPalette = {
+export const colors = {
   primary: {
     CasperRed: '#FF2D2E',
     Black: '#000000',

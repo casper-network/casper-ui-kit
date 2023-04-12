@@ -7,6 +7,7 @@ export type ButtonType = 'submit' | 'reset' | 'button';
 export interface ButtonProps {
   readonly children: React.ReactNode;
   readonly onClick?: () => void;
+  readonly bgColor?: string;
   readonly color?: string;
   readonly type: ButtonType;
   readonly className?: string;
@@ -16,7 +17,8 @@ export interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
-  color = 'blue',
+  bgColor = '#3EDC64',
+  color = 'white',
   type,
   className,
   isDisabled = false,
@@ -25,7 +27,8 @@ export const Button: React.FC<ButtonProps> = ({
     <StyledButton
       type={type}
       className={className}
-      bgColor={color}
+      bgColor={bgColor}
+      color={color}
       onClick={onClick}
       disabled={isDisabled}>
       {children}
@@ -33,9 +36,13 @@ export const Button: React.FC<ButtonProps> = ({
   );
 };
 
-const StyledButton = styled.button<{ bgColor: string; disabled: boolean }>`
+const StyledButton = styled.button<{
+  bgColor: string;
+  color: string;
+  disabled: boolean;
+}>`
   font-size: 1rem;
-  color: white;
+  color: ${({ color }) => color};
   background-color: ${({ bgColor }) => bgColor};
   text-align: center;
   padding: 0.5rem 1.25rem;

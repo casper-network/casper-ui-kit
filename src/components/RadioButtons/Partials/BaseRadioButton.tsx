@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { pxToRem } from '../../../utils';
 import { BaseRadioButtonProps } from '../RadioButtonTypes';
-import { NormalPalette } from '../../Theme';
+import { defaultTheme } from '../../../theme';
 
 export const BaseRadioButton: React.FC<BaseRadioButtonProps> = ({
   disabled,
@@ -36,7 +36,7 @@ export const StyledRadioButton = styled.input<{
   width: ${({ diameter }) => `${pxToRem(diameter ?? 20)}`};
   border: ${({ borderColor }) => {
     const defaultBoarderColor =
-      borderColor ?? `${NormalPalette.secondary.CasperGreen}`;
+      borderColor ?? `${defaultTheme.colors.secondary.CasperGreen}`;
 
     return `solid ${defaultBoarderColor} ${pxToRem(2)}`;
   }};
@@ -48,10 +48,10 @@ export const StyledRadioButton = styled.input<{
   appearance: none;
 
   :required {
-    border: ${pxToRem(2)} solid ${NormalPalette.primary.CasperRed};
+    border: ${pxToRem(2)} solid ${defaultTheme.colors.primary.CasperRed};
     :checked {
       :after {
-        background-color: ${NormalPalette.primary.CasperRed};
+        background-color: ${defaultTheme.colors.primary.CasperRed};
       }
     }
   }
@@ -59,10 +59,11 @@ export const StyledRadioButton = styled.input<{
   :disabled {
     cursor: not-allowed;
     border: ${pxToRem(2)} solid
-      ${NormalPalette.lowContrastSecondary.CasperLightGrey};
+      ${defaultTheme.colors.lowContrastSecondary.CasperLightGrey};
     :checked {
       :after {
-        background-color: ${NormalPalette.lowContrastSecondary.CasperLightGrey};
+        background-color: ${defaultTheme.colors.lowContrastSecondary
+          .CasperLightGrey};
       }
     }
   }
@@ -79,7 +80,7 @@ export const StyledRadioButton = styled.input<{
   :checked {
     :after {
       background-color: ${({ centerColor }) =>
-        centerColor ?? `${NormalPalette.secondary.CasperGreen}`};
+        centerColor ?? `${defaultTheme.colors.secondary.CasperGreen}`};
     }
   }
 `;

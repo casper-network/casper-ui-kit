@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { NormalPalette } from '../Theme';
+
+import { defaultTheme } from '../../theme';
 
 export interface ProgressBarProps {
   processSteps: string[];
@@ -35,7 +36,7 @@ const ProgressBarWrapper = styled.div`
   width: 55%;
   justify-content: space-evenly;
   margin: 2rem auto;
-  border-top: ${NormalPalette.primary.CasperWhite} 3px solid;
+  border-top: ${defaultTheme.colors.primary.CasperWhite} 3px solid;
 `;
 
 const NodeIndicator = styled.div<{ checked: boolean }>`
@@ -46,14 +47,14 @@ const NodeIndicator = styled.div<{ checked: boolean }>`
   border-radius: 50%;
   background-color: ${({ checked }) =>
     checked
-      ? NormalPalette.primary.CasperRed
-      : NormalPalette.primary.CasperWhite};
+      ? defaultTheme.colors.primary.CasperRed
+      : defaultTheme.colors.primary.CasperWhite};
   width: 1.5rem;
   height: 1.5rem;
 `;
 
 const NodeLabel = styled.span`
-  color: ${NormalPalette.primary.Black};
-  min-width: 130px;
+  color: ${defaultTheme.colors.primary.Black};
+  min-width: 8.125rem;
   position: relative;
 `;
