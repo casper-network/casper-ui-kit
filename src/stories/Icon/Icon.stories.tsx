@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Meta, StoryFn } from '@storybook/react';
 import { Icon, IconProps } from '../../components/Icon/Icon';
 import { pxToRem } from '../../utils';
+import { defaultTheme } from '../../theme';
 
 export default {
   title: 'Components/Icon',
@@ -29,10 +30,10 @@ ValidatorsIcon.args = {
   width: 200,
 };
 
-export const DeploysIcon = Template.bind({});
+export const DeployIcon = Template.bind({});
 
-DeploysIcon.args = {
-  icon: 'DeploysIcon',
+DeployIcon.args = {
+  icon: 'DeployIcon',
   width: 200,
 };
 
@@ -40,12 +41,14 @@ export const OpenMenuIcon = Template.bind({});
 OpenMenuIcon.args = {
   icon: 'OpenMenuIcon',
   width: 200,
+  strokeWidth: 2,
 };
 
 export const CloseMenuIcon = Template.bind({});
 CloseMenuIcon.args = {
   icon: 'CloseMenuIcon',
   width: 200,
+  strokeWidth: 2,
 };
 
 export const ErrorIcon = Template.bind({});
@@ -53,6 +56,8 @@ export const ErrorIcon = Template.bind({});
 ErrorIcon.args = {
   icon: 'ErrorIcon',
   width: 200,
+  color: defaultTheme.colors.primary.CasperRed,
+  stroke: 'white',
 };
 
 export const FailureIcon = Template.bind({});
@@ -60,6 +65,8 @@ export const FailureIcon = Template.bind({});
 FailureIcon.args = {
   icon: 'FailureIcon',
   width: 200,
+  color: 'white',
+  stroke: 'transparent',
 };
 
 export const LoaderIcon = Template.bind({});
@@ -67,6 +74,7 @@ export const LoaderIcon = Template.bind({});
 LoaderIcon.args = {
   icon: 'LoaderIcon',
   width: 200,
+  stroke: 'transparent',
 };
 
 export const SuccessIcon = Template.bind({});
@@ -74,13 +82,17 @@ export const SuccessIcon = Template.bind({});
 SuccessIcon.args = {
   icon: 'SuccessIcon',
   width: 200,
+  stroke: 'transparent',
+  color: defaultTheme.colors.secondary.CasperGreen,
 };
 
-export const ButtonIcon = Template.bind({});
+export const SearchIcon = Template.bind({});
 
-ButtonIcon.args = {
-  icon: 'ButtonIcon',
+SearchIcon.args = {
+  icon: 'SearchIcon',
   width: 200,
+  stroke: 'transparent',
+  color: defaultTheme.colors.primary.Black,
 };
 
 const StoryContainer = styled.div`

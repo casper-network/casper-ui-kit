@@ -4,14 +4,14 @@ import { render, screen } from '@testing-library/react';
 import {
   BlocksIcon,
   ValidatorsIcon,
-  DeploysIcon,
+  DeployIcon,
   OpenMenuIcon,
   CloseMenuIcon,
   ErrorIcon,
   FailureIcon,
   LoaderIcon,
   SuccessIcon,
-  ButtonIcon,
+  SearchIcon,
 } from './Icon.stories';
 
 describe('SvgIcon.stories', () => {
@@ -28,7 +28,7 @@ describe('SvgIcon.stories', () => {
   });
 
   it('should render the Deploys Icon', () => {
-    render(<DeploysIcon icon="DeploysIcon" {...DeploysIcon.args} />);
+    render(<DeployIcon icon="DeployIcon" {...DeployIcon.args} />);
 
     expect(screen.getByTestId('icon-component')).toBeInTheDocument();
   });
@@ -70,7 +70,7 @@ describe('SvgIcon.stories', () => {
   });
 
   it('should render the Button Icon', () => {
-    render(<ButtonIcon icon="ButtonIcon" {...ButtonIcon.args} />);
+    render(<SearchIcon icon="SearchIcon" {...SearchIcon.args} />);
 
     expect(screen.getByTestId('icon-component')).toBeInTheDocument();
   });

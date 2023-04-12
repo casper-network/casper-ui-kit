@@ -2,9 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { pxToRem } from '../../utils';
 import BlocksIcon from '../../assets/svg/icons/blocks-icon.svg';
-import ButtonIcon from '../../assets/svg/icons/button-icon.svg';
+import SearchIcon from '../../assets/svg/icons/search-icon.svg';
 import CloseMenuIcon from '../../assets/svg/icons/close-menu-icon.svg';
-import DeploysIcon from '../../assets/svg/icons/deploys-icon.svg';
+import DeployIcon from '../../assets/svg/icons/deploys-icon.svg';
 import ErrorIcon from '../../assets/svg/icons/error-icon.svg';
 import FailureIcon from '../../assets/svg/icons/failure-icon.svg';
 import LoaderIcon from '../../assets/svg/icons/loader-icon.svg';
@@ -15,9 +15,9 @@ import ValidatorsIcon from '../../assets/svg/icons/validators-icon.svg';
 
 const icons = {
   BlocksIcon: <BlocksIcon />,
-  ButtonIcon: <ButtonIcon />,
+  SearchIcon: <SearchIcon />,
   CloseMenuIcon: <CloseMenuIcon />,
-  DeploysIcon: <DeploysIcon />,
+  DeployIcon: <DeployIcon />,
   ErrorIcon: <ErrorIcon />,
   FailureIcon: <FailureIcon />,
   LoaderIcon: <LoaderIcon />,
@@ -32,6 +32,7 @@ export interface IconProps {
   readonly width?: number;
   readonly color?: string;
   readonly stroke?: string;
+  readonly strokeWidth?: number;
 }
 
 export const Icon: React.FC<IconProps> = ({
@@ -39,9 +40,14 @@ export const Icon: React.FC<IconProps> = ({
   width = 32,
   color = 'white',
   stroke = 'grey',
+  strokeWidth = 1,
 }) => (
   <IconContainer data-testid="icon-component">
-    <IconWrapper width={width} currentColor={color} stroke={stroke}>
+    <IconWrapper
+      width={width}
+      currentColor={color}
+      stroke={stroke}
+      strokeWidth={strokeWidth}>
       {icons[icon]}
     </IconWrapper>
   </IconContainer>
@@ -60,11 +66,13 @@ export const IconWrapper = styled.svg<{
   width: number;
   currentColor: string;
   stroke: string;
+  strokeWidth: number;
 }>`
   display: block;
   width: ${({ width }) => `${pxToRem(width)}`};
   fill: ${({ currentColor }) => currentColor};
   color: ${({ currentColor }) => currentColor};
   stroke: ${({ stroke }) => stroke};
+  stroke-width: ${({ strokeWidth }) => pxToRem(strokeWidth)};
   background-color: transparent;
 `;
