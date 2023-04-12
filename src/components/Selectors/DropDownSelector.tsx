@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
 import Select, { PropsValue } from 'react-select';
-import { defaultTheme } from '../../../theme';
+import { defaultTheme } from '../../theme';
 
 export interface SelectOptions {
   value: string;

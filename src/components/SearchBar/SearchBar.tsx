@@ -1,12 +1,10 @@
 import React from 'react';
-
 import styled from '@emotion/styled';
 import { PropsValue } from 'react-select';
 
-import { NormalPalette } from '../Theme';
+import { defaultTheme } from '../../theme';
 import { DropDownSelector, SelectOptions } from '../Selectors';
-import { SearchButtonIcon } from '../Icons/SearchButtonIcon';
-import { SearchErrorIcon } from '../Icons/SearchErrorIcon';
+import { SearchIcon, ErrorIcon } from '../Icon';
 
 export interface SearchBarProps {
   onClick: () => void;
@@ -48,15 +46,13 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           <InputAndButtonContainer>
             <SearchInput type="search" id="search" placeholder="" required />
             <SubmitButton type="submit">
-              <SearchButtonIcon />
+              <SearchIcon />
             </SubmitButton>
           </InputAndButtonContainer>
         </FormComponentsContainer>
         {errorMessage && (
           <ErrorMessageContainer>
-            <ErrorSvgContainer>
-              <SearchErrorIcon />
-            </ErrorSvgContainer>
+            <ErrorIcon strokeWidth={2} />
             <ErrorMessage data-testid="errorMessage">
               {errorMessage}
             </ErrorMessage>
@@ -121,8 +117,8 @@ const InputAndButtonContainer = styled.div`
 
 const SearchInput = styled.input`
   display: block;
-  color: ${NormalPalette.primary.Black};
-  background-color: ${NormalPalette.secondary.White};
+  color: ${defaultTheme.colors.primary.Black};
+  background-color: ${defaultTheme.colors.secondary.White};
   height: 2.5rem;
   width: 100%;
   font-size: clamp(0.9rem, 1.1vw, 1.4rem);
@@ -130,14 +126,14 @@ const SearchInput = styled.input`
 
   margin-top: 0;
   margin-bottom: 0;
-  box-shadow: inset 0px 1px 7px rgba(127, 128, 149, 0.2);
+  box-shadow: inset 0px 0.0625rem 0.4375rem rgba(127, 128, 149, 0.2);
   border-style: none;
   appearance: none;
 
   :hover,
   :focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
+    outline: 0.125rem solid transparent;
+    outline-offset: 0.125rem;
   }
 
   @media (min-width: 769px) {
@@ -147,7 +143,7 @@ const SearchInput = styled.input`
 
 const SubmitButton = styled.button`
   font-weight: 500;
-  background-color: ${NormalPalette.primary.CasperRed};
+  background-color: ${defaultTheme.colors.primary.CasperRed};
   height: 2.5rem;
   width: 3.2rem;
   border-radius: 0 0.375rem 0.375rem 0;
@@ -158,8 +154,8 @@ const SubmitButton = styled.button`
 
   :hover,
   :focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
+    outline: 0.125rem solid transparent;
+    outline-offset: 0.125rem;
   }
 `;
 
@@ -173,24 +169,18 @@ const ErrorMessageContainer = styled.div`
   left: 0;
 `;
 
-const ErrorSvgContainer = styled.div`
-  stroke: ${NormalPalette.primary.CasperRed};
-  stroke-width: 2;
-  fill: ${NormalPalette.secondary.White};
-`;
-
 const ErrorMessage = styled.p`
-  color: ${NormalPalette.primary.CasperRed};
+  color: ${defaultTheme.colors.primary.CasperRed};
   font-size: 0.9rem;
   padding-top: 0.1rem;
 `;
 
 const SearchLabel = styled.label`
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.0625rem;
+  height: 0.0625rem;
   padding: 0;
-  margin: -1px;
+  margin: -0.625rem;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
