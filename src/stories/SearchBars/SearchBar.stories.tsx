@@ -1,13 +1,13 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { SearchBar, SearchBarProps } from '../../components/SearchBar';
+import { Meta, StoryFn } from '@storybook/react';
+import { SearchBar, SearchBarProps } from '../../components';
 
 export default {
   title: 'Components/SearchBar',
   component: SearchBar,
-} as ComponentMeta<typeof SearchBar>;
+} as Meta<typeof SearchBar>;
 
-const Template: ComponentStory<typeof SearchBar> = (args: SearchBarProps) => (
+const Template: StoryFn<typeof SearchBar> = (args: SearchBarProps) => (
   <SearchBar {...args} />
 );
 
