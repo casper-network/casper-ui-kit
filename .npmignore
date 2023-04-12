@@ -1,0 +1,5 @@
+/src/
+/jest/
+/build/
+/storybook-static/
+/.env
