@@ -16,6 +16,7 @@ export interface PasswordInputProps {
   readonly placeholderColor?: string;
   readonly svgColor?: string;
   readonly boxShadowColor?: string;
+  readonly borderColor?: string;
   readonly focusBorderColor?: string;
   readonly focusBorderWidth?: number;
   readonly width?: number;
@@ -38,6 +39,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   placeholderColor,
   svgColor,
   boxShadowColor,
+  borderColor,
   focusBorderColor,
   focusBorderWidth,
   width,
@@ -61,6 +63,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
           fontSize={fontSize}
           fontColor={fontColor}
           boxShadowColor={boxShadowColor}
+          borderColor={borderColor}
           focusBorderColor={focusBorderColor}
           focusBorderWidth={focusBorderWidth}
           width={width}
@@ -116,6 +119,7 @@ const StyledPasswordInput = styled.input<{
   fontColor?: string;
   placeholderColor?: string;
   boxShadowColor?: string;
+  borderColor?: string;
   focusBorderColor?: string;
   focusBorderWidth?: number;
   width?: number;
@@ -132,8 +136,9 @@ const StyledPasswordInput = styled.input<{
       boxShadowColor ? `${boxShadowColor}` : 'rgba(127, 128, 149, 0.3)'
     }`};
   border-radius: ${pxToRem(8)};
-  border: ${({ focusBorderWidth, required }) => {
-    const color = required ? '#FF0000' : 'transparent';
+  border: ${({ borderColor, focusBorderWidth, required }) => {
+    const baseBorderColor = borderColor ?? 'transparent';
+    const color = required ? '#FF0000' : baseBorderColor;
     const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
     return `solid ${color} ${width}`;
   }};

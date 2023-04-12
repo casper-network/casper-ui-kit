@@ -13,6 +13,7 @@ export interface EmailInputProps {
   readonly placeholder?: string;
   readonly placeholderColor?: string;
   readonly boxShadowColor?: string;
+  readonly borderColor?: string;
   readonly focusBorderColor?: string;
   readonly focusBorderWidth?: number;
   readonly width?: number;
@@ -35,6 +36,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
   placeholder = 'Enter email address',
   placeholderColor,
   boxShadowColor,
+  borderColor,
   focusBorderColor,
   focusBorderWidth,
   width,
@@ -53,6 +55,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
       fontSize={fontSize}
       fontColor={fontColor}
       boxShadowColor={boxShadowColor}
+      borderColor={borderColor}
       focusBorderColor={focusBorderColor}
       focusBorderWidth={focusBorderWidth}
       width={width}
@@ -93,6 +96,7 @@ const StyledPasswordInput = styled.input<{
   fontColor?: string;
   placeholderColor?: string;
   boxShadowColor?: string;
+  borderColor?: string;
   focusBorderColor?: string;
   focusBorderWidth?: number;
   width?: number;
@@ -109,9 +113,10 @@ const StyledPasswordInput = styled.input<{
       boxShadowColor ? `${boxShadowColor}` : 'rgba(127, 128, 149, 0.3)'
     }`};
   border-radius: ${pxToRem(8)};
-  border: ${({ focusBorderWidth, required }) => {
+  border: ${({ borderColor, focusBorderWidth, required }) => {
+    const baseBorderColor = borderColor ?? 'transparent';
     const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
-    const color = required ? '#FF0000' : 'transparent';
+    const color = required ? '#FF0000' : baseBorderColor;
     return `solid ${color} ${width}`;
   }};
   border-radius: ${pxToRem(8)};
