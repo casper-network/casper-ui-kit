@@ -30,6 +30,7 @@ const icons = {
 export interface IconProps {
   readonly icon: keyof typeof icons;
   readonly width?: number;
+  readonly height?: number;
   readonly color?: string;
   readonly stroke?: string;
   readonly strokeWidth?: number;
@@ -38,6 +39,7 @@ export interface IconProps {
 export const Icon: React.FC<IconProps> = ({
   icon = 'BlocksIcon',
   width = 32,
+  height,
   color = 'white',
   stroke = 'grey',
   strokeWidth = 1,
@@ -45,6 +47,7 @@ export const Icon: React.FC<IconProps> = ({
   <IconContainer data-testid="icon-component">
     <IconWrapper
       width={width}
+      height={height}
       currentColor={color}
       stroke={stroke}
       strokeWidth={strokeWidth}>
@@ -64,12 +67,14 @@ export const IconContainer = styled.div`
 
 export const IconWrapper = styled.svg<{
   width: number;
+  height?: number;
   currentColor: string;
   stroke: string;
   strokeWidth: number;
 }>`
   display: block;
   width: ${({ width }) => `${pxToRem(width)}`};
+  height: ${({ height }) => (height ? `${pxToRem(height)}` : 'auto')};
   fill: ${({ currentColor }) => currentColor};
   color: ${({ currentColor }) => currentColor};
   stroke: ${({ stroke }) => stroke};
