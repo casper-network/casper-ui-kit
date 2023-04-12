@@ -14,7 +14,7 @@ import {
   SearchIcon,
 } from './Icon.stories';
 
-describe('SvgIcon.stories', () => {
+describe('Icon.stories', () => {
   it('should render the BlocksIcon', () => {
     render(<BlocksIcon icon="BlocksIcon" {...BlocksIcon.args} />);
 
