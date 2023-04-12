@@ -6,6 +6,7 @@
   "module": "lib/index.esm.js",
   "types": "build/index.d.ts",
   "scripts": {
+    "prepublishOnly": "npm run build",
     "audit": "better-npm-audit audit",
     "build": "rm -rf build && rollup -c --bundleConfigAsCjs",
     "lint": "eslint --ext .ts,.tsx src --max-warnings=0",
