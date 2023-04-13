@@ -30,7 +30,7 @@ export interface GenericInputProps {
 }
 
 export const GenericInput: React.FC<GenericInputProps> = ({
-  inputType = 'tel',
+  inputType = 'text',
   label = 'Generic label',
   labelPosition = 'left',
   gapSize,
