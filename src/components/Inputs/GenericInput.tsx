@@ -4,62 +4,70 @@ import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
 import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 
-export type PasswordLabelPositions = 'top' | 'right' | 'bottom' | 'left';
+export type GenericLabelPositions = 'top' | 'right' | 'bottom' | 'left';
+export type GenericTypes = 'text' | 'email' | 'password';
 
-export interface PasswordInputProps {
+export interface GenericInputProps {
+  readonly inputType: GenericTypes;
   readonly label?: string;
-  readonly labelPosition?: PasswordLabelPositions;
+  readonly labelPosition?: GenericLabelPositions;
+  readonly passwordToggle?: boolean;
   readonly gapSize?: number;
   readonly fontSize?: number;
   readonly fontColor?: string;
+  readonly svgColor?: string;
   readonly placeholder?: string;
   readonly placeholderColor?: string;
-  readonly svgColor?: string;
   readonly boxShadowColor?: string;
   readonly borderColor?: string;
   readonly focusBorderColor?: string;
   readonly focusBorderWidth?: number;
   readonly width?: number;
   readonly height?: number;
-  readonly minPasswordLength?: number;
-  readonly maxPasswordLength?: number;
+  readonly minTextLength?: number;
+  readonly maxTextLength?: number;
+  readonly spellcheck?: boolean;
   readonly pattern?: string;
   readonly disabled?: boolean;
   readonly required?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export const PasswordInput: React.FC<PasswordInputProps> = ({
-  label = 'Password Label',
+export const GenericInput: React.FC<GenericInputProps> = ({
+  inputType = 'text',
+  label = 'Generic label',
   labelPosition = 'left',
+  passwordToggle = false,
   gapSize,
   fontSize,
   fontColor,
-  placeholder = '••••••••••••••••••••',
-  placeholderColor,
   svgColor,
+  placeholder = 'Enter text',
+  placeholderColor,
   boxShadowColor,
   borderColor,
   focusBorderColor,
   focusBorderWidth,
   width,
   height,
-  minPasswordLength = 1,
-  maxPasswordLength = 20,
+  minTextLength,
+  maxTextLength,
+  spellcheck,
   pattern,
   onChange,
   required,
   disabled,
 }) => {
-  const [passwordIsVisible, setPasswordIsVisible] = useState<boolean>(false);
-
+  const [passwordIsVisible, setPasswordIsVisible] =
+    useState<boolean>(passwordToggle);
   return (
     <LabelPasswordInputContainer
       labelPosition={labelPosition}
       gapSize={gapSize}>
       <label>{label}</label>
       <InputIconContainer>
-        <StyledPasswordInput
+        <StyledInput
+          type={inputType}
           fontSize={fontSize}
           fontColor={fontColor}
           boxShadowColor={boxShadowColor}
@@ -70,29 +78,31 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
           height={height}
           placeholder={placeholder}
           placeholderColor={placeholderColor}
-          type={passwordIsVisible ? 'text' : 'password'}
-          min={minPasswordLength}
-          maxLength={maxPasswordLength}
+          minLength={minTextLength}
+          maxLength={maxTextLength}
+          spellCheck={spellcheck}
           pattern={pattern}
           onChange={onChange}
           required={required}
           disabled={disabled}
-          data-testid="password-input"
+          data-testid="generic-input"
         />
-        <ViewPasswordButton
-          onClick={() => setPasswordIsVisible(prev => !prev)}
-          svgColor={svgColor}
-          focusBorderColor={focusBorderColor}
-          focusBorderWidth={focusBorderWidth}>
-          {passwordIsVisible ? <ViewPasswordIcon /> : <HidePasswordIcon />}
-        </ViewPasswordButton>
+        {passwordToggle && (
+          <ViewPasswordButton
+            onClick={() => setPasswordIsVisible(prev => !prev)}
+            svgColor={svgColor}
+            focusBorderColor={focusBorderColor}
+            focusBorderWidth={focusBorderWidth}>
+            {passwordIsVisible ? <ViewPasswordIcon /> : <HidePasswordIcon />}
+          </ViewPasswordButton>
+        )}
       </InputIconContainer>
     </LabelPasswordInputContainer>
   );
 };
 
 const LabelPasswordInputContainer = styled.div<{
-  labelPosition: PasswordLabelPositions;
+  labelPosition: GenericLabelPositions;
   gapSize?: number;
 }>`
   display: flex;
@@ -107,14 +117,7 @@ const LabelPasswordInputContainer = styled.div<{
   gap: ${({ gapSize }) => (gapSize ? `${pxToRem(gapSize)}` : `${pxToRem(10)}`)};
 `;
 
-const InputIconContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-`;
-
-const StyledPasswordInput = styled.input<{
+const StyledInput = styled.input<{
   fontSize?: number;
   fontColor?: string;
   placeholderColor?: string;
@@ -140,6 +143,7 @@ const StyledPasswordInput = styled.input<{
     const baseBorderColor = borderColor ?? 'transparent';
     const color = required ? '#FF0000' : baseBorderColor;
     const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
+
     return `solid ${color} ${width}`;
   }};
   border-radius: ${pxToRem(8)};
@@ -153,12 +157,19 @@ const StyledPasswordInput = styled.input<{
 
   &:focus {
     border: ${({ focusBorderColor, focusBorderWidth }) => {
-      const color = focusBorderColor ?? 'blue';
       const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
-      return `solid ${color} ${width}`;
+      const color = focusBorderColor ?? 'blue';
+      return `solid ${color} ${width} `;
     }};
     outline: none;
   }
+`;
+
+const InputIconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 `;
 
 const ViewPasswordButton = styled.button<{
