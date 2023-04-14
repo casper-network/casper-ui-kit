@@ -35,7 +35,7 @@ export interface GenericInputProps {
 
 export const GenericInput: React.FC<GenericInputProps> = ({
   inputType = 'text',
-  label = ' Generic label',
+  label = 'Generic label',
   labelPosition = 'left',
   passwordToggle = false,
   gapSize,

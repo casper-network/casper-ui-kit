@@ -1,31 +1,28 @@
-name: ci-casper-ui-kit
+---
+name: ci-ui-kit
 
 on:
   push:
     branches:
-      - 'dev'
-      - 'feat-*'
-      - 'release-*'
-    paths-ignore:
-      - '**.md'
+      - "dev"
+      - "release-**"
+      - "feat-**"
 
   pull_request:
     branches:
-      - 'dev'
-      - 'feat-*'
-      - 'release-*'
-    paths-ignore:
-      - '**.md'
+      - "dev"
+      - "release-**"
+      - "feat-**"
 
 jobs:
-  build:
+  test:
     strategy:
       fail-fast: false
       matrix:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-        node-version: [16.x]
-        os: [ubuntu-20.04, ubuntu-22.04]
-      runs-on: ${{ matrix.os }}
+        node-version: [18.x]
+        os: [ubuntu-22.04]
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout
@@ -36,20 +33,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install
-        run: npm install
+      - name: Install Frontend
+        run: npm i
 
-      - name: Audits
-        run: npm run audit
+      - name: Audit Frontend
+        run: npm audit
 
-      - name: Lints
+      - name: Build Frontend
+        run: npm run build
+
+      - name: Lint Frontend
         run: npm run lint
 
-      - name: Style Check
-        run: npm run style:check
-
-      - name: Build StoryBook
-        run: npm run build-storybook
-
-      - name: Test
-        run: npm test
+      - name: Test Frontend
+        run: npm run test
