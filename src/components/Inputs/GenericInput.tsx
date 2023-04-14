@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useState } from 'react';
 import { pxToRem } from '../../utils';
+import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
+import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 
 export type GenericLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 export type GenericTypes = 'text' | 'email' | 'password';
@@ -9,9 +11,11 @@ export interface GenericInputProps {
   readonly inputType: GenericTypes;
   readonly label?: string;
   readonly labelPosition?: GenericLabelPositions;
+  readonly passwordToggle?: boolean;
   readonly gapSize?: number;
   readonly fontSize?: number;
   readonly fontColor?: string;
+  readonly svgColor?: string;
   readonly placeholder?: string;
   readonly placeholderColor?: string;
   readonly boxShadowColor?: string;
@@ -33,9 +37,11 @@ export const GenericInput: React.FC<GenericInputProps> = ({
   inputType = 'text',
   label = 'Generic label',
   labelPosition = 'left',
+  passwordToggle = false,
   gapSize,
   fontSize,
   fontColor,
+  svgColor,
   placeholder = 'Enter text',
   placeholderColor,
   boxShadowColor,
@@ -51,32 +57,49 @@ export const GenericInput: React.FC<GenericInputProps> = ({
   onChange,
   required,
   disabled,
-}) => (
-  <LabelPasswordInputContainer labelPosition={labelPosition} gapSize={gapSize}>
-    <label>{label}</label>
-    <StyledInput
-      type={inputType}
-      fontSize={fontSize}
-      fontColor={fontColor}
-      boxShadowColor={boxShadowColor}
-      borderColor={borderColor}
-      focusBorderColor={focusBorderColor}
-      focusBorderWidth={focusBorderWidth}
-      width={width}
-      height={height}
-      placeholder={placeholder}
-      placeholderColor={placeholderColor}
-      minLength={minTextLength}
-      maxLength={maxTextLength}
-      spellCheck={spellcheck}
-      pattern={pattern}
-      onChange={onChange}
-      required={required}
-      disabled={disabled}
-      data-testid="generic-input"
-    />
-  </LabelPasswordInputContainer>
-);
+}) => {
+  const [passwordIsVisible, setPasswordIsVisible] =
+    useState<boolean>(passwordToggle);
+  return (
+    <LabelPasswordInputContainer
+      labelPosition={labelPosition}
+      gapSize={gapSize}>
+      <label>{label}</label>
+      <InputIconContainer>
+        <StyledInput
+          type={inputType}
+          fontSize={fontSize}
+          fontColor={fontColor}
+          boxShadowColor={boxShadowColor}
+          borderColor={borderColor}
+          focusBorderColor={focusBorderColor}
+          focusBorderWidth={focusBorderWidth}
+          width={width}
+          height={height}
+          placeholder={placeholder}
+          placeholderColor={placeholderColor}
+          minLength={minTextLength}
+          maxLength={maxTextLength}
+          spellCheck={spellcheck}
+          pattern={pattern}
+          onChange={onChange}
+          required={required}
+          disabled={disabled}
+          data-testid="generic-input"
+        />
+        {passwordToggle && (
+          <ViewPasswordButton
+            onClick={() => setPasswordIsVisible(prev => !prev)}
+            svgColor={svgColor}
+            focusBorderColor={focusBorderColor}
+            focusBorderWidth={focusBorderWidth}>
+            {passwordIsVisible ? <ViewPasswordIcon /> : <HidePasswordIcon />}
+          </ViewPasswordButton>
+        )}
+      </InputIconContainer>
+    </LabelPasswordInputContainer>
+  );
+};
 
 const LabelPasswordInputContainer = styled.div<{
   labelPosition: GenericLabelPositions;
@@ -138,6 +161,41 @@ const StyledInput = styled.input<{
       const color = focusBorderColor ?? 'blue';
       return `solid ${color} ${width} `;
     }};
+    outline: none;
+  }
+`;
+
+const InputIconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
+
+const ViewPasswordButton = styled.button<{
+  svgColor?: string;
+  focusBorderColor?: string;
+  focusBorderWidth?: number;
+}>`
+  background-color: transparent;
+  fill: ${({ svgColor }) => svgColor ?? '#A4A3A1'};
+  border: ${({ focusBorderWidth }) =>
+    `solid transparent ${
+      focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem'
+    } `};
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &:focus {
+    border: ${({ focusBorderColor, focusBorderWidth }) => {
+      const color = focusBorderColor ?? 'blue';
+      const width = focusBorderWidth ? pxToRem(focusBorderWidth) : '0.125rem';
+      return `solid ${color} ${width}`;
+    }};
+    border-radius: ${pxToRem(8)};
     outline: none;
   }
 `;
