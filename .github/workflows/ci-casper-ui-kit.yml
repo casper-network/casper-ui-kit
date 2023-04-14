@@ -18,7 +18,7 @@ on:
       - '**.md'
 
 jobs:
-  build:
+  nightly-casper-ui-kit-test:
     strategy:
         fail-fast: false
         matrix:
