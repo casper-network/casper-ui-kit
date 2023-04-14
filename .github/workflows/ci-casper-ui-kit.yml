@@ -33,7 +33,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # FE
       - name: Install Frontend
         run: npm i
 
