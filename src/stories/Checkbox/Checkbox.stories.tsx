@@ -40,7 +40,6 @@ export const DisabledCheckbox = Template.bind({});
 DisabledCheckbox.args = {
   boxColor: '#F1F1F4',
   checkmarkColor: '#F1F1F4',
-  initialChecked: true,
   disabled: true,
 };
 Base.args = {};
