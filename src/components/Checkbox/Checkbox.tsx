@@ -6,6 +6,7 @@ import CheckboxSvg from '../../assets/svg/icons/checkbox.svg';
 export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
 export interface CheckboxProps {
+  readonly checked?: boolean;
   readonly boxColor?: string;
   readonly checkmarkColor?: string;
   readonly label?: string;
@@ -14,7 +15,6 @@ export interface CheckboxProps {
   readonly width?: number;
   readonly checkmarkSize?: number;
   readonly borderWidth?: number;
-  readonly initialChecked?: boolean;
   readonly disabled?: boolean;
   readonly required?: boolean;
   readonly name?: string;
@@ -31,14 +31,14 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   width = 30,
   borderWidth = 2,
   checkmarkSize = 65,
-  initialChecked = false,
+  checked,
   disabled,
   onChange,
   value,
   name,
   required,
 }) => {
-  const [isChecked, setIsChecked] = useState(initialChecked);
+  const [isChecked, setIsChecked] = useState(checked);
 
   return (
     <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
@@ -55,6 +55,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           disabled={disabled}
           value={value}
           name={name}
+          checked={checked}
           required={required}
         />
         {isChecked && (
