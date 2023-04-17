@@ -6,7 +6,7 @@ import CheckboxSvg from '../../assets/svg/icons/checkbox.svg';
 export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
 export interface CheckboxProps {
-  readonly checked: boolean;
+  readonly checked?: boolean;
   readonly boxColor?: string;
   readonly checkmarkColor?: string;
   readonly label?: string;
