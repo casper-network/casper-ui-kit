@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
 import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 
 export type PasswordLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface PasswordInputProps {
+export interface PasswordInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: PasswordLabelPositions;
   readonly gapSize?: number;
@@ -50,6 +51,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   onChange,
   required,
   disabled,
+  ...rest
 }) => {
   const [passwordIsVisible, setPasswordIsVisible] = useState<boolean>(false);
 
@@ -78,6 +80,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
           required={required}
           disabled={disabled}
           data-testid="password-input"
+          {...rest}
         />
         <ViewPasswordButton
           onClick={() => setPasswordIsVisible(prev => !prev)}

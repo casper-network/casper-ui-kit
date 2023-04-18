@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
 import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
@@ -7,7 +7,8 @@ import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 export type GenericLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 export type GenericTypes = 'text' | 'email' | 'password';
 
-export interface GenericInputProps {
+export interface GenericInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   readonly inputType: GenericTypes;
   readonly label?: string;
   readonly labelPosition?: GenericLabelPositions;
@@ -57,6 +58,7 @@ export const GenericInput: React.FC<GenericInputProps> = ({
   onChange,
   required,
   disabled,
+  ...rest
 }) => {
   const [passwordIsVisible, setPasswordIsVisible] =
     useState<boolean>(passwordToggle);
@@ -86,6 +88,7 @@ export const GenericInput: React.FC<GenericInputProps> = ({
           required={required}
           disabled={disabled}
           data-testid="generic-input"
+          {...rest}
         />
         {passwordToggle && (
           <ViewPasswordButton

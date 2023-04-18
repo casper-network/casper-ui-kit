@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { pxToRem } from '../../utils';
 
 export type ButtonType = 'submit' | 'reset' | 'button';
 
-export interface ButtonProps {
+export interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   readonly children: React.ReactNode;
   readonly onClick?: () => void;
   readonly bgColor?: string;
@@ -22,6 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
   type,
   className,
   isDisabled = false,
+  ...rest
 }) => {
   return (
     <StyledButton
@@ -30,7 +31,8 @@ export const Button: React.FC<ButtonProps> = ({
       bgColor={bgColor}
       color={color}
       onClick={onClick}
-      disabled={isDisabled}>
+      disabled={isDisabled}
+      {...rest}>
       {children}
     </StyledButton>
   );

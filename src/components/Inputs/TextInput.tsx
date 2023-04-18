@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { pxToRem } from '../../utils';
 
 export type TextLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface TextInputProps {
+export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: TextLabelPositions;
   readonly gapSize?: number;
@@ -48,6 +48,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   onChange,
   required,
   disabled,
+  ...rest
 }) => (
   <LabelPasswordInputContainer labelPosition={labelPosition} gapSize={gapSize}>
     <label>{label}</label>
@@ -71,6 +72,7 @@ export const TextInput: React.FC<TextInputProps> = ({
       required={required}
       disabled={disabled}
       data-testid="text-input"
+      {...rest}
     />
   </LabelPasswordInputContainer>
 );

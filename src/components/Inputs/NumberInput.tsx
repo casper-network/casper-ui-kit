@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import styled from '@emotion/styled';
 import { pxToRem } from '../../utils';
 import ArrowUpIcon from '../../assets/svg/icons/arrow-up-icon.svg';
@@ -6,7 +6,8 @@ import ArrowDownIcon from '../../assets/svg/icons/arrow-down-icon.svg';
 
 export type NumberLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface NumberInputProps {
+export interface NumberInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: NumberLabelPositions;
   readonly gapSize?: number;
@@ -46,6 +47,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   maxNumberValue = 20,
   required,
   disabled,
+  ...rest
 }) => {
   const [inputValue, setInputValue] = useState(defaultValue);
 
@@ -89,6 +91,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
           required={required}
           disabled={disabled}
           onChange={onChangeHandler}
+          {...rest}
         />
         <ArrowsContainer>
           <ArrowButton

@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { pxToRem } from '../../utils';
 
 export type EmailLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface EmailInputProps {
+export interface EmailInputProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: EmailLabelPositions;
   readonly gapSize?: number;
@@ -48,6 +48,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
   onChange,
   required,
   disabled,
+  ...rest
 }) => (
   <LabelPasswordInputContainer labelPosition={labelPosition} gapSize={gapSize}>
     <label>{label}</label>
@@ -71,6 +72,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
       required={required}
       disabled={disabled}
       data-testid="email-input"
+      {...rest}
     />
   </LabelPasswordInputContainer>
 );

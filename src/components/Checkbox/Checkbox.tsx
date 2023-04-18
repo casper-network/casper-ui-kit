@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { pxToRem } from '../../utils';
 import CheckboxSvg from '../../assets/svg/icons/checkbox.svg';
 
 export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface CheckboxProps {
+export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly checked?: boolean;
   readonly boxColor?: string;
   readonly checkmarkColor?: string;
@@ -37,15 +37,12 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   value,
   name,
   required,
+  ...rest
 }) => {
-  const [isChecked, setIsChecked] = useState(checked);
-
   return (
     <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
       <label>{label}</label>
-      <CheckboxContainer
-        onClick={() => setIsChecked(prev => !prev)}
-        width={width}>
+      <CheckboxContainer width={width}>
         <StyledCheckbox
           boxColor={boxColor}
           width={width}
@@ -57,8 +54,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           name={name}
           checked={checked}
           required={required}
+          {...rest}
         />
-        {isChecked && (
+        {checked && (
           <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
             <StyledCheckboxSvg
               checkmarkColor={checkmarkColor}
