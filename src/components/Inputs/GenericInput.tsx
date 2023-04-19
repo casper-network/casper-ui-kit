@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
 import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
@@ -7,8 +7,7 @@ import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 export type GenericLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 export type GenericTypes = 'text' | 'email' | 'password' | 'radio';
 
-export interface GenericInputProps
-  extends InputHTMLAttributes<HTMLInputElement> {
+export interface GenericInputProps {
   readonly inputType: GenericTypes;
   readonly label?: string;
   readonly labelPosition?: GenericLabelPositions;
@@ -36,7 +35,7 @@ export interface GenericInputProps
 }
 
 export const GenericInput: React.FC<GenericInputProps> = forwardRef(
-  function GenericInput(
+  (
     {
       inputType = 'text',
       label = 'Generic label',
@@ -61,10 +60,9 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
       onChange,
       required,
       disabled,
-      ...rest
     },
     ref,
-  ) {
+  ) => {
     const [passwordIsVisible, setPasswordIsVisible] =
       useState<boolean>(passwordToggle);
 
@@ -95,7 +93,6 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
             required={required}
             disabled={disabled}
             data-testid="generic-input"
-            {...rest}
           />
           {passwordToggle && (
             <ViewPasswordButton
@@ -111,6 +108,8 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
     );
   },
 );
+
+GenericInput.displayName = 'GenericInput';
 
 const LabelPasswordInputContainer = styled.div<{
   labelPosition: GenericLabelPositions;

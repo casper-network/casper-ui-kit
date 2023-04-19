@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { pxToRem } from '../../utils';
 import ArrowUpIcon from '../../assets/svg/icons/arrow-up-icon.svg';
@@ -6,8 +6,7 @@ import ArrowDownIcon from '../../assets/svg/icons/arrow-down-icon.svg';
 
 export type NumberLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface NumberInputProps
-  extends InputHTMLAttributes<HTMLInputElement> {
+export interface NumberInputProps {
   readonly label?: string;
   readonly labelPosition?: NumberLabelPositions;
   readonly gapSize?: number;
@@ -30,7 +29,7 @@ export interface NumberInputProps
 }
 
 export const NumberInput: React.FC<NumberInputProps> = forwardRef(
-  function NumberInput(
+  (
     {
       label = 'number input',
       labelPosition,
@@ -50,10 +49,9 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
       maxNumberValue = 20,
       required,
       disabled,
-      ...rest
     },
     ref,
-  ) {
+  ) => {
     const [inputValue, setInputValue] = useState(defaultValue);
 
     const onChangeHandler = (e: { target: { value: string | number } }) =>
@@ -99,7 +97,6 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
             required={required}
             disabled={disabled}
             onChange={onChangeHandler}
-            {...rest}
           />
           <ArrowsContainer>
             <ArrowButton
@@ -124,6 +121,8 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
     );
   },
 );
+
+NumberInput.displayName = 'NumberInput';
 
 const LabelPasswordInputContainer = styled.div<{
   labelPosition?: NumberLabelPositions;

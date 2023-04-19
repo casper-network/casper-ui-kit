@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { pxToRem } from '../../utils';
 import CheckboxSvg from '../../assets/svg/icons/checkbox.svg';
 
 export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps {
   readonly checked?: boolean;
   readonly boxColor?: string;
   readonly checkmarkColor?: string;
@@ -23,61 +23,63 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
 }
 
-export const Checkbox: React.FC<CheckboxProps> = forwardRef(function Checkbox(
-  {
-    boxColor = '#02c1b0',
-    checkmarkColor = '#02c1b0',
-    label = 'Checkbox Label',
-    labelPosition = 'left',
-    gapSize = 10,
-    width = 30,
-    borderWidth = 2,
-    checkmarkSize = 65,
-    checked,
-    disabled,
-    onChange,
-    value,
-    name,
-    required,
-    ...rest
-  },
-  ref,
-) {
-  const [isChecked, setIsChecked] = useState(checked);
+export const Checkbox: React.FC<CheckboxProps> = forwardRef(
+  (
+    {
+      boxColor = '#02c1b0',
+      checkmarkColor = '#02c1b0',
+      label = 'Checkbox Label',
+      labelPosition = 'left',
+      gapSize = 10,
+      width = 30,
+      borderWidth = 2,
+      checkmarkSize = 65,
+      checked,
+      disabled,
+      onChange,
+      value,
+      name,
+      required,
+    },
+    ref,
+  ) => {
+    const [isChecked, setIsChecked] = useState(checked);
 
-  return (
-    <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
-      <label>{label}</label>
-      <CheckboxContainer
-        onClick={() => setIsChecked(prev => !prev)}
-        width={width}>
-        <StyledCheckbox
-          ref={ref}
-          boxColor={boxColor}
-          width={width}
-          borderWidth={borderWidth}
-          type="checkbox"
-          onChange={onChange}
-          disabled={disabled}
-          value={value}
-          name={name}
-          checked={checked}
-          required={required}
-          {...rest}
-        />
-        {isChecked && (
-          <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
-            <StyledCheckboxSvg
-              checkmarkColor={checkmarkColor}
-              disabled={disabled}
-              required={required}
-            />
-          </CheckboxSvgWrapper>
-        )}
-      </CheckboxContainer>
-    </LabelCheckboxContainer>
-  );
-});
+    return (
+      <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
+        <label>{label}</label>
+        <CheckboxContainer
+          onClick={() => setIsChecked(prev => !prev)}
+          width={width}>
+          <StyledCheckbox
+            ref={ref}
+            boxColor={boxColor}
+            width={width}
+            borderWidth={borderWidth}
+            type="checkbox"
+            onChange={onChange}
+            disabled={disabled}
+            value={value}
+            name={name}
+            checked={checked}
+            required={required}
+          />
+          {isChecked && (
+            <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
+              <StyledCheckboxSvg
+                checkmarkColor={checkmarkColor}
+                disabled={disabled}
+                required={required}
+              />
+            </CheckboxSvgWrapper>
+          )}
+        </CheckboxContainer>
+      </LabelCheckboxContainer>
+    );
+  },
+);
+
+Checkbox.displayName = 'Checkbox';
 
 const LabelCheckboxContainer = styled.div<{
   labelPosition: LabelPositions;

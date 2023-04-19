@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import React, { InputHTMLAttributes, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { pxToRem } from '../../utils';
 
 export type EmailLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface EmailInputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface EmailInputProps {
   readonly label?: string;
   readonly labelPosition?: EmailLabelPositions;
   readonly gapSize?: number;
@@ -29,7 +29,7 @@ export interface EmailInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const EmailInput: React.FC<EmailInputProps> = forwardRef(
-  function EmailInput(
+  (
     {
       label = 'email label',
       labelPosition = 'left',
@@ -51,42 +51,40 @@ export const EmailInput: React.FC<EmailInputProps> = forwardRef(
       onChange,
       required,
       disabled,
-      ...rest
     },
     ref,
-  ) {
-    return (
-      <LabelPasswordInputContainer
-        labelPosition={labelPosition}
-        gapSize={gapSize}>
-        <label>{label}</label>
-        <StyledPasswordInput
-          ref={ref}
-          fontSize={fontSize}
-          fontColor={fontColor}
-          boxShadowColor={boxShadowColor}
-          borderColor={borderColor}
-          focusBorderColor={focusBorderColor}
-          focusBorderWidth={focusBorderWidth}
-          width={width}
-          height={height}
-          placeholder={placeholder}
-          placeholderColor={placeholderColor}
-          type="email"
-          minLength={minEmailLength}
-          maxLength={maxEmailLength}
-          multiple={multiple}
-          pattern={pattern}
-          onChange={onChange}
-          required={required}
-          disabled={disabled}
-          data-testid="email-input"
-          {...rest}
-        />
-      </LabelPasswordInputContainer>
-    );
-  },
+  ) => (
+    <LabelPasswordInputContainer
+      labelPosition={labelPosition}
+      gapSize={gapSize}>
+      <label>{label}</label>
+      <StyledPasswordInput
+        ref={ref}
+        fontSize={fontSize}
+        fontColor={fontColor}
+        boxShadowColor={boxShadowColor}
+        borderColor={borderColor}
+        focusBorderColor={focusBorderColor}
+        focusBorderWidth={focusBorderWidth}
+        width={width}
+        height={height}
+        placeholder={placeholder}
+        placeholderColor={placeholderColor}
+        type="email"
+        minLength={minEmailLength}
+        maxLength={maxEmailLength}
+        multiple={multiple}
+        pattern={pattern}
+        onChange={onChange}
+        required={required}
+        disabled={disabled}
+        data-testid="email-input"
+      />
+    </LabelPasswordInputContainer>
+  ),
 );
+
+EmailInput.displayName = 'EmailInput';
 
 const LabelPasswordInputContainer = styled.div<{
   labelPosition: EmailLabelPositions;
