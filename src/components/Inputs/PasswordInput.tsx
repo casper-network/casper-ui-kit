@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { InputHTMLAttributes, useState } from 'react';
+import React, { InputHTMLAttributes, useState, forwardRef } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
 import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
@@ -28,71 +28,78 @@ export interface PasswordInputProps
   readonly disabled?: boolean;
   readonly required?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  readonly ref?: React.ForwardedRef<HTMLInputElement>;
 }
 
-export const PasswordInput: React.FC<PasswordInputProps> = ({
-  label = 'Password Label',
-  labelPosition = 'left',
-  gapSize,
-  fontSize,
-  fontColor,
-  placeholder = '••••••••••••••••••••',
-  placeholderColor,
-  svgColor,
-  boxShadowColor,
-  borderColor,
-  focusBorderColor,
-  focusBorderWidth,
-  width,
-  height,
-  minPasswordLength = 1,
-  maxPasswordLength = 20,
-  pattern,
-  onChange,
-  required,
-  disabled,
-  ...rest
-}) => {
-  const [passwordIsVisible, setPasswordIsVisible] = useState<boolean>(false);
+export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
+  function PasswordInput(
+    {
+      label = 'Password Label',
+      labelPosition = 'left',
+      gapSize,
+      fontSize,
+      fontColor,
+      placeholder = '••••••••••••••••••••',
+      placeholderColor,
+      svgColor,
+      boxShadowColor,
+      borderColor,
+      focusBorderColor,
+      focusBorderWidth,
+      width,
+      height,
+      minPasswordLength = 1,
+      maxPasswordLength = 20,
+      pattern,
+      onChange,
+      required,
+      disabled,
+      ...rest
+    },
+    ref,
+  ) {
+    const [passwordIsVisible, setPasswordIsVisible] = useState<boolean>(false);
 
-  return (
-    <LabelPasswordInputContainer
-      labelPosition={labelPosition}
-      gapSize={gapSize}>
-      <label>{label}</label>
-      <InputIconContainer>
-        <StyledPasswordInput
-          fontSize={fontSize}
-          fontColor={fontColor}
-          boxShadowColor={boxShadowColor}
-          borderColor={borderColor}
-          focusBorderColor={focusBorderColor}
-          focusBorderWidth={focusBorderWidth}
-          width={width}
-          height={height}
-          placeholder={placeholder}
-          placeholderColor={placeholderColor}
-          type={passwordIsVisible ? 'text' : 'password'}
-          min={minPasswordLength}
-          maxLength={maxPasswordLength}
-          pattern={pattern}
-          onChange={onChange}
-          required={required}
-          disabled={disabled}
-          data-testid="password-input"
-          {...rest}
-        />
-        <ViewPasswordButton
-          onClick={() => setPasswordIsVisible(prev => !prev)}
-          svgColor={svgColor}
-          focusBorderColor={focusBorderColor}
-          focusBorderWidth={focusBorderWidth}>
-          {passwordIsVisible ? <ViewPasswordIcon /> : <HidePasswordIcon />}
-        </ViewPasswordButton>
-      </InputIconContainer>
-    </LabelPasswordInputContainer>
-  );
-};
+    return (
+      <LabelPasswordInputContainer
+        labelPosition={labelPosition}
+        gapSize={gapSize}>
+        <label>{label}</label>
+        <InputIconContainer>
+          <StyledPasswordInput
+            ref={ref}
+            fontSize={fontSize}
+            fontColor={fontColor}
+            boxShadowColor={boxShadowColor}
+            borderColor={borderColor}
+            focusBorderColor={focusBorderColor}
+            focusBorderWidth={focusBorderWidth}
+            width={width}
+            height={height}
+            placeholder={placeholder}
+            placeholderColor={placeholderColor}
+            type={passwordIsVisible ? 'text' : 'password'}
+            min={minPasswordLength}
+            maxLength={maxPasswordLength}
+            pattern={pattern}
+            onChange={onChange}
+            required={required}
+            disabled={disabled}
+            data-testid="password-input"
+            {...rest}
+          />
+          <ViewPasswordButton
+            onClick={() => setPasswordIsVisible(prev => !prev)}
+            svgColor={svgColor}
+            focusBorderColor={focusBorderColor}
+            focusBorderWidth={focusBorderWidth}>
+            {passwordIsVisible ? <ViewPasswordIcon /> : <HidePasswordIcon />}
+          </ViewPasswordButton>
+        </InputIconContainer>
+      </LabelPasswordInputContainer>
+    );
+  },
+);
 
 const LabelPasswordInputContainer = styled.div<{
   labelPosition: PasswordLabelPositions;

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, forwardRef } from 'react';
 import { pxToRem } from '../../utils';
 
 export type EmailLabelPositions = 'top' | 'right' | 'bottom' | 'left';
@@ -25,56 +25,67 @@ export interface EmailInputProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly disabled?: boolean;
   readonly required?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  readonly ref?: React.ForwardedRef<HTMLInputElement>;
 }
 
-export const EmailInput: React.FC<EmailInputProps> = ({
-  label = 'email label',
-  labelPosition = 'left',
-  gapSize,
-  fontSize,
-  fontColor,
-  placeholder = 'Enter email address',
-  placeholderColor,
-  boxShadowColor,
-  borderColor,
-  focusBorderColor,
-  focusBorderWidth,
-  width,
-  height,
-  minEmailLength = 1,
-  maxEmailLength = 254,
-  multiple,
-  pattern,
-  onChange,
-  required,
-  disabled,
-  ...rest
-}) => (
-  <LabelPasswordInputContainer labelPosition={labelPosition} gapSize={gapSize}>
-    <label>{label}</label>
-    <StyledPasswordInput
-      fontSize={fontSize}
-      fontColor={fontColor}
-      boxShadowColor={boxShadowColor}
-      borderColor={borderColor}
-      focusBorderColor={focusBorderColor}
-      focusBorderWidth={focusBorderWidth}
-      width={width}
-      height={height}
-      placeholder={placeholder}
-      placeholderColor={placeholderColor}
-      type="email"
-      minLength={minEmailLength}
-      maxLength={maxEmailLength}
-      multiple={multiple}
-      pattern={pattern}
-      onChange={onChange}
-      required={required}
-      disabled={disabled}
-      data-testid="email-input"
-      {...rest}
-    />
-  </LabelPasswordInputContainer>
+export const EmailInput: React.FC<EmailInputProps> = forwardRef(
+  function EmailInput(
+    {
+      label = 'email label',
+      labelPosition = 'left',
+      gapSize,
+      fontSize,
+      fontColor,
+      placeholder = 'Enter email address',
+      placeholderColor,
+      boxShadowColor,
+      borderColor,
+      focusBorderColor,
+      focusBorderWidth,
+      width,
+      height,
+      minEmailLength = 1,
+      maxEmailLength = 254,
+      multiple,
+      pattern,
+      onChange,
+      required,
+      disabled,
+      ...rest
+    },
+    ref,
+  ) {
+    return (
+      <LabelPasswordInputContainer
+        labelPosition={labelPosition}
+        gapSize={gapSize}>
+        <label>{label}</label>
+        <StyledPasswordInput
+          ref={ref}
+          fontSize={fontSize}
+          fontColor={fontColor}
+          boxShadowColor={boxShadowColor}
+          borderColor={borderColor}
+          focusBorderColor={focusBorderColor}
+          focusBorderWidth={focusBorderWidth}
+          width={width}
+          height={height}
+          placeholder={placeholder}
+          placeholderColor={placeholderColor}
+          type="email"
+          minLength={minEmailLength}
+          maxLength={maxEmailLength}
+          multiple={multiple}
+          pattern={pattern}
+          onChange={onChange}
+          required={required}
+          disabled={disabled}
+          data-testid="email-input"
+          {...rest}
+        />
+      </LabelPasswordInputContainer>
+    );
+  },
 );
 
 const LabelPasswordInputContainer = styled.div<{

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
 import { pxToRem } from '../../utils';
 import CheckboxSvg from '../../assets/svg/icons/checkbox.svg';
 
@@ -20,30 +20,39 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly name?: string;
   readonly value?: string | number;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  readonly ref?: React.ForwardedRef<HTMLInputElement>;
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({
-  boxColor = '#02c1b0',
-  checkmarkColor = '#02c1b0',
-  label = 'Checkbox Label',
-  labelPosition = 'left',
-  gapSize = 10,
-  width = 30,
-  borderWidth = 2,
-  checkmarkSize = 65,
-  checked,
-  disabled,
-  onChange,
-  value,
-  name,
-  required,
-  ...rest
-}) => {
+export const Checkbox: React.FC<CheckboxProps> = forwardRef(function Checkbox(
+  {
+    boxColor = '#02c1b0',
+    checkmarkColor = '#02c1b0',
+    label = 'Checkbox Label',
+    labelPosition = 'left',
+    gapSize = 10,
+    width = 30,
+    borderWidth = 2,
+    checkmarkSize = 65,
+    checked,
+    disabled,
+    onChange,
+    value,
+    name,
+    required,
+    ...rest
+  },
+  ref,
+) {
+  const [isChecked, setIsChecked] = useState(checked);
+
   return (
     <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
       <label>{label}</label>
-      <CheckboxContainer width={width}>
+      <CheckboxContainer
+        onClick={() => setIsChecked(prev => !prev)}
+        width={width}>
         <StyledCheckbox
+          ref={ref}
           boxColor={boxColor}
           width={width}
           borderWidth={borderWidth}
@@ -56,7 +65,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           required={required}
           {...rest}
         />
-        {checked && (
+        {isChecked && (
           <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
             <StyledCheckboxSvg
               checkmarkColor={checkmarkColor}
@@ -68,7 +77,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       </CheckboxContainer>
     </LabelCheckboxContainer>
   );
-};
+});
 
 const LabelCheckboxContainer = styled.div<{
   labelPosition: LabelPositions;
