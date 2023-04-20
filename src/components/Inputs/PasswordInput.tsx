@@ -86,6 +86,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
             data-testid="password-input"
           />
           <ViewPasswordButton
+            type="button"
             onClick={() => setPasswordIsVisible(prev => !prev)}
             svgColor={svgColor}
             focusBorderColor={focusBorderColor}

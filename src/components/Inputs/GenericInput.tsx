@@ -96,6 +96,7 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
           />
           {passwordToggle && (
             <ViewPasswordButton
+              type="button"
               onClick={() => setPasswordIsVisible(prev => !prev)}
               svgColor={svgColor}
               focusBorderColor={focusBorderColor}
