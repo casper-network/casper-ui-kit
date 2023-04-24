@@ -7,7 +7,7 @@ on:
   schedule:
     # * is a special character in YAML so you have to quote this string
     # runs every day at midnight
-    - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
 
 permissions:
   contents: write
@@ -35,7 +35,7 @@ jobs:
         run: npm i
 
       - name: Audit Frontend
-        run: npm audit
+        run: npm run audit
 
       - name: Build Frontend
         run: npm run build
@@ -51,9 +51,9 @@ jobs:
         if: always()
         with:
           status: ${{ job.status }}
-          notification_title: "*{repo}*"
-          message_format: "{emoji} *{workflow}* *{job}* *{status_message}* in <{repo_url}|{repo}@{branch}> on <{commit_url}|{commit_sha}>"
-          footer: "<{run_url}|View Run>"
+          notification_title: '*{repo}*'
+          message_format: '{emoji} *{workflow}* *{job}* *{status_message}* in <{repo_url}|{repo}@{branch}> on <{commit_url}|{commit_sha}>'
+          footer: '<{run_url}|View Run>'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
