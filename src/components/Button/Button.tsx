@@ -11,7 +11,7 @@ export interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   readonly color?: string;
   readonly type: ButtonType;
   readonly className?: string;
-  readonly isDisabled?: boolean;
+  readonly disabled?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   color = 'white',
   type,
   className,
-  isDisabled = false,
+  disabled = false,
   ...baseButtonProps
 }) => {
   return (
@@ -31,7 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
       bgColor={bgColor}
       color={color}
       onClick={onClick}
-      disabled={isDisabled}
+      disabled={disabled}
       {...baseButtonProps}>
       {children}
     </StyledButton>
