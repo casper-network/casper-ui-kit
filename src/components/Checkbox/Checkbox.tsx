@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import React, { forwardRef, useState } from 'react';
+import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
 import { pxToRem } from '../../utils';
 import CheckboxSvg from '../../assets/svg/icons/checkbox.svg';
 
 export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface CheckboxProps {
+export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly checked?: boolean;
   readonly boxColor?: string;
   readonly checkmarkColor?: string;
@@ -21,15 +21,17 @@ export interface CheckboxProps {
   readonly value?: string | number;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
+  readonly id?: string;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = forwardRef(
   (
     {
-      boxColor = '#02c1b0',
-      checkmarkColor = '#02c1b0',
+      id = 'checkbox',
       label = 'Checkbox Label',
       labelPosition = 'left',
+      boxColor = '#02c1b0',
+      checkmarkColor = '#02c1b0',
       gapSize = 10,
       width = 30,
       borderWidth = 2,
@@ -40,6 +42,7 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
       value,
       name,
       required,
+      ...baseCheckboxProps
     },
     ref,
   ) => {
@@ -47,11 +50,12 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
 
     return (
       <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
-        <label>{label}</label>
+        <label htmlFor={id}>{label}</label>
         <CheckboxContainer
           onClick={() => setIsChecked(prev => !prev)}
           width={width}>
           <StyledCheckbox
+            id={id}
             ref={ref}
             boxColor={boxColor}
             width={width}
@@ -63,6 +67,7 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
             name={name}
             checked={checked}
             required={required}
+            {...baseCheckboxProps}
           />
           {isChecked && (
             <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>

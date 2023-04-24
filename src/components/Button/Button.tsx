@@ -22,7 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
   type,
   className,
   isDisabled = false,
-  ...rest
+  ...baseButtonProps
 }) => {
   return (
     <StyledButton
@@ -32,7 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
       color={color}
       onClick={onClick}
       disabled={isDisabled}
-      {...rest}>
+      {...baseButtonProps}>
       {children}
     </StyledButton>
   );

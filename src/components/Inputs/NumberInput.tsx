@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { pxToRem } from '../../utils';
 import ArrowUpIcon from '../../assets/svg/icons/arrow-up-icon.svg';
@@ -6,7 +6,8 @@ import ArrowDownIcon from '../../assets/svg/icons/arrow-down-icon.svg';
 
 export type NumberLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface NumberInputProps {
+export interface NumberInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: NumberLabelPositions;
   readonly gapSize?: number;
@@ -26,11 +27,13 @@ export interface NumberInputProps {
   readonly disabled?: boolean;
   readonly required?: boolean;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
+  readonly id?: string;
 }
 
 export const NumberInput: React.FC<NumberInputProps> = forwardRef(
   (
     {
+      id = 'NumberInput',
       label = 'number input',
       labelPosition,
       gapSize,
@@ -49,6 +52,7 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
       maxNumberValue = 20,
       required,
       disabled,
+      ...baseInputProps
     },
     ref,
   ) => {
@@ -77,11 +81,12 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
       <LabelPasswordInputContainer
         labelPosition={labelPosition}
         gapSize={gapSize}>
-        <label>{label}</label>
+        <label htmlFor={id}>{label}</label>
         <InputAndArrowsContainer
           height={height}
           boxShadowColor={boxShadowColor}>
           <StyledInput
+            id={id}
             ref={ref}
             type="number"
             fontSize={fontSize}
@@ -97,6 +102,7 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
             required={required}
             disabled={disabled}
             onChange={onChangeHandler}
+            {...baseInputProps}
           />
           <ArrowsContainer>
             <ArrowButton

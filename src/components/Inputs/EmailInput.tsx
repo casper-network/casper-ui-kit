@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import React, { forwardRef } from 'react';
+import React, { InputHTMLAttributes, forwardRef } from 'react';
 import { pxToRem } from '../../utils';
 
 export type EmailLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface EmailInputProps {
+export interface EmailInputProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: EmailLabelPositions;
   readonly gapSize?: number;
@@ -26,11 +26,13 @@ export interface EmailInputProps {
   readonly required?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
+  readonly id?: string;
 }
 
 export const EmailInput: React.FC<EmailInputProps> = forwardRef(
   (
     {
+      id = 'emailInput',
       label = 'email label',
       labelPosition = 'left',
       gapSize,
@@ -51,14 +53,16 @@ export const EmailInput: React.FC<EmailInputProps> = forwardRef(
       onChange,
       required,
       disabled,
+      ...baseInputProps
     },
     ref,
   ) => (
     <LabelPasswordInputContainer
       labelPosition={labelPosition}
       gapSize={gapSize}>
-      <label>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <StyledPasswordInput
+        id={id}
         ref={ref}
         fontSize={fontSize}
         fontColor={fontColor}
@@ -78,6 +82,7 @@ export const EmailInput: React.FC<EmailInputProps> = forwardRef(
         onChange={onChange}
         required={required}
         disabled={disabled}
+        {...baseInputProps}
         data-testid="email-input"
       />
     </LabelPasswordInputContainer>

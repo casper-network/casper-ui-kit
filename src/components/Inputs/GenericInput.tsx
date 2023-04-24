@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { forwardRef, useState } from 'react';
+import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
 import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
@@ -7,7 +7,8 @@ import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 export type GenericLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 export type GenericTypes = 'text' | 'email' | 'password' | 'radio';
 
-export interface GenericInputProps {
+export interface GenericInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   readonly inputType: GenericTypes;
   readonly label?: string;
   readonly labelPosition?: GenericLabelPositions;
@@ -32,12 +33,14 @@ export interface GenericInputProps {
   readonly required?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
+  readonly id?: string;
 }
 
 export const GenericInput: React.FC<GenericInputProps> = forwardRef(
   (
     {
       inputType = 'text',
+      id = 'genericInput',
       label = 'Generic label',
       labelPosition = 'left',
       passwordToggle = false,
@@ -60,6 +63,7 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
       onChange,
       required,
       disabled,
+      ...baseInputProps
     },
     ref,
   ) => {
@@ -70,9 +74,10 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
       <LabelPasswordInputContainer
         labelPosition={labelPosition}
         gapSize={gapSize}>
-        <label>{label}</label>
+        <label htmlFor={id}>{label}</label>
         <InputIconContainer>
           <StyledInput
+            id={id}
             ref={ref}
             type={inputType}
             fontSize={fontSize}
@@ -92,6 +97,7 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
             onChange={onChange}
             required={required}
             disabled={disabled}
+            {...baseInputProps}
             data-testid="generic-input"
           />
           {passwordToggle && (

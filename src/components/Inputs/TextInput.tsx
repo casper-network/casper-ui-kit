@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import React, { forwardRef } from 'react';
+import React, { InputHTMLAttributes, forwardRef } from 'react';
 import { pxToRem } from '../../utils';
 
 export type TextLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface TextInputProps {
+export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: TextLabelPositions;
   readonly gapSize?: number;
@@ -26,11 +26,13 @@ export interface TextInputProps {
   readonly required?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
+  readonly id?: string;
 }
 
 export const TextInput: React.FC<TextInputProps> = forwardRef(
   (
     {
+      id = 'textInput',
       label = 'Text label',
       labelPosition = 'left',
       gapSize,
@@ -51,14 +53,16 @@ export const TextInput: React.FC<TextInputProps> = forwardRef(
       onChange,
       required,
       disabled,
+      ...baseInputProps
     },
     ref,
   ) => (
     <LabelPasswordInputContainer
       labelPosition={labelPosition}
       gapSize={gapSize}>
-      <label>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <StyledInput
+        id={id}
         ref={ref}
         fontSize={fontSize}
         fontColor={fontColor}
@@ -78,6 +82,7 @@ export const TextInput: React.FC<TextInputProps> = forwardRef(
         onChange={onChange}
         required={required}
         disabled={disabled}
+        {...baseInputProps}
         data-testid="text-input"
       />
     </LabelPasswordInputContainer>

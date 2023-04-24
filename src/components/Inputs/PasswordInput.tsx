@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
-import React, { useState, forwardRef } from 'react';
+import React, { useState, forwardRef, InputHTMLAttributes } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
 import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 
 export type PasswordLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface PasswordInputProps {
+export interface PasswordInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: PasswordLabelPositions;
   readonly gapSize?: number;
@@ -28,11 +29,13 @@ export interface PasswordInputProps {
   readonly required?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
+  readonly id?: string;
 }
 
 export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
   (
     {
+      id = 'passwordInput',
       label = 'Password Label',
       labelPosition = 'left',
       gapSize,
@@ -53,6 +56,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
       onChange,
       required,
       disabled,
+      ...baseInputProps
     },
     ref,
   ) => {
@@ -62,9 +66,10 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
       <LabelPasswordInputContainer
         labelPosition={labelPosition}
         gapSize={gapSize}>
-        <label>{label}</label>
+        <label htmlFor={id}>{label}</label>
         <InputIconContainer>
           <StyledPasswordInput
+            id={id}
             ref={ref}
             fontSize={fontSize}
             fontColor={fontColor}
@@ -83,6 +88,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
             onChange={onChange}
             required={required}
             disabled={disabled}
+            {...baseInputProps}
             data-testid="password-input"
           />
           <ViewPasswordButton
