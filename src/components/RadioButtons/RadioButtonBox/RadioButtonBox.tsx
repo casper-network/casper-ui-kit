@@ -1,14 +1,13 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React from 'react';
 import { pxToRem } from '../../../utils';
-import CheckboxSvg from '../../../assets/svg/icons/checkbox.svg';
+import XSvg from '../../../assets/svg/icons/x-icon.svg';
 
 export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface CheckboxProps {
+export interface RadioButtonBoxProps {
   readonly defaultChecked?: boolean;
-  readonly boxColor?: string;
-  readonly checkmarkColor?: string;
+  readonly color?: string;
   readonly label?: string;
   readonly labelPosition?: LabelPositions;
   readonly gapSize?: number;
@@ -22,9 +21,8 @@ export interface CheckboxProps {
   readonly onChange?: () => void;
 }
 
-export const RadioCheckBox: React.FC<CheckboxProps> = ({
-  boxColor = '#02c1b0',
-  checkmarkColor = '#02c1b0',
+export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
+  color = '#02c1b0',
   label = 'Checkbox Label',
   labelPosition = 'left',
   gapSize = 10,
@@ -38,11 +36,7 @@ export const RadioCheckBox: React.FC<CheckboxProps> = ({
   name,
   required,
 }) => {
-  const [isChecked, setIsChecked] = useState(defaultChecked);
-
   const handleClick = () => {
-    console.log(isChecked);
-    setIsChecked(!isChecked);
     onChange?.();
   };
 
@@ -51,7 +45,7 @@ export const RadioCheckBox: React.FC<CheckboxProps> = ({
       <label>{label}</label>
       <CheckboxContainer width={width}>
         <StyledCheckbox
-          boxColor={boxColor}
+          color={color}
           width={width}
           borderWidth={borderWidth}
           type="radio"
@@ -60,18 +54,16 @@ export const RadioCheckBox: React.FC<CheckboxProps> = ({
           onClick={handleClick}
           name={name}
           required={required}
-          checked={isChecked}
           defaultChecked={defaultChecked}
         />
-        {isChecked && (
-          <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
-            <StyledCheckboxSvg
-              checkmarkColor={checkmarkColor}
-              disabled={disabled}
-              required={required}
-            />
-          </CheckboxSvgWrapper>
-        )}
+
+        <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>
+          <StyledCheckboxSvg
+            color={color}
+            disabled={disabled}
+            required={required}
+          />
+        </CheckboxSvgWrapper>
       </CheckboxContainer>
     </LabelCheckboxContainer>
   );
@@ -103,7 +95,7 @@ const CheckboxContainer = styled.div<{ width: number }>`
 `;
 
 const StyledCheckbox = styled.input<{
-  boxColor: string;
+  color: string;
   disabled?: boolean;
   required?: boolean;
   borderWidth: number;
@@ -112,17 +104,27 @@ const StyledCheckbox = styled.input<{
   height: 100%;
   padding: 0;
   margin: 0;
-  border: ${({ disabled, required, borderWidth, boxColor }) => {
+  border: ${({ disabled, required, borderWidth, color }) => {
     const disabledStyles = `${pxToRem(borderWidth)} solid #F1F1F4`;
     const requiredStyles = `${pxToRem(borderWidth)} solid #FF0000`;
 
     if (disabled) return disabledStyles;
     if (required) return requiredStyles;
-    return `${pxToRem(borderWidth)}  solid ${boxColor}`;
+    return `${pxToRem(borderWidth)}  solid ${color}`;
   }};
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
+
+  + div {
+    display: none;
+  }
+
+  :checked {
+    + div {
+      display: block;
+    }
+  }
 `;
 
 const CheckboxSvgWrapper = styled.div<{
@@ -144,12 +146,12 @@ const CheckboxSvgWrapper = styled.div<{
 interface StyledCheckboxSvgProps {
   disabled?: boolean;
   required?: boolean;
-  checkmarkColor: string;
+  color: string;
 }
 
-const StyledCheckboxSvg = styled(CheckboxSvg)`
-  fill: ${({ disabled, required, checkmarkColor }: StyledCheckboxSvgProps) => {
-    let fillColor = checkmarkColor;
+const StyledCheckboxSvg = styled(XSvg)`
+  fill: ${({ disabled, required, color }: StyledCheckboxSvgProps) => {
+    let fillColor = color;
 
     if (disabled) {
       fillColor = '#F1F1F4';

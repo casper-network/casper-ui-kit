@@ -1,3 +1,3 @@
 export * from './RadioButtonGroup';
-export * from './RadioCheckBox';
-export * from './RadioCheckGroup';
+export * from './RadioButtonBox';
+export * from './RadioButtonBoxGroup';

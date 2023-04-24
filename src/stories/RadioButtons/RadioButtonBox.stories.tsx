@@ -3,37 +3,38 @@ import styled from '@emotion/styled';
 import { Meta, StoryFn } from '@storybook/react';
 import { pxToRem } from '../../utils';
 import {
-  OptionGroupProps,
-  RadioCheckGroup,
+  RadioButtonBoxGroup,
+  RadioButtonBoxGroupProps,
 } from '../../components/RadioButtons';
 
 export default {
   title: 'Components/RadioCheckboxGroups',
-  component: RadioCheckGroup,
-} as Meta<typeof RadioCheckGroup>;
+  component: RadioButtonBoxGroup,
+} as Meta<typeof RadioButtonBoxGroup>;
 
-// Create a master template for mapping args to render the RadioButtonGroup component
-const Template: StoryFn<typeof RadioCheckGroup> = (args: OptionGroupProps) => (
+const Template: StoryFn<typeof RadioButtonBoxGroup> = (
+  args: RadioButtonBoxGroupProps,
+) => (
   <StoryContainer>
-    <RadioCheckGroup {...args} />
+    <RadioButtonBoxGroup {...args} />
   </StoryContainer>
 );
 
 const base = [
   {
-    label: 'Option1',
+    value: 'Option1',
     name: 'base-button-types',
   },
   {
-    label: 'Option2',
+    value: 'Option2',
     name: 'base-button-types',
   },
   {
-    label: 'Option3',
+    value: 'Option3',
     name: 'base-button-types',
   },
   {
-    label: 'Option4',
+    value: 'Option4',
     name: 'base-button-types',
   },
 ];
@@ -47,15 +48,15 @@ Base.args = {
 
 const row = [
   {
-    label: 'Option1',
+    value: 'Option1',
     name: 'base-button-types',
   },
   {
-    label: 'Option2',
+    value: 'Option2',
     name: 'base-button-types',
   },
   {
-    label: 'Option3',
+    value: 'Option3',
     name: 'base-button-types',
   },
 ];
@@ -70,12 +71,12 @@ Row.args = {
 
 const disabledOptions = [
   {
-    label: 'Option1',
+    value: 'Option1',
     name: 'base-button-types',
     disabled: true,
   },
   {
-    label: 'Option2',
+    value: 'Option2',
     name: 'base-button-types',
     disabled: true,
   },
@@ -90,12 +91,12 @@ Disabled.args = {
 
 const requiredOptions = [
   {
-    label: 'Option1',
+    value: 'Option1',
     name: 'base-button-types',
     required: true,
   },
   {
-    label: 'Option2',
+    value: 'Option2',
     name: 'base-button-types',
     required: true,
   },
@@ -110,29 +111,26 @@ Required.args = {
 
 const options = [
   {
-    label: 'Option1',
+    value: 'Option1',
     name: 'base-button-types',
-    borderColor: 'blue',
-    centerColor: 'green',
+    color: 'green',
     diameter: 35,
     labelPosition: 'top' as 'top',
     verticalPadding: 5,
   },
   {
-    label: 'Option2',
+    value: 'Option2',
     name: 'base-button-types',
-    borderColor: 'purple',
-    centerColor: 'red',
+    color: 'red',
     diameter: 25,
     labelPosition: 'right' as 'right',
     verticalPadding: 10,
   },
 
   {
-    label: 'Option3',
+    value: 'Option3',
     name: 'base-button-types',
-    borderColor: 'orange',
-    centerColor: 'green',
+    color: 'orange',
     diameter: 15,
     labelPosition: 'bottom' as 'bottom',
     verticalPadding: 15,
