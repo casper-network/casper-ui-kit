@@ -4,15 +4,15 @@ name: ci-ui-kit
 on:
   push:
     branches:
-      - "dev"
-      - "release-**"
-      - "feat-**"
+      - 'dev'
+      - 'release-**'
+      - 'feat-**'
 
   pull_request:
     branches:
-      - "dev"
-      - "release-**"
-      - "feat-**"
+      - 'dev'
+      - 'release-**'
+      - 'feat-**'
 
 jobs:
   test:
@@ -37,7 +37,7 @@ jobs:
         run: npm i
 
       - name: Audit Frontend
-        run: npm audit
+        run: npm run audit
 
       - name: Build Frontend
         run: npm run build
