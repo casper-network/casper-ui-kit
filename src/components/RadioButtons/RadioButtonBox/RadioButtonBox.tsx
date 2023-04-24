@@ -36,10 +36,6 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
   name,
   required,
 }) => {
-  const handleClick = () => {
-    onChange?.();
-  };
-
   return (
     <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
       <label>{label}</label>
@@ -51,7 +47,7 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
           type="radio"
           disabled={disabled}
           value={value}
-          onClick={handleClick}
+          onClick={onChange}
           name={name}
           required={required}
           defaultChecked={defaultChecked}
