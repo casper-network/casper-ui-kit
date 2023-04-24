@@ -67,8 +67,12 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
     },
     ref,
   ) => {
-    const [passwordIsVisible, setPasswordIsVisible] =
-      useState<boolean>(passwordToggle);
+    const [passwordIsVisible, setPasswordIsVisible] = useState(passwordToggle);
+    const toggleView = passwordIsVisible ? (
+      <ViewPasswordIcon />
+    ) : (
+      <HidePasswordIcon />
+    );
 
     return (
       <LabelPasswordInputContainer
@@ -107,7 +111,7 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
               svgColor={svgColor}
               focusBorderColor={focusBorderColor}
               focusBorderWidth={focusBorderWidth}>
-              {passwordIsVisible ? <ViewPasswordIcon /> : <HidePasswordIcon />}
+              {toggleView}
             </ViewPasswordButton>
           )}
         </InputIconContainer>
