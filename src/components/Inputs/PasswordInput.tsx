@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { useState, forwardRef, InputHTMLAttributes } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
 import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 
 export type PasswordLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface PasswordInputProps {
+export interface PasswordInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: PasswordLabelPositions;
   readonly gapSize?: number;
@@ -27,69 +28,89 @@ export interface PasswordInputProps {
   readonly disabled?: boolean;
   readonly required?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  readonly ref?: React.ForwardedRef<HTMLInputElement>;
+  readonly id?: string;
 }
 
-export const PasswordInput: React.FC<PasswordInputProps> = ({
-  label = 'Password Label',
-  labelPosition = 'left',
-  gapSize,
-  fontSize,
-  fontColor,
-  placeholder = '••••••••••••••••••••',
-  placeholderColor,
-  svgColor,
-  boxShadowColor,
-  borderColor,
-  focusBorderColor,
-  focusBorderWidth,
-  width,
-  height,
-  minPasswordLength = 1,
-  maxPasswordLength = 20,
-  pattern,
-  onChange,
-  required,
-  disabled,
-}) => {
-  const [passwordIsVisible, setPasswordIsVisible] = useState<boolean>(false);
+export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
+  (
+    {
+      id = 'passwordInput',
+      label = 'Password Label',
+      labelPosition = 'left',
+      gapSize,
+      fontSize,
+      fontColor,
+      placeholder = '••••••••••••••••••••',
+      placeholderColor,
+      svgColor,
+      boxShadowColor,
+      borderColor,
+      focusBorderColor,
+      focusBorderWidth,
+      width,
+      height,
+      minPasswordLength = 1,
+      maxPasswordLength = 20,
+      pattern,
+      onChange,
+      required,
+      disabled,
+      ...baseInputProps
+    },
+    ref,
+  ) => {
+    const [passwordIsVisible, setPasswordIsVisible] = useState(false);
+    const toggleView = passwordIsVisible ? (
+      <ViewPasswordIcon />
+    ) : (
+      <HidePasswordIcon />
+    );
 
-  return (
-    <LabelPasswordInputContainer
-      labelPosition={labelPosition}
-      gapSize={gapSize}>
-      <label>{label}</label>
-      <InputIconContainer>
-        <StyledPasswordInput
-          fontSize={fontSize}
-          fontColor={fontColor}
-          boxShadowColor={boxShadowColor}
-          borderColor={borderColor}
-          focusBorderColor={focusBorderColor}
-          focusBorderWidth={focusBorderWidth}
-          width={width}
-          height={height}
-          placeholder={placeholder}
-          placeholderColor={placeholderColor}
-          type={passwordIsVisible ? 'text' : 'password'}
-          min={minPasswordLength}
-          maxLength={maxPasswordLength}
-          pattern={pattern}
-          onChange={onChange}
-          required={required}
-          disabled={disabled}
-          data-testid="password-input"
-        />
-        <ViewPasswordButton
-          onClick={() => setPasswordIsVisible(prev => !prev)}
-          svgColor={svgColor}
-          focusBorderColor={focusBorderColor}
-          focusBorderWidth={focusBorderWidth}>
-          {passwordIsVisible ? <ViewPasswordIcon /> : <HidePasswordIcon />}
-        </ViewPasswordButton>
-      </InputIconContainer>
-    </LabelPasswordInputContainer>
-  );
-};
+    return (
+      <LabelPasswordInputContainer
+        labelPosition={labelPosition}
+        gapSize={gapSize}>
+        <label htmlFor={id}>{label}</label>
+        <InputIconContainer>
+          <StyledPasswordInput
+            id={id}
+            ref={ref}
+            fontSize={fontSize}
+            fontColor={fontColor}
+            boxShadowColor={boxShadowColor}
+            borderColor={borderColor}
+            focusBorderColor={focusBorderColor}
+            focusBorderWidth={focusBorderWidth}
+            width={width}
+            height={height}
+            placeholder={placeholder}
+            placeholderColor={placeholderColor}
+            type={passwordIsVisible ? 'text' : 'password'}
+            min={minPasswordLength}
+            maxLength={maxPasswordLength}
+            pattern={pattern}
+            onChange={onChange}
+            required={required}
+            disabled={disabled}
+            {...baseInputProps}
+            data-testid="password-input"
+          />
+          <ViewPasswordButton
+            type="button"
+            onClick={() => setPasswordIsVisible(prev => !prev)}
+            svgColor={svgColor}
+            focusBorderColor={focusBorderColor}
+            focusBorderWidth={focusBorderWidth}>
+            {toggleView}
+          </ViewPasswordButton>
+        </InputIconContainer>
+      </LabelPasswordInputContainer>
+    );
+  },
+);
+
+PasswordInput.displayName = 'PasswordInput';
 
 const LabelPasswordInputContainer = styled.div<{
   labelPosition: PasswordLabelPositions;
