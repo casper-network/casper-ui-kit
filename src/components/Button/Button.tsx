@@ -78,7 +78,7 @@ export const Button: React.FC<ButtonProps> = ({
   );
 };
 
-const StyledButton = styled.button<{
+interface StyledButtonProps {
   fontSize?: number;
   paddingX?: number;
   paddingY?: number;
@@ -95,7 +95,9 @@ const StyledButton = styled.button<{
   minButtonWidth?: number;
   disabled?: boolean;
   required?: boolean;
-}>`
+}
+
+const StyledButton = styled.button<StyledButtonProps>`
   font-size: ${({ fontSize }) => pxToRem(fontSize ?? 16)};
   white-space: nowrap;
   color: ${({ fontColor, required }) => {
