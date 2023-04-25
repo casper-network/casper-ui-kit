@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { pxToRem } from '../../utils';
 import ArrowUpIcon from '../../assets/svg/icons/arrow-up-icon.svg';
@@ -6,7 +6,8 @@ import ArrowDownIcon from '../../assets/svg/icons/arrow-down-icon.svg';
 
 export type NumberLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface NumberInputProps {
+export interface NumberInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: NumberLabelPositions;
   readonly gapSize?: number;
@@ -25,93 +26,109 @@ export interface NumberInputProps {
   readonly maxNumberValue?: number;
   readonly disabled?: boolean;
   readonly required?: boolean;
+  readonly ref?: React.ForwardedRef<HTMLInputElement>;
+  readonly id?: string;
 }
 
-export const NumberInput: React.FC<NumberInputProps> = ({
-  label = 'number input',
-  labelPosition,
-  gapSize,
-  fontSize,
-  fontColor,
-  boxShadowColor,
-  focusBorderColor,
-  focusBorderWidth = 1,
-  width,
-  height,
-  arrowColor,
-  readonly = false,
-  defaultValue = 0,
-  step = 1,
-  minNumberValue = 0,
-  maxNumberValue = 20,
-  required,
-  disabled,
-}) => {
-  const [inputValue, setInputValue] = useState(defaultValue);
+export const NumberInput: React.FC<NumberInputProps> = forwardRef(
+  (
+    {
+      id = 'NumberInput',
+      label = 'number input',
+      labelPosition,
+      gapSize,
+      fontSize,
+      fontColor,
+      boxShadowColor,
+      focusBorderColor,
+      focusBorderWidth = 1,
+      width,
+      height,
+      arrowColor,
+      readonly = false,
+      defaultValue = 0,
+      step = 1,
+      minNumberValue = 0,
+      maxNumberValue = 20,
+      required,
+      disabled,
+      ...baseInputProps
+    },
+    ref,
+  ) => {
+    const [inputValue, setInputValue] = useState(defaultValue);
 
-  const onChangeHandler = (e: { target: { value: string | number } }) =>
-    setInputValue(+e.target.value);
+    const onChangeHandler = (e: { target: { value: string | number } }) =>
+      setInputValue(+e.target.value);
 
-  const handleIncrement = () =>
-    inputValue < maxNumberValue
-      ? setInputValue(prev => prev + step)
-      : setInputValue(maxNumberValue);
+    const handleIncrement = () =>
+      inputValue < maxNumberValue
+        ? setInputValue(prev => prev + step)
+        : setInputValue(maxNumberValue);
 
-  const handleDecrement = () => {
-    if (inputValue > maxNumberValue) {
-      setInputValue(maxNumberValue);
-    }
-    if (inputValue > minNumberValue) {
-      setInputValue(prev => prev - step);
-    } else {
-      setInputValue(minNumberValue);
-    }
-  };
+    const handleDecrement = () => {
+      if (inputValue > maxNumberValue) {
+        setInputValue(maxNumberValue);
+      }
+      if (inputValue > minNumberValue) {
+        setInputValue(prev => prev - step);
+      } else {
+        setInputValue(minNumberValue);
+      }
+    };
 
-  return (
-    <LabelPasswordInputContainer
-      labelPosition={labelPosition}
-      gapSize={gapSize}>
-      <label>{label}</label>
-      <InputAndArrowsContainer height={height} boxShadowColor={boxShadowColor}>
-        <StyledInput
-          type="number"
-          fontSize={fontSize}
-          fontColor={fontColor}
-          width={width}
-          min={minNumberValue}
-          max={maxNumberValue}
-          step={step}
-          value={inputValue.toFixed(0)}
-          readOnly={readonly}
-          focusBorderColor={focusBorderColor}
-          focusBorderWidth={focusBorderWidth}
-          required={required}
-          disabled={disabled}
-          onChange={onChangeHandler}
-        />
-        <ArrowsContainer>
-          <ArrowButton
-            arrowColor={arrowColor}
+    return (
+      <LabelPasswordInputContainer
+        labelPosition={labelPosition}
+        gapSize={gapSize}>
+        <label htmlFor={id}>{label}</label>
+        <InputAndArrowsContainer
+          height={height}
+          boxShadowColor={boxShadowColor}>
+          <StyledInput
+            id={id}
+            ref={ref}
+            type="number"
+            fontSize={fontSize}
+            fontColor={fontColor}
+            width={width}
+            min={minNumberValue}
+            max={maxNumberValue}
+            step={step}
+            value={inputValue.toFixed(0)}
+            readOnly={readonly}
             focusBorderColor={focusBorderColor}
             focusBorderWidth={focusBorderWidth}
+            required={required}
             disabled={disabled}
-            onClick={handleIncrement}>
-            <ArrowUpIcon />
-          </ArrowButton>
-          <ArrowButton
-            arrowColor={arrowColor}
-            focusBorderColor={focusBorderColor}
-            focusBorderWidth={focusBorderWidth}
-            disabled={disabled}
-            onClick={handleDecrement}>
-            <ArrowDownIcon />
-          </ArrowButton>
-        </ArrowsContainer>
-      </InputAndArrowsContainer>
-    </LabelPasswordInputContainer>
-  );
-};
+            onChange={onChangeHandler}
+            {...baseInputProps}
+          />
+          <ArrowsContainer>
+            <ArrowButton
+              arrowColor={arrowColor}
+              focusBorderColor={focusBorderColor}
+              focusBorderWidth={focusBorderWidth}
+              disabled={disabled}
+              onClick={handleIncrement}>
+              <ArrowUpIcon />
+            </ArrowButton>
+            <ArrowButton
+              arrowColor={arrowColor}
+              focusBorderColor={focusBorderColor}
+              focusBorderWidth={focusBorderWidth}
+              disabled={disabled}
+              onClick={handleDecrement}>
+              <ArrowDownIcon />
+            </ArrowButton>
+          </ArrowsContainer>
+        </InputAndArrowsContainer>
+      </LabelPasswordInputContainer>
+    );
+  },
+);
+
+NumberInput.displayName = 'NumberInput';
 
 const LabelPasswordInputContainer = styled.div<{
   labelPosition?: NumberLabelPositions;

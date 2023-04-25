@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { InputHTMLAttributes, forwardRef } from 'react';
 import { pxToRem } from '../../utils';
 
 export type TextLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
-export interface TextInputProps {
+export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly label?: string;
   readonly labelPosition?: TextLabelPositions;
   readonly gapSize?: number;
@@ -25,55 +25,71 @@ export interface TextInputProps {
   readonly disabled?: boolean;
   readonly required?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  readonly ref?: React.ForwardedRef<HTMLInputElement>;
+  readonly id?: string;
 }
 
-export const TextInput: React.FC<TextInputProps> = ({
-  label = 'Text label',
-  labelPosition = 'left',
-  gapSize,
-  fontSize,
-  fontColor,
-  placeholder = 'Enter text',
-  placeholderColor,
-  boxShadowColor,
-  borderColor,
-  focusBorderColor,
-  focusBorderWidth,
-  width,
-  height,
-  minTextLength,
-  maxTextLength,
-  spellcheck,
-  pattern,
-  onChange,
-  required,
-  disabled,
-}) => (
-  <LabelPasswordInputContainer labelPosition={labelPosition} gapSize={gapSize}>
-    <label>{label}</label>
-    <StyledInput
-      fontSize={fontSize}
-      fontColor={fontColor}
-      boxShadowColor={boxShadowColor}
-      borderColor={borderColor}
-      focusBorderColor={focusBorderColor}
-      focusBorderWidth={focusBorderWidth}
-      width={width}
-      height={height}
-      placeholder={placeholder}
-      placeholderColor={placeholderColor}
-      type="text"
-      minLength={minTextLength}
-      maxLength={maxTextLength}
-      spellCheck={spellcheck}
-      pattern={pattern}
-      onChange={onChange}
-      required={required}
-      disabled={disabled}
-      data-testid="text-input"
-    />
-  </LabelPasswordInputContainer>
+export const TextInput: React.FC<TextInputProps> = forwardRef(
+  (
+    {
+      id = 'textInput',
+      label = 'Text label',
+      labelPosition = 'left',
+      gapSize,
+      fontSize,
+      fontColor,
+      placeholder = 'Enter text',
+      placeholderColor,
+      boxShadowColor,
+      borderColor,
+      focusBorderColor,
+      focusBorderWidth,
+      width,
+      height,
+      minTextLength,
+      maxTextLength,
+      spellcheck,
+      pattern,
+      onChange,
+      required,
+      disabled,
+      ...baseInputProps
+    },
+    ref,
+  ) => (
+    <LabelPasswordInputContainer
+      labelPosition={labelPosition}
+      gapSize={gapSize}>
+      <label htmlFor={id}>{label}</label>
+      <StyledInput
+        id={id}
+        ref={ref}
+        fontSize={fontSize}
+        fontColor={fontColor}
+        boxShadowColor={boxShadowColor}
+        borderColor={borderColor}
+        focusBorderColor={focusBorderColor}
+        focusBorderWidth={focusBorderWidth}
+        width={width}
+        height={height}
+        placeholder={placeholder}
+        placeholderColor={placeholderColor}
+        type="text"
+        minLength={minTextLength}
+        maxLength={maxTextLength}
+        spellCheck={spellcheck}
+        pattern={pattern}
+        onChange={onChange}
+        required={required}
+        disabled={disabled}
+        {...baseInputProps}
+        data-testid="text-input"
+      />
+    </LabelPasswordInputContainer>
+  ),
 );
+
+TextInput.displayName = 'TextInput';
 
 const LabelPasswordInputContainer = styled.div<{
   labelPosition: TextLabelPositions;
