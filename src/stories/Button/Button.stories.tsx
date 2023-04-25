@@ -27,23 +27,18 @@ Base.args = {
   type: 'button',
 };
 
-export const RedButton = Template.bind({});
+export const RequiredButton = Template.bind({});
 
-RedButton.args = {
+RequiredButton.args = {
   children: ChildText,
-  onClick: () => clickActionShoutOut('RedButton'),
-  color: 'white',
-  bgColor: 'red',
+  onClick: () => clickActionShoutOut('Required Button'),
   type: 'button',
+  required: true,
 };
 
 export const DisabledButton = Template.bind({});
 
 DisabledButton.args = {
   children: ChildText,
-  onClick: () => clickActionShoutOut('DisabledButton'),
-  color: 'white',
-  bgColor: 'purple',
-  type: 'button',
-  isDisabled: true,
+  disabled: true,
 };
