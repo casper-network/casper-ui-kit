@@ -22,7 +22,6 @@ export interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   readonly borderRadius?: number;
   readonly minButtonWidth?: number;
   readonly disabled?: boolean;
-  readonly required?: boolean;
   readonly className?: string;
   readonly children: React.ReactNode;
   readonly onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -45,11 +44,10 @@ export const Button: React.FC<ButtonProps> = ({
   borderRadius,
   minButtonWidth,
   disabled,
-  required,
   className,
   children,
   onClick,
-  ...rest
+  ...baseButtonProps
 }) => {
   return (
     <StyledButton
@@ -69,10 +67,9 @@ export const Button: React.FC<ButtonProps> = ({
       borderRadius={borderRadius}
       minButtonWidth={minButtonWidth}
       disabled={disabled}
-      required={required}
       className={className}
       onClick={onClick}
-      {...rest}>
+      {...baseButtonProps}>
       {children}
     </StyledButton>
   );
@@ -94,34 +91,23 @@ const StyledButton = styled.button<{
   borderRadius?: number;
   minButtonWidth?: number;
   disabled?: boolean;
-  required?: boolean;
 }>`
   font-size: ${({ fontSize }) => pxToRem(fontSize ?? 16)};
   white-space: nowrap;
-  color: ${({ fontColor, required }) => {
-    const baseFontColor = fontColor ?? `${colors.secondary.White}`;
-    const requiredFontColor = `${colors.primary.CasperRed}`;
-
-    return required ? requiredFontColor : baseFontColor;
-  }};
-  background-color: ${({ bgColor, required }) => {
-    const baseBgColor = bgColor ?? `${colors.secondary.CasperGreen}`;
-    const requiredBgColor = `${colors.secondary.White}`;
-
-    return required ? requiredBgColor : baseBgColor;
-  }};
+  color: ${({ fontColor }) => fontColor ?? `${colors.secondary.White}`};
+  background-color: ${({ bgColor }) =>
+    bgColor ?? `${colors.secondary.CasperGreen}`};
   padding: ${({ paddingX, paddingY }) => {
     const x = pxToRem(paddingX ?? 16);
     const y = pxToRem(paddingY ?? 16);
 
     return `${y} ${x}`;
   }};
-  border: ${({ borderColor, borderWidth, required, bgColor }) => {
-    // const baseBorderColor = borderColor ?? bgColor;
-    const color = required ? `${colors.primary.CasperRed}` : 'blue';
+  border: ${({ borderColor, borderWidth, bgColor }) => {
+    const baseBorderColor = borderColor ?? bgColor;
     const width = borderWidth ? pxToRem(borderWidth) : '0.125rem';
 
-    return `solid ${color} ${width}`;
+    return `solid ${baseBorderColor} ${width}`;
   }};
   border-radius: ${({ borderRadius }) => pxToRem(borderRadius ?? 10)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
@@ -137,14 +123,7 @@ const StyledButton = styled.button<{
   }
 
   &:hover {
-    color: ${({ hoverFontColor, bgColor, required }) => {
-      const baseHoverFontColor = hoverFontColor ?? bgColor;
-      const requiredFontColor = required
-        ? `${colors.primary.CasperRed}`
-        : bgColor;
-
-      return required ? requiredFontColor : baseHoverFontColor;
-    }};
+    color: ${({ hoverFontColor, bgColor }) => hoverFontColor ?? bgColor};
     border: ${({ hoverBorderColor, bgColor, borderWidth }) =>
       `solid ${borderWidth} ${hoverBorderColor ?? bgColor}`};
     background-color: ${({ hoverBgColor }) =>
