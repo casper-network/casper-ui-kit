@@ -154,7 +154,7 @@ const StyledButton = styled.button<{
   }
 
   &:disabled {
-    color: white;
+    color: ${colors.secondary.White};
     background-color: ${colors.lowContrastSecondary.CasperLightGrey};
     border: none;
   }
