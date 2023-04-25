@@ -97,6 +97,7 @@ const StyledButton = styled.button<{
   required?: boolean;
 }>`
   font-size: ${({ fontSize }) => pxToRem(fontSize ?? 16)};
+  white-space: nowrap;
   color: ${({ fontColor, required }) => {
     const baseFontColor = fontColor ?? `${colors.secondary.White}`;
     const requiredFontColor = `${colors.primary.CasperRed}`;
@@ -124,7 +125,6 @@ const StyledButton = styled.button<{
   }};
   border-radius: ${({ borderRadius }) => pxToRem(borderRadius ?? 10)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  white-space: nowrap;
   min-width: ${({ minButtonWidth }) => pxToRem(minButtonWidth ?? 128)};
 
   &:focus {
