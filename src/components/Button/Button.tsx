@@ -78,7 +78,7 @@ export const Button: React.FC<ButtonProps> = ({
   );
 };
 
-interface StyledButtonProps {
+const StyledButton = styled.button<{
   fontSize?: number;
   paddingX?: number;
   paddingY?: number;
@@ -95,9 +95,7 @@ interface StyledButtonProps {
   minButtonWidth?: number;
   disabled?: boolean;
   required?: boolean;
-}
-
-const StyledButton = styled.button<StyledButtonProps>`
+}>`
   font-size: ${({ fontSize }) => pxToRem(fontSize ?? 16)};
   white-space: nowrap;
   color: ${({ fontColor, required }) => {
@@ -119,8 +117,8 @@ const StyledButton = styled.button<StyledButtonProps>`
     return `${y} ${x}`;
   }};
   border: ${({ borderColor, borderWidth, required, bgColor }) => {
-    const baseBorderColor = borderColor ?? bgColor;
-    const color = required ? `${colors.primary.CasperRed}` : baseBorderColor;
+    // const baseBorderColor = borderColor ?? bgColor;
+    const color = required ? `${colors.primary.CasperRed}` : 'blue';
     const width = borderWidth ? pxToRem(borderWidth) : '0.125rem';
 
     return `solid ${color} ${width}`;
