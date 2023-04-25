@@ -12,7 +12,7 @@ export interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   readonly paddingY?: number;
   readonly fontColor?: string;
   readonly hoverFontColor?: string;
-  readonly bgColor?: string;
+  readonly bgColor: string;
   readonly hoverBgColor?: string;
   readonly hoverBgColorTransitionDuration?: number;
   readonly borderColor?: string;
