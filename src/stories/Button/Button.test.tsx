@@ -11,7 +11,7 @@ describe('Button.stories', () => {
       </Base>,
     );
     expect(screen.getByRole('button')).toHaveTextContent('base button');
-    expect(screen.getByRole('button')).toHaveStyle('background-color: #3EDC64');
+    expect(screen.getByRole('button')).toHaveStyle('background-color: #02c1b0');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
@@ -34,7 +34,7 @@ describe('Button.stories', () => {
     );
 
     expect(screen.getByRole('button')).toHaveTextContent('disabled button');
-    expect(screen.getByRole('button')).toHaveStyle('background-color: purple');
+    expect(screen.getByRole('button')).toHaveStyle('background-color: #F4F4F4');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
