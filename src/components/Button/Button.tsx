@@ -38,9 +38,9 @@ export const Button: React.FC<ButtonProps> = ({
   hoverBgColor,
   hoverBgColorTransitionDuration,
   borderColor,
-  hoverBorderColor,
+  hoverBorderColor = '#02c1b0',
   focusBorderColor,
-  borderWidth,
+  borderWidth = 2,
   borderRadius,
   minButtonWidth,
   disabled,
@@ -104,13 +104,8 @@ const StyledButton = styled.button<{
     return `${y} ${x}`;
   }};
   border: ${({ borderColor, borderWidth, bgColor }) => {
-    if (!borderColor || !bgColor) {
-      return 'initial';
-    }
-
     const baseBorderColor = borderColor ?? bgColor;
     const width = borderWidth ? pxToRem(borderWidth) : '0.125rem';
-
     return `solid ${baseBorderColor} ${width}`;
   }};
   border-radius: ${({ borderRadius }) => pxToRem(borderRadius ?? 10)};
@@ -128,15 +123,8 @@ const StyledButton = styled.button<{
 
   &:hover {
     color: ${({ hoverFontColor, bgColor }) => hoverFontColor ?? bgColor};
-    border: ${({ hoverBorderColor, bgColor, borderWidth }) => {
-      if (!hoverBorderColor || !bgColor) {
-        return 'initial';
-      }
-
-      return `solid ${borderWidth || pxToRem(1.5)} ${
-        hoverBorderColor ?? bgColor
-      }`;
-    }};
+    border: ${({ hoverBorderColor, borderWidth }) =>
+      `solid ${borderWidth}   ${hoverBorderColor}`};
     background-color: ${({ hoverBgColor }) =>
       hoverBgColor ?? `${colors.secondary.White}`};
     transition: ${({ hoverBgColorTransitionDuration }) =>
@@ -149,3 +137,9 @@ const StyledButton = styled.button<{
     border: none;
   }
 `;
+
+// ${({ hoverBorderColor, bgColor, borderWidth }) => };
+// {
+//   const color = hoverBorderColor ? hoverBorderColor : bgColor;
+//   return `${color} ${borderWidth} solid`;
+// }
