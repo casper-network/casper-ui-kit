@@ -109,7 +109,7 @@ const StyledButton = styled.button<{
   }};
   border-radius: ${({ borderRadius }) => pxToRem(borderRadius ?? 10)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  min-width: ${({ minButtonWidth }) => pxToRem(minButtonWidth ?? 128)};
+  min-width: ${({ minButtonWidth }) => pxToRem(minButtonWidth ?? 0)};
 
   &:focus {
     border: ${({ focusBorderColor, borderWidth }) => {
