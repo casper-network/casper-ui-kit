@@ -95,8 +95,7 @@ const StyledButton = styled.button<{
   font-size: ${({ fontSize }) => pxToRem(fontSize ?? 16)};
   white-space: nowrap;
   color: ${({ fontColor }) => fontColor ?? `${colors.secondary.White}`};
-  background-color: ${({ bgColor }) =>
-    bgColor ?? `${colors.secondary.CasperGreen}`};
+  background-color: ${({ bgColor }) => bgColor};
   padding: ${({ paddingX, paddingY }) => {
     const x = pxToRem(paddingX ?? 16);
     const y = pxToRem(paddingY ?? 16);
@@ -131,7 +130,7 @@ const StyledButton = styled.button<{
   }
 
   &:disabled {
-    color: ${({ fontColor }) => fontColor ?? '#9A9997'};
+    color: ${colors.lowContrastSecondary.MediumGrey};
     background-color: transparent;
     border: ${({ borderColor, borderWidth, bgColor }) =>
       `solid ${borderWidth} ${borderColor ?? bgColor}`};
