@@ -85,9 +85,9 @@ const StyledButton = styled.button<{
   hoverBgColor?: string;
   hoverBgColorTransitionDuration?: number;
   borderColor?: string;
-  hoverBorderColor?: string;
+  hoverBorderColor: string;
   focusBorderColor?: string;
-  borderWidth?: number;
+  borderWidth: number;
   borderRadius?: number;
   minButtonWidth?: number;
   disabled?: boolean;
@@ -137,9 +137,3 @@ const StyledButton = styled.button<{
     border: none;
   }
 `;
-
-// ${({ hoverBorderColor, bgColor, borderWidth }) => };
-// {
-//   const color = hoverBorderColor ? hoverBorderColor : bgColor;
-//   return `${color} ${borderWidth} solid`;
-// }
