@@ -97,10 +97,10 @@ const StyledButton = styled.button<{
   color: ${({ fontColor }) => fontColor ?? `${colors.secondary.White}`};
   background-color: ${({ bgColor }) => bgColor};
   padding: ${({ paddingX, paddingY }) => {
-    const x = pxToRem(paddingX ?? 20);
-    const y = pxToRem(paddingY ?? 8);
+    const xAxis = pxToRem(paddingX ?? 20);
+    const yAxis = pxToRem(paddingY ?? 8);
 
-    return `${y} ${x}`;
+    return `${yAxis} ${xAxis}`;
   }};
   border: ${({ borderColor, borderWidth, bgColor }) => {
     const color = borderColor ?? bgColor;
