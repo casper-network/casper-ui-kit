@@ -1,13 +1,14 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
 import HidePasswordIcon from '../../assets/svg/icons/hide-password-icon.svg';
 
 export type GenericLabelPositions = 'top' | 'right' | 'bottom' | 'left';
-export type GenericTypes = 'text' | 'email' | 'password';
+export type GenericTypes = 'text' | 'email' | 'password' | 'radio';
 
-export interface GenericInputProps {
+export interface GenericInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   readonly inputType: GenericTypes;
   readonly label?: string;
   readonly labelPosition?: GenericLabelPositions;
@@ -31,75 +32,95 @@ export interface GenericInputProps {
   readonly disabled?: boolean;
   readonly required?: boolean;
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  readonly ref?: React.ForwardedRef<HTMLInputElement>;
+  readonly id?: string;
 }
 
-export const GenericInput: React.FC<GenericInputProps> = ({
-  inputType = 'text',
-  label = 'Generic label',
-  labelPosition = 'left',
-  passwordToggle = false,
-  gapSize,
-  fontSize,
-  fontColor,
-  svgColor,
-  placeholder = 'Enter text',
-  placeholderColor,
-  boxShadowColor,
-  borderColor,
-  focusBorderColor,
-  focusBorderWidth,
-  width,
-  height,
-  minTextLength,
-  maxTextLength,
-  spellcheck,
-  pattern,
-  onChange,
-  required,
-  disabled,
-}) => {
-  const [passwordIsVisible, setPasswordIsVisible] =
-    useState<boolean>(passwordToggle);
-  return (
-    <LabelPasswordInputContainer
-      labelPosition={labelPosition}
-      gapSize={gapSize}>
-      <label>{label}</label>
-      <InputIconContainer>
-        <StyledInput
-          type={inputType}
-          fontSize={fontSize}
-          fontColor={fontColor}
-          boxShadowColor={boxShadowColor}
-          borderColor={borderColor}
-          focusBorderColor={focusBorderColor}
-          focusBorderWidth={focusBorderWidth}
-          width={width}
-          height={height}
-          placeholder={placeholder}
-          placeholderColor={placeholderColor}
-          minLength={minTextLength}
-          maxLength={maxTextLength}
-          spellCheck={spellcheck}
-          pattern={pattern}
-          onChange={onChange}
-          required={required}
-          disabled={disabled}
-          data-testid="generic-input"
-        />
-        {passwordToggle && (
-          <ViewPasswordButton
-            onClick={() => setPasswordIsVisible(prev => !prev)}
-            svgColor={svgColor}
+export const GenericInput: React.FC<GenericInputProps> = forwardRef(
+  (
+    {
+      inputType = 'text',
+      id = 'genericInput',
+      label = 'Generic label',
+      labelPosition = 'left',
+      passwordToggle = false,
+      gapSize,
+      fontSize,
+      fontColor,
+      svgColor,
+      placeholder = 'Enter text',
+      placeholderColor,
+      boxShadowColor,
+      borderColor,
+      focusBorderColor,
+      focusBorderWidth,
+      width,
+      height,
+      minTextLength,
+      maxTextLength,
+      spellcheck,
+      pattern,
+      onChange,
+      required,
+      disabled,
+      ...baseInputProps
+    },
+    ref,
+  ) => {
+    const [passwordIsVisible, setPasswordIsVisible] = useState(passwordToggle);
+    const toggleView = passwordIsVisible ? (
+      <ViewPasswordIcon />
+    ) : (
+      <HidePasswordIcon />
+    );
+
+    return (
+      <LabelPasswordInputContainer
+        labelPosition={labelPosition}
+        gapSize={gapSize}>
+        <label htmlFor={id}>{label}</label>
+        <InputIconContainer>
+          <StyledInput
+            id={id}
+            ref={ref}
+            type={inputType}
+            fontSize={fontSize}
+            fontColor={fontColor}
+            boxShadowColor={boxShadowColor}
+            borderColor={borderColor}
             focusBorderColor={focusBorderColor}
-            focusBorderWidth={focusBorderWidth}>
-            {passwordIsVisible ? <ViewPasswordIcon /> : <HidePasswordIcon />}
-          </ViewPasswordButton>
-        )}
-      </InputIconContainer>
-    </LabelPasswordInputContainer>
-  );
-};
+            focusBorderWidth={focusBorderWidth}
+            width={width}
+            height={height}
+            placeholder={placeholder}
+            placeholderColor={placeholderColor}
+            minLength={minTextLength}
+            maxLength={maxTextLength}
+            spellCheck={spellcheck}
+            pattern={pattern}
+            onChange={onChange}
+            required={required}
+            disabled={disabled}
+            {...baseInputProps}
+            data-testid="generic-input"
+          />
+          {passwordToggle && (
+            <ViewPasswordButton
+              type="button"
+              onClick={() => setPasswordIsVisible(prev => !prev)}
+              svgColor={svgColor}
+              focusBorderColor={focusBorderColor}
+              focusBorderWidth={focusBorderWidth}>
+              {toggleView}
+            </ViewPasswordButton>
+          )}
+        </InputIconContainer>
+      </LabelPasswordInputContainer>
+    );
+  },
+);
+
+GenericInput.displayName = 'GenericInput';
 
 const LabelPasswordInputContainer = styled.div<{
   labelPosition: GenericLabelPositions;

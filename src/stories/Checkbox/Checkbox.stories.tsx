@@ -8,7 +8,7 @@ export default {
   title: 'Components/Checkbox',
   component: Checkbox,
   argTypes: {
-    initialChecked: {
+    checked: {
       control: false,
     },
   },

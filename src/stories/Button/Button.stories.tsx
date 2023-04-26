@@ -45,5 +45,5 @@ DisabledButton.args = {
   color: 'white',
   bgColor: 'purple',
   type: 'button',
-  isDisabled: true,
+  disabled: true,
 };
