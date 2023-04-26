@@ -40,8 +40,5 @@ export const DisabledButton = Template.bind({});
 
 DisabledButton.args = {
   children: ChildText,
-  fontColor: '#d3d3d3',
-  borderColor: '#02c1b0',
-  bgColor: 'white',
   disabled: true,
 };

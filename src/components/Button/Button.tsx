@@ -125,16 +125,14 @@ const StyledButton = styled.button<{
     color: ${({ hoverFontColor, bgColor }) => hoverFontColor ?? bgColor};
     border: ${({ hoverBorderColor, borderWidth }) =>
       `solid ${borderWidth} ${hoverBorderColor}`};
-    background-color: ${({ hoverBgColor }) =>
-      hoverBgColor ?? `${colors.secondary.White}`};
+    background-color: ${({ hoverBgColor }) => hoverBgColor ?? `transparent`};
     transition: ${({ hoverBgColorTransitionDuration }) =>
       `background-color ${hoverBgColorTransitionDuration ?? 300}ms`};
   }
 
   &:disabled {
-    color: ${({ fontColor }) =>
-      fontColor ?? `${colors.lowContrastSecondary.CasperLightGrey}`};
-    background-color: ${colors.secondary.White};
+    color: ${({ fontColor }) => fontColor ?? `#9A9997`};
+    background-color: transparent;
     border: ${({ borderColor, borderWidth, bgColor }) =>
       `solid ${borderWidth} ${borderColor ?? bgColor}`};
   }
