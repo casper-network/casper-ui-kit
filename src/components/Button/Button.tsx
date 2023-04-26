@@ -104,9 +104,8 @@ const StyledButton = styled.button<{
     return `${y} ${x}`;
   }};
   border: ${({ borderColor, borderWidth, bgColor }) => {
-    const baseBorderColor = borderColor ?? bgColor;
     const width = borderWidth ? pxToRem(borderWidth) : '0.125rem';
-    return `solid ${baseBorderColor} ${width}`;
+    return `solid ${borderColor ?? bgColor} ${width}`;
   }};
   border-radius: ${({ borderRadius }) => pxToRem(borderRadius ?? 10)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
@@ -124,7 +123,7 @@ const StyledButton = styled.button<{
   &:hover {
     color: ${({ hoverFontColor, bgColor }) => hoverFontColor ?? bgColor};
     border: ${({ hoverBorderColor, borderWidth }) =>
-      `solid ${borderWidth}   ${hoverBorderColor}`};
+      `solid ${borderWidth} ${hoverBorderColor}`};
     background-color: ${({ hoverBgColor }) =>
       hoverBgColor ?? `${colors.secondary.White}`};
     transition: ${({ hoverBgColorTransitionDuration }) =>
