@@ -32,6 +32,7 @@ export const RedButton = Template.bind({});
 RedButton.args = {
   children: ChildText,
   onClick: () => clickActionShoutOut('Required Button'),
+  bgColor: 'red',
   type: 'button',
 };
 

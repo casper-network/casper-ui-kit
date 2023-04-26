@@ -28,7 +28,7 @@ describe('Button.stories', () => {
 
   it('should render the Disabled Button', () => {
     render(
-      <DisabledButton type="button" bgColor="grey" {...DisabledButton.args}>
+      <DisabledButton type="button" bgColor="#F4F4F4" {...DisabledButton.args}>
         disabled button
       </DisabledButton>,
     );
@@ -39,7 +39,7 @@ describe('Button.stories', () => {
 
   it('should be disabled', () => {
     render(
-      <DisabledButton type="button" bgColor="grey" {...DisabledButton.args}>
+      <DisabledButton type="button" bgColor="#F4F4F4" {...DisabledButton.args}>
         disabled button
       </DisabledButton>,
     );
