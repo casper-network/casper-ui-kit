@@ -132,8 +132,10 @@ const StyledButton = styled.button<{
   }
 
   &:disabled {
-    color: ${colors.secondary.White};
-    background-color: ${colors.lowContrastSecondary.CasperLightGrey};
-    border: none;
+    color: ${({ fontColor }) =>
+      fontColor ?? `${colors.lowContrastSecondary.CasperLightGrey}`};
+    background-color: ${colors.secondary.White};
+    border: ${({ borderColor, borderWidth, bgColor }) =>
+      `solid ${borderWidth} ${borderColor ?? bgColor}`};
   }
 `;
