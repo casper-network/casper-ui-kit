@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
 import { pxToRem } from '../../utils';
-import CheckboxSvg from '../../assets/svg/icons/checkbox.svg';
+import XSvg from '../../assets/svg/icons/x-icon.svg';
 
 export type LabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
@@ -156,7 +156,7 @@ interface StyledCheckboxSvgProps {
   checkmarkColor: string;
 }
 
-const StyledCheckboxSvg = styled(CheckboxSvg)`
+const StyledCheckboxSvg = styled(XSvg)`
   fill: ${({ disabled, required, checkmarkColor }: StyledCheckboxSvgProps) => {
     let fillColor = checkmarkColor;
 

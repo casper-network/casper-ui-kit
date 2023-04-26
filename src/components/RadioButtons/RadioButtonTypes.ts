@@ -13,6 +13,14 @@ export interface BaseRadioButtonProps
 
 export type RadioButtonLabelPositions = 'top' | 'right' | 'bottom' | 'left';
 
+export interface RadioButtonBoxGroupOptions {
+  readonly value: string;
+  readonly name?: string;
+  readonly color?: string;
+  readonly required?: boolean;
+  readonly disabled?: boolean;
+}
+
 export interface OptionProps {
   readonly label: string;
   readonly name?: string;
