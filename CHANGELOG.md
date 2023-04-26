@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.4.0] - 2024-04-26
 
+## Added
+
 - Adds HTMLInputAttributes and forwardRef to all inputs
-- Adds Radio Checkbox input
+- Adds Radio Checkbox Input
 
 ## [0.3.0] - 2023-04-17
 
