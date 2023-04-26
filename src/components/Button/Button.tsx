@@ -104,7 +104,7 @@ const StyledButton = styled.button<{
     return `${y} ${x}`;
   }};
   border: ${({ borderColor, borderWidth, bgColor }) => {
-    const color = borderColor ? borderColor : bgColor;
+    const color = borderColor ?? bgColor;
     const width = borderWidth ? pxToRem(borderWidth) : '0.125rem';
     return `solid ${color} ${width}`;
   }};
