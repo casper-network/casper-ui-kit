@@ -12,7 +12,7 @@ export interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   readonly paddingY?: number;
   readonly fontColor?: string;
   readonly hoverFontColor?: string;
-  readonly bgColor?: string;
+  readonly bgColor: string;
   readonly hoverBgColor?: string;
   readonly hoverBgColorTransitionDuration?: number;
   readonly borderColor?: string;
@@ -81,10 +81,10 @@ const StyledButton = styled.button<{
   paddingY?: number;
   fontColor?: string;
   hoverFontColor?: string;
-  bgColor?: string;
+  bgColor: string;
   hoverBgColor?: string;
   hoverBgColorTransitionDuration?: number;
-  borderColor: string;
+  borderColor?: string;
   hoverBorderColor: string;
   focusBorderColor?: string;
   borderWidth: number;
