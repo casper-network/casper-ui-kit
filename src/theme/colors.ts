@@ -18,6 +18,7 @@ export const colors = {
     CasperLightPurple: '#AD53E5',
     CasperLightBlue: '#4589F6',
     CasperLightGrey: '#F4F4F4',
+    MediumGrey: '#9a9997',
   },
 };
 

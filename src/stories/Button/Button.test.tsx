@@ -6,18 +6,18 @@ import { Base, DisabledButton, RedButton } from './Button.stories';
 describe('Button.stories', () => {
   it('should render the Base button', () => {
     render(
-      <Base type="button" {...Base.args}>
+      <Base type="button" bgColor="blue" {...Base.args}>
         base button
       </Base>,
     );
     expect(screen.getByRole('button')).toHaveTextContent('base button');
-    expect(screen.getByRole('button')).toHaveStyle('background-color: #3EDC64');
+    expect(screen.getByRole('button')).toHaveStyle('background-color: blue');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   it('should render the Red Button', () => {
     render(
-      <RedButton type="button" {...RedButton.args}>
+      <RedButton type="button" bgColor="red" {...RedButton.args}>
         red button
       </RedButton>,
     );
@@ -28,19 +28,18 @@ describe('Button.stories', () => {
 
   it('should render the Disabled Button', () => {
     render(
-      <DisabledButton type="button" {...DisabledButton.args}>
+      <DisabledButton type="button" bgColor="#F4F4F4" {...DisabledButton.args}>
         disabled button
       </DisabledButton>,
     );
 
     expect(screen.getByRole('button')).toHaveTextContent('disabled button');
-    expect(screen.getByRole('button')).toHaveStyle('background-color: purple');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   it('should be disabled', () => {
     render(
-      <DisabledButton type="button" {...DisabledButton.args}>
+      <DisabledButton type="button" bgColor="#F4F4F4" {...DisabledButton.args}>
         disabled button
       </DisabledButton>,
     );

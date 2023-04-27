@@ -1,37 +1,74 @@
 import React, { InputHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { pxToRem } from '../../utils';
+import { colors } from '../../theme/colors';
 
 export type ButtonType = 'submit' | 'reset' | 'button';
 
 export interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
-  readonly children: React.ReactNode;
-  readonly onClick?: () => void;
-  readonly bgColor?: string;
-  readonly color?: string;
   readonly type: ButtonType;
-  readonly className?: string;
+  readonly fontSize?: number;
+  readonly paddingX?: number;
+  readonly paddingY?: number;
+  readonly fontColor?: string;
+  readonly hoverFontColor?: string;
+  readonly bgColor: string;
+  readonly hoverBgColor?: string;
+  readonly hoverBgColorTransitionDuration?: number;
+  readonly borderColor?: string;
+  readonly hoverBorderColor?: string;
+  readonly focusBorderColor?: string;
+  readonly borderWidth?: number;
+  readonly borderRadius?: number;
+  readonly minButtonWidth?: number;
   readonly disabled?: boolean;
+  readonly className?: string;
+  readonly children: React.ReactNode;
+  readonly onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export const Button: React.FC<ButtonProps> = ({
+  type = 'button',
+  fontSize,
+  paddingX,
+  paddingY,
+  fontColor,
+  hoverFontColor,
+  bgColor = '#02c1b0',
+  hoverBgColor,
+  hoverBgColorTransitionDuration,
+  borderColor,
+  hoverBorderColor = '#02c1b0',
+  focusBorderColor,
+  borderWidth = 2,
+  borderRadius,
+  minButtonWidth,
+  disabled,
+  className,
   children,
   onClick,
-  bgColor = '#3EDC64',
-  color = 'white',
-  type,
-  className,
-  disabled = false,
   ...baseButtonProps
 }) => {
   return (
     <StyledButton
       type={type}
-      className={className}
+      fontSize={fontSize}
+      paddingX={paddingX}
+      paddingY={paddingY}
+      fontColor={fontColor}
+      hoverFontColor={hoverFontColor}
       bgColor={bgColor}
-      color={color}
-      onClick={onClick}
+      hoverBgColor={hoverBgColor}
+      hoverBgColorTransitionDuration={hoverBgColorTransitionDuration}
+      borderColor={borderColor}
+      hoverBorderColor={hoverBorderColor}
+      focusBorderColor={focusBorderColor}
+      borderWidth={borderWidth}
+      borderRadius={borderRadius}
+      minButtonWidth={minButtonWidth}
       disabled={disabled}
+      className={className}
+      onClick={onClick}
       {...baseButtonProps}>
       {children}
     </StyledButton>
@@ -39,17 +76,63 @@ export const Button: React.FC<ButtonProps> = ({
 };
 
 const StyledButton = styled.button<{
+  fontSize?: number;
+  paddingX?: number;
+  paddingY?: number;
+  fontColor?: string;
+  hoverFontColor?: string;
   bgColor: string;
-  color: string;
-  disabled: boolean;
+  hoverBgColor?: string;
+  hoverBgColorTransitionDuration?: number;
+  borderColor?: string;
+  hoverBorderColor: string;
+  focusBorderColor?: string;
+  borderWidth: number;
+  borderRadius?: number;
+  minButtonWidth?: number;
+  disabled?: boolean;
 }>`
-  font-size: 1rem;
-  color: ${({ color }) => color};
+  font-size: ${({ fontSize }) => pxToRem(fontSize ?? 16)};
+  white-space: nowrap;
+  color: ${({ fontColor }) => fontColor ?? `${colors.secondary.White}`};
   background-color: ${({ bgColor }) => bgColor};
-  text-align: center;
-  padding: 0.5rem 1.25rem;
-  border-radius: ${pxToRem(10)};
-  border: none;
-  opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
+  padding: ${({ paddingX, paddingY }) => {
+    const xAxis = pxToRem(paddingX ?? 20);
+    const yAxis = pxToRem(paddingY ?? 8);
+
+    return `${yAxis} ${xAxis}`;
+  }};
+  border: ${({ borderColor, borderWidth, bgColor }) => {
+    const color = borderColor ?? bgColor;
+    const width = borderWidth ? pxToRem(borderWidth) : '0.125rem';
+    return `solid ${color} ${width}`;
+  }};
+  border-radius: ${({ borderRadius }) => pxToRem(borderRadius ?? 10)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  min-width: ${({ minButtonWidth }) => pxToRem(minButtonWidth ?? 0)};
+
+  &:focus {
+    border: ${({ focusBorderColor, borderWidth }) => {
+      const width = borderWidth ? pxToRem(borderWidth) : '0.125rem';
+      const color = focusBorderColor ?? `${colors.secondary.CasperBlue}`;
+      return `solid ${color} ${width} `;
+    }};
+    outline: none;
+  }
+
+  &:hover {
+    color: ${({ hoverFontColor, bgColor }) => hoverFontColor ?? bgColor};
+    border: ${({ hoverBorderColor, borderWidth }) =>
+      `solid ${borderWidth} ${hoverBorderColor}`};
+    background-color: ${({ hoverBgColor }) => hoverBgColor ?? 'transparent'};
+    transition: ${({ hoverBgColorTransitionDuration }) =>
+      `background-color ${hoverBgColorTransitionDuration ?? 300}ms`};
+  }
+
+  &:disabled {
+    color: ${colors.lowContrastSecondary.MediumGrey};
+    background-color: transparent;
+    border: ${({ borderColor, borderWidth, bgColor }) =>
+      `solid ${borderWidth} ${borderColor ?? bgColor}`};
+  }
 `;
