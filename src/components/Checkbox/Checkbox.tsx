@@ -27,8 +27,8 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Checkbox: React.FC<CheckboxProps> = forwardRef(
   (
     {
-      id = 'checkbox',
-      label = 'Checkbox Label',
+      id,
+      label,
       labelPosition = 'left',
       boxColor = '#02c1b0',
       checkmarkColor = '#02c1b0',
