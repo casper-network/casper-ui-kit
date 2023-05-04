@@ -21,7 +21,10 @@ const Template: StoryFn<typeof EmailInput> = (args: EmailInputProps) => (
 
 export const Base = Template.bind({});
 
-Base.args = {};
+Base.args = {
+  id: 'email-input',
+  label: 'Email Input',
+};
 
 const StoryContainer = styled.div`
   width: 100%;

@@ -21,7 +21,10 @@ const Template: StoryFn<typeof TextInput> = (args: TextInputProps) => (
 
 export const Base = Template.bind({});
 
-Base.args = {};
+Base.args = {
+  id: 'text-input',
+  label: 'Text Input',
+};
 
 const StoryContainer = styled.div`
   width: 100%;
