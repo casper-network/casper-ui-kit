@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React, { ReactNode, useState } from 'react';
 import Select, { PropsValue } from 'react-select';
 import { defaultTheme } from '../../theme';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import { defaultTheme } from '../../../theme';
 
 export interface ButtonToggleProps {

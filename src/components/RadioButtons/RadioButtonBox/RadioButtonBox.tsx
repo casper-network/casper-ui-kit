@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React from 'react';
 import { pxToRem } from '../../../utils';
 import XSvg from '../../../assets/svg/icons/x-icon.svg';

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import LoaderSVG from '../../assets/svg/icons/loader-icon.svg';
 
 export interface LoaderProps {

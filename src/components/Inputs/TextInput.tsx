@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React, { InputHTMLAttributes, forwardRef } from 'react';
 import { pxToRem } from '../../utils';
 

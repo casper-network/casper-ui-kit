@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
