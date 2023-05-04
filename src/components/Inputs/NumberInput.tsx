@@ -34,7 +34,7 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
   (
     {
       id = 'NumberInput',
-      label = 'number input',
+      label,
       labelPosition,
       gapSize,
       fontSize,

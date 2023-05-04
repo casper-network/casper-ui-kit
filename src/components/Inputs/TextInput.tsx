@@ -33,7 +33,7 @@ export const TextInput: React.FC<TextInputProps> = forwardRef(
   (
     {
       id = 'textInput',
-      label = 'Text label',
+      label,
       labelPosition = 'left',
       gapSize,
       fontSize,

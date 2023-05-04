@@ -41,7 +41,7 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
     {
       inputType = 'text',
       id = 'genericInput',
-      label = 'Generic label',
+      label,
       labelPosition = 'left',
       passwordToggle = false,
       gapSize,

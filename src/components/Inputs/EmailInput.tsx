@@ -33,7 +33,7 @@ export const EmailInput: React.FC<EmailInputProps> = forwardRef(
   (
     {
       id = 'emailInput',
-      label = 'email label',
+      label,
       labelPosition = 'left',
       gapSize,
       fontSize,
