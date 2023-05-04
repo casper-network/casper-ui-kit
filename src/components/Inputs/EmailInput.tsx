@@ -32,7 +32,7 @@ export interface EmailInputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const EmailInput: React.FC<EmailInputProps> = forwardRef(
   (
     {
-      id = 'emailInput',
+      id,
       label,
       labelPosition = 'left',
       gapSize,

@@ -35,7 +35,7 @@ export interface PasswordInputProps
 export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
   (
     {
-      id = 'passwordInput',
+      id,
       label,
       labelPosition = 'left',
       gapSize,

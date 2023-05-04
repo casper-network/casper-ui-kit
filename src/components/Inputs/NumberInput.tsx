@@ -33,7 +33,7 @@ export interface NumberInputProps
 export const NumberInput: React.FC<NumberInputProps> = forwardRef(
   (
     {
-      id = 'NumberInput',
+      id,
       label,
       labelPosition,
       gapSize,

@@ -32,7 +32,7 @@ export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const TextInput: React.FC<TextInputProps> = forwardRef(
   (
     {
-      id = 'textInput',
+      id,
       label,
       labelPosition = 'left',
       gapSize,
