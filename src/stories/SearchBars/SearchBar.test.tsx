@@ -55,7 +55,7 @@ describe('SearchBar.stories', () => {
           // eslint-disable-next-line no-console
           console.log('clicked');
         }}
-        errorMessage={<p>Test Error</p>}
+        errorMessage={<span>Test Error</span>}
       />,
     );
 

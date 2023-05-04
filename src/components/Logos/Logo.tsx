@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React from 'react';
 import { pxToRem } from '../../utils';
 import BlockExplorerGradientLogo from '../../assets/svg/logos/block-explorer-gradient-logo.svg';

@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes } from 'react';
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import { pxToRem } from '../../utils';
 import { colors } from '../../theme/colors';
 
