@@ -21,7 +21,10 @@ const Template: StoryFn<typeof PasswordInput> = (args: PasswordInputProps) => (
 
 export const Base = Template.bind({});
 
-Base.args = {};
+Base.args = {
+  id: 'password-input',
+  label: 'Password Input',
+};
 
 const StoryContainer = styled.div`
   width: 100%;

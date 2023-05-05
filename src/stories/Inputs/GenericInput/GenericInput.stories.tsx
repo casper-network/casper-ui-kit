@@ -22,6 +22,8 @@ const Template: StoryFn<typeof GenericInput> = (args: GenericInputProps) => (
 export const Base = Template.bind({});
 
 Base.args = {
+  id: 'generic-input',
+  label: 'Generic Input',
   inputType: 'text',
 };
 

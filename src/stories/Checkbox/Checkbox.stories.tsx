@@ -24,6 +24,8 @@ const Template: StoryFn<typeof Checkbox> = (args: CheckboxProps) => (
 export const Base = Template.bind({});
 
 Base.args = {
+  id: 'base-checkbox',
+  label: 'Base Checkbox',
   boxColor: '#02c1b0',
   checkmarkColor: '#02c1b0',
 };
@@ -31,6 +33,8 @@ Base.args = {
 export const RequiredCheckbox = Template.bind({});
 
 RequiredCheckbox.args = {
+  id: 'required-checkbox',
+  label: 'Required Checkbox',
   boxColor: '#FF0000',
   checkmarkColor: '#FF0000',
 };
@@ -38,11 +42,12 @@ RequiredCheckbox.args = {
 export const DisabledCheckbox = Template.bind({});
 
 DisabledCheckbox.args = {
+  id: 'disabled-checkbox',
+  label: 'Disabled Checkbox',
   boxColor: '#F1F1F4',
   checkmarkColor: '#F1F1F4',
   disabled: true,
 };
-Base.args = {};
 
 const StoryContainer = styled.div`
   width: 100%;

@@ -23,7 +23,7 @@ export interface RadioButtonBoxProps {
 
 export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
   color = '#02c1b0',
-  label = 'Checkbox Label',
+  label,
   labelPosition = 'left',
   gapSize = 10,
   width = 30,
