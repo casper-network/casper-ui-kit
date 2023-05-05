@@ -13,6 +13,13 @@ export const colors = {
     CasperBrightPink: '#F622E6',
     CasperPalePink: '#F9AACA',
     White: '#FFF',
+    Whisper: '#E3E3E9',
+    BoxShadow: 'rgba(127, 128, 149, 0.3)',
+    DarkBoxShadow: '#0000004D',
+    SlateGrey: '#64748b',
+    Grey84: '#D6D6D6',
+    Nero: '#202020',
+    Eclipse: '#3a3a3a',
   },
   lowContrastSecondary: {
     CasperLightPurple: '#AD53E5',
