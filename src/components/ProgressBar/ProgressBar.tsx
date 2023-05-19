@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React from 'react';
 
 import { defaultTheme } from '../../theme';

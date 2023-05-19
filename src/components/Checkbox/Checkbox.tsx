@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
 import { pxToRem } from '../../utils';
 import XSvg from '../../assets/svg/icons/x-icon.svg';
@@ -27,8 +27,8 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Checkbox: React.FC<CheckboxProps> = forwardRef(
   (
     {
-      id = 'checkbox',
-      label = 'Checkbox Label',
+      id,
+      label,
       labelPosition = 'left',
       boxColor = '#02c1b0',
       checkmarkColor = '#02c1b0',

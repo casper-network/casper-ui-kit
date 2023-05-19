@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import { pxToRem } from '../../../utils';
 import { BaseRadioButtonProps } from '../RadioButtonTypes';
 import { defaultTheme } from '../../../theme';

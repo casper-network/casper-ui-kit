@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React, { InputHTMLAttributes, forwardRef } from 'react';
 import { pxToRem } from '../../utils';
 
@@ -32,8 +32,8 @@ export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const TextInput: React.FC<TextInputProps> = forwardRef(
   (
     {
-      id = 'textInput',
-      label = 'Text label',
+      id,
+      label,
       labelPosition = 'left',
       gapSize,
       fontSize,

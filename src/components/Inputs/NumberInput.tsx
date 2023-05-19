@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import { pxToRem } from '../../utils';
 import ArrowUpIcon from '../../assets/svg/icons/arrow-up-icon.svg';
 import ArrowDownIcon from '../../assets/svg/icons/arrow-down-icon.svg';
@@ -33,8 +33,8 @@ export interface NumberInputProps
 export const NumberInput: React.FC<NumberInputProps> = forwardRef(
   (
     {
-      id = 'NumberInput',
-      label = 'number input',
+      id,
+      label,
       labelPosition,
       gapSize,
       fontSize,

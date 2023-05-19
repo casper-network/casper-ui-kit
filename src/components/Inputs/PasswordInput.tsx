@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React, { useState, forwardRef, InputHTMLAttributes } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
@@ -35,8 +35,8 @@ export interface PasswordInputProps
 export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
   (
     {
-      id = 'passwordInput',
-      label = 'Password Label',
+      id,
+      label,
       labelPosition = 'left',
       gapSize,
       fontSize,

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
 import { pxToRem } from '../../utils';
 import ViewPasswordIcon from '../../assets/svg/icons/view-password-icon.svg';
@@ -40,8 +40,8 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
   (
     {
       inputType = 'text',
-      id = 'genericInput',
-      label = 'Generic label',
+      id,
+      label,
       labelPosition = 'left',
       passwordToggle = false,
       gapSize,

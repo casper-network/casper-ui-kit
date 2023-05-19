@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'src/styled';
 import React, { InputHTMLAttributes, forwardRef } from 'react';
 import { pxToRem } from '../../utils';
 
@@ -32,8 +32,8 @@ export interface EmailInputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const EmailInput: React.FC<EmailInputProps> = forwardRef(
   (
     {
-      id = 'emailInput',
-      label = 'email label',
+      id,
+      label,
       labelPosition = 'left',
       gapSize,
       fontSize,
