@@ -21,7 +21,7 @@ describe('BaseToggle', () => {
     );
 
     const baseToggleCheckbox = getByTestId(
-      'baseToggleCheckbox',
+      'base-toggle-checkbox',
     ) as HTMLInputElement;
 
     fireEvent.click(baseToggleCheckbox);
