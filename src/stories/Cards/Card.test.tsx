@@ -11,8 +11,8 @@ describe('Card', () => {
       </Card>,
     );
 
-    expect(screen.getByTestId('baseCard')).toBeInTheDocument();
-    expect(screen.getByTestId('baseCardBody')).toBeInTheDocument();
+    expect(screen.getByTestId('base-card')).toBeInTheDocument();
+    expect(screen.getByTestId('base-card-body')).toBeInTheDocument();
   });
 
   it('should render base card with header', () => {
@@ -21,7 +21,7 @@ describe('Card', () => {
         <Card.Header>Header</Card.Header>
       </Card>,
     );
-    expect(screen.getByTestId('baseCardHeader')).toBeInTheDocument();
+    expect(screen.getByTestId('base-card-header')).toBeInTheDocument();
   });
 
   it('should render base card with footer', () => {
@@ -30,6 +30,6 @@ describe('Card', () => {
         <Card.Footer>Footer</Card.Footer>
       </Card>,
     );
-    expect(screen.getByTestId('baseCardFooter')).toBeInTheDocument();
+    expect(screen.getByTestId('base-card-footer')).toBeInTheDocument();
   });
 });

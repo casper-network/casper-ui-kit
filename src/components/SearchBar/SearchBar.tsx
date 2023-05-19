@@ -28,12 +28,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     event.preventDefault();
   };
   return (
-    <FormContainer data-testid="searchBar" className={className}>
+    <FormContainer data-testid="search-bar" className={className}>
       <Form onSubmit={handleSubmit}>
         <SearchLabel htmlFor="default-search">Search</SearchLabel>
         <FormComponentsContainer>
           {filters && currentFilter && defaultValue && (
-            <div data-testid="searchBarFilter">
+            <div data-testid="search-bar-filter">
               <DropDownSelector
                 options={filters}
                 name=""
@@ -58,7 +58,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         {errorMessage && (
           <ErrorMessageContainer>
             <ErrorIcon strokeWidth={2} />
-            <ErrorMessage data-testid="errorMessage">
+            <ErrorMessage data-testid="error-message">
               {errorMessage}
             </ErrorMessage>
           </ErrorMessageContainer>

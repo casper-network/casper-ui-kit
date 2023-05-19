@@ -9,7 +9,7 @@ describe('ButtonToggle', () => {
   it('should render button toggle', () => {
     render(<ButtonToggle toggleOptions={testToggleOptions} />);
 
-    expect(screen.getByTestId('buttonToggle')).toBeInTheDocument();
+    expect(screen.getByTestId('button-toggle')).toBeInTheDocument();
   });
 
   it('should disable selected option', () => {

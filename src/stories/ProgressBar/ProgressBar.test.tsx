@@ -15,7 +15,7 @@ describe('ProgressBar.stories', () => {
       />,
     );
 
-    expect(screen.getByTestId('progressBar')).toBeInTheDocument();
+    expect(screen.getByTestId('progress-bar')).toBeInTheDocument();
   });
 
   it('should ', async () => {
@@ -26,13 +26,13 @@ describe('ProgressBar.stories', () => {
       />,
     );
 
-    expect(screen.getAllByTestId('nodeIndicator')[1]).toHaveStyle(
+    expect(screen.getAllByTestId('node-indicator')[1]).toHaveStyle(
       'background-color: #FF2D2E',
     );
-    expect(screen.getAllByTestId('nodeIndicator')[0]).toHaveStyle(
+    expect(screen.getAllByTestId('node-indicator')[0]).toHaveStyle(
       'background-color: #F4F4F4',
     );
-    expect(screen.getAllByTestId('nodeIndicator')[2]).toHaveStyle(
+    expect(screen.getAllByTestId('node-indicator')[2]).toHaveStyle(
       'background-color: #F4F4F4',
     );
   });

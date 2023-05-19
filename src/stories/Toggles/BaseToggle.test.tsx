@@ -12,7 +12,7 @@ describe('BaseToggle', () => {
   it('should render base toggle', () => {
     render(<BaseToggle toggleOptions={testToggleOptions} />);
 
-    expect(screen.getByTestId('baseToggle')).toBeInTheDocument();
+    expect(screen.getByTestId('base-toggle')).toBeInTheDocument();
   });
 
   it('should be checked on click', () => {

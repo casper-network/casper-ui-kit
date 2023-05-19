@@ -18,6 +18,6 @@ describe('RadioButton.stories', () => {
   it('should render the Base RadioButtonGroup', () => {
     render(<Base options={options} {...Base.args} />);
 
-    expect(screen.getByTestId('RadioButtonsContainer')).toBeInTheDocument();
+    expect(screen.getByTestId('radio-buttons-container')).toBeInTheDocument();
   });
 });
