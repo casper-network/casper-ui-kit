@@ -66,7 +66,7 @@ export const RadioButtonGroup: React.FC<OptionGroupProps> = ({
     <RadioButtonsContainer
       width={width}
       orientation={orientation}
-      data-testid="RadioButtonsContainer">
+      data-testid="radio-buttons-container">
       {renderOptions()}
     </RadioButtonsContainer>
   );

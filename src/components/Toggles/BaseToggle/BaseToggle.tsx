@@ -32,11 +32,11 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
   };
 
   return (
-    <BaseToggleWrapper data-testid="baseToggle" className={className}>
+    <BaseToggleWrapper data-testid="base-toggle" className={className}>
       <ToggleLabel>{toggleOptions.left}</ToggleLabel>
       <Label>
         <Input
-          data-testid="baseToggleCheckbox"
+          data-testid="base-toggle-checkbox"
           type="checkbox"
           onChange={handleChange}
         />

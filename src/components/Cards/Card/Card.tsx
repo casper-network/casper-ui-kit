@@ -16,28 +16,28 @@ export const Card = ({ children, className }: CardProps) => {
   const subComponents = subComponentHelper(subComponentList, children);
 
   return (
-    <CardContentWrapper data-testid="baseCard" className={className}>
+    <CardContentWrapper data-testid="base-card" className={className}>
       {subComponents.map(component => component)}
     </CardContentWrapper>
   );
 };
 
 const Header: React.FC<Children> = ({ children }) => (
-  <div data-testid="baseCardHeader" className="header">
+  <div data-testid="base-card-header" className="header">
     {children}
   </div>
 );
 Card.Header = Header;
 
 const Body: React.FC<Children> = ({ children }) => (
-  <div data-testid="baseCardBody" className="body">
+  <div data-testid="base-card-body" className="body">
     {children}
   </div>
 );
 Card.Body = Body;
 
 const Footer: React.FC<Children> = ({ children }) => (
-  <div data-testid="baseCardFooter" className="footer">
+  <div data-testid="base-card-footer" className="footer">
     {children}
   </div>
 );

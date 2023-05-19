@@ -18,7 +18,7 @@ describe('SearchBar.stories', () => {
       />,
     );
 
-    expect(screen.getByTestId('searchBar')).toBeInTheDocument();
+    expect(screen.getByTestId('search-bar')).toBeInTheDocument();
   });
 
   it('should render the Filtered SearchBar', () => {
@@ -38,7 +38,7 @@ describe('SearchBar.stories', () => {
       />,
     );
 
-    expect(screen.getByTestId('searchBarFilter')).toBeInTheDocument();
+    expect(screen.getByTestId('search-bar-filter')).toBeInTheDocument();
   });
 
   it('should render the Error Message SearchBar', () => {
@@ -59,7 +59,7 @@ describe('SearchBar.stories', () => {
       />,
     );
 
-    expect(screen.getByTestId('errorMessage')).toBeInTheDocument();
-    expect(screen.getByTestId('errorMessage')).toHaveTextContent('Test Error');
+    expect(screen.getByTestId('error-message')).toBeInTheDocument();
+    expect(screen.getByTestId('error-message')).toHaveTextContent('Test Error');
   });
 });

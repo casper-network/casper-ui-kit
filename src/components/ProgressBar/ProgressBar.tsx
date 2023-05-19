@@ -15,12 +15,12 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
 }) => {
   return (
-    <ProgressBarWrapper data-testid="progressBar">
+    <ProgressBarWrapper data-testid="progress-bar">
       {processSteps.map(step => {
         return (
           <div className={className} key={step}>
             <NodeIndicator
-              data-testid="nodeIndicator"
+              data-testid="node-indicator"
               checked={currentStep === step}
             />
             <NodeLabel>{step}</NodeLabel>

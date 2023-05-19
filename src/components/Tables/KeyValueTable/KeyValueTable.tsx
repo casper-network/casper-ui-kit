@@ -18,15 +18,15 @@ export const KeyValueTable: React.FC<KeyValueTableProps> = ({
   noDividers,
   className,
 }) => (
-  <KeyValueTableWrapper data-testid="keyValueTable" className={className}>
+  <KeyValueTableWrapper data-testid="key-value-table" className={className}>
     <tbody>
       {rows.map(({ detailKey, value, key }) => {
         return (
           <tr key={key}>
-            <TableLabel data-testid="tableKey" noDividers={noDividers}>
+            <TableLabel data-testid="table-key" noDividers={noDividers}>
               {detailKey}
             </TableLabel>
-            <TableValue data-testid="tableValue" noDividers={noDividers}>
+            <TableValue data-testid="table-value" noDividers={noDividers}>
               {value}
             </TableValue>
           </tr>
