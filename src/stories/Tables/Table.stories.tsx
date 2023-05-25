@@ -16,7 +16,6 @@ interface FakeTableData {
   randomNumberField: number;
 }
 
-// Create a master template for mapping args to render the Button component
 const Template: StoryFn<typeof Table<FakeTableData>> = (
   args: TableProps<FakeTableData>,
 ) => (
