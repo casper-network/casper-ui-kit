@@ -234,6 +234,7 @@ const TableWrapper = styled.div<{
 const Header = styled.div`
   padding: 1rem 2rem;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 const StyledTable = styled.table<{ bgColor: string }>`
