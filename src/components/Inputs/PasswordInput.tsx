@@ -62,9 +62,9 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
   ) => {
     const [passwordIsVisible, setPasswordIsVisible] = useState(false);
     const toggleView = passwordIsVisible ? (
-      <ViewPasswordIcon />
+      <ViewPasswordIcon data-testid="view-test" />
     ) : (
-      <HidePasswordIcon />
+      <HidePasswordIcon data-testid="view-test" />
     );
 
     return (
@@ -97,6 +97,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
             data-testid="password-input"
           />
           <ViewPasswordButton
+            data-testid="view-password-button"
             type="button"
             onClick={() => setPasswordIsVisible(prev => !prev)}
             svgColor={svgColor}

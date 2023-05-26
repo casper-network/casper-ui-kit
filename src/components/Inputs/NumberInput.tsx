@@ -86,6 +86,7 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
           height={height}
           boxShadowColor={boxShadowColor}>
           <StyledInput
+            data-testid="number-input"
             id={id}
             ref={ref}
             type="number"
