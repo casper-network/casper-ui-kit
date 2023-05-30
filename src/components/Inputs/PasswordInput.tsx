@@ -62,16 +62,18 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
   ) => {
     const [passwordIsVisible, setPasswordIsVisible] = useState(false);
     const toggleView = passwordIsVisible ? (
-      <ViewPasswordIcon data-testid="view-test" />
+      <ViewPasswordIcon />
     ) : (
-      <HidePasswordIcon data-testid="view-test" />
+      <HidePasswordIcon />
     );
 
     return (
       <LabelPasswordInputContainer
         labelPosition={labelPosition}
         gapSize={gapSize}>
-        <label htmlFor={id}>{label}</label>
+        <label data-testid="password-input-label" htmlFor={id}>
+          {label}
+        </label>
         <InputIconContainer>
           <StyledPasswordInput
             id={id}

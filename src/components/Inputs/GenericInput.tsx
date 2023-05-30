@@ -78,7 +78,9 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
       <LabelPasswordInputContainer
         labelPosition={labelPosition}
         gapSize={gapSize}>
-        <label htmlFor={id}>{label}</label>
+        <label data-testid="generic-input-label" htmlFor={id}>
+          {label}
+        </label>
         <InputIconContainer>
           <StyledInput
             id={id}

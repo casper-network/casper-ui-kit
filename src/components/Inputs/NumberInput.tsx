@@ -81,8 +81,11 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
       <LabelPasswordInputContainer
         labelPosition={labelPosition}
         gapSize={gapSize}>
-        <label htmlFor={id}>{label}</label>
+        <label data-testid="number-input-label" htmlFor={id}>
+          {label}
+        </label>
         <InputAndArrowsContainer
+          data-testid="input-and-arrows-container"
           height={height}
           boxShadowColor={boxShadowColor}>
           <StyledInput
@@ -107,6 +110,7 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
           />
           <ArrowsContainer>
             <ArrowButton
+              data-testid="arrow-button"
               arrowColor={arrowColor}
               focusBorderColor={focusBorderColor}
               focusBorderWidth={focusBorderWidth}
