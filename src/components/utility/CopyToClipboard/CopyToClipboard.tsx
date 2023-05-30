@@ -25,7 +25,6 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
     setCopied(true);
     copyToClipboard(textToCopy);
   };
-
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
 
@@ -43,7 +42,7 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
       {isCopied ? (
         <CopiedIcon data-testid="copied-icon" size={size} />
       ) : (
-        <CopyIcon data-testid="copy-icon" />
+        <CopyIcon data-testid="copy-icon" size={size} />
       )}
     </CopyButton>
   );
