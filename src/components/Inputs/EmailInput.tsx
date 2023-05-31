@@ -60,7 +60,9 @@ export const EmailInput: React.FC<EmailInputProps> = forwardRef(
     <LabelPasswordInputContainer
       labelPosition={labelPosition}
       gapSize={gapSize}>
-      <label htmlFor={id}>{label}</label>
+      <label data-testid="email-input-label" htmlFor={id}>
+        {label}
+      </label>
       <StyledPasswordInput
         id={id}
         ref={ref}
