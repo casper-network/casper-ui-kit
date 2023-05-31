@@ -5,20 +5,43 @@ import CopiedSVG from '../../../assets/svg/icons/copied-icon.svg';
 import CopySVG from '../../../assets/svg/icons/copy-icon.svg';
 import { pxToRem } from '../../../utils';
 
+interface CopyIconProps {
+  readonly width?: number;
+  readonly height?: number;
+  readonly copyColor?: string;
+  readonly focusColor?: string;
+  readonly hoverColor?: string;
+}
+
+interface CopiedIconProps {
+  readonly width?: number;
+  readonly height?: number;
+  readonly copyColor?: string;
+  readonly focusColor?: string;
+  readonly hoverColor?: string;
+}
+
 const copyToClipboard = (text: string) => {
   navigator.clipboard.writeText(text);
-
-  // add to satisfy onClick TS typing
-  return undefined;
 };
 
 export interface CopyToClipboardProps {
   readonly textToCopy: string;
-  readonly size?: number;
+  readonly width: number;
+  readonly height: number;
+  readonly copyColor?: string;
+  readonly focusColor?: string;
+  readonly hoverColor?: string;
+  readonly copiedColor?: string;
 }
 export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
   textToCopy,
-  size = 16,
+  copyColor,
+  focusColor,
+  hoverColor,
+  copiedColor,
+  width,
+  height,
 }) => {
   const [isCopied, setCopied] = useState(false);
   const copyFn = () => {
@@ -40,35 +63,49 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
   return (
     <CopyButton type="button" disabled={isCopied} onClick={copyFn}>
       {isCopied ? (
-        <CopiedIcon data-testid="copied-icon" size={size} />
+        <CopiedIcon
+          data-testid="copied-icon"
+          height={height}
+          width={width}
+          copiedColor={copiedColor}
+        />
       ) : (
-        <CopyIcon data-testid="copy-icon" size={size} />
+        <CopyIcon
+          data-testid="copy-icon"
+          height={height}
+          width={width}
+          hoverColor={hoverColor}
+          focusColor={focusColor}
+          copyColor={copyColor}
+        />
       )}
     </CopyButton>
   );
 };
 
-const CopyIcon = styled(CopySVG)<{
-  size: number;
-}>`
-  fill: ${colors.secondary.CasperGreen};
+const CopyIcon = styled(CopySVG)<CopyIconProps>`
+  fill: ${({ copyColor }) =>
+    copyColor ? (copyColor as string) : colors.secondary.CasperGreen};
   transition: all;
-  width: ${({ size }) => pxToRem(size)};
-  height: ${({ size }) => pxToRem(size)};
+  width: ${({ width }) => (width ? `${pxToRem(width as number)}` : '1rem')};
+  height: ${({ height }) => (height ? `${pxToRem(height as number)}` : '1rem')};
   margin-left: ${pxToRem(5)};
 
   :focus {
-    color: ${colors.secondary.CasperGreen};
+    color: ${({ focusColor }) =>
+      focusColor ? (focusColor as string) : colors.secondary.CasperGreen};
   }
   :hover {
-    fill: ${colors.primary.CasperRed};
+    fill: ${({ hoverColor }) =>
+      hoverColor ? (hoverColor as string) : colors.primary.CasperRed};
   }
 `;
 
-const CopiedIcon = styled(CopiedSVG)`
-  width: ${({ size }) => pxToRem(size)};
-  height: ${({ size }) => pxToRem(size)};
-  background-color: ${colors.secondary.CasperGreen};
+const CopiedIcon = styled(CopiedSVG)<CopiedIconProps>`
+  width: ${({ width }) => (width ? `${pxToRem(width as number)}` : '1rem')};
+  height: ${({ height }) => (height ? `${pxToRem(height as number)}` : '1rem')};
+  background-color: ${({ copiedColor }) =>
+    copiedColor ? (copiedColor as string) : colors.secondary.CasperGreen};
   border-radius: 0.125rem;
 `;
 
