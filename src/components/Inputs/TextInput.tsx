@@ -60,7 +60,9 @@ export const TextInput: React.FC<TextInputProps> = forwardRef(
     <LabelPasswordInputContainer
       labelPosition={labelPosition}
       gapSize={gapSize}>
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id} data-testid="text-input-label">
+        {label}
+      </label>
       <StyledInput
         id={id}
         ref={ref}

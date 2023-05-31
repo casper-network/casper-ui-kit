@@ -71,7 +71,9 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
       <LabelPasswordInputContainer
         labelPosition={labelPosition}
         gapSize={gapSize}>
-        <label htmlFor={id}>{label}</label>
+        <label data-testid="password-input-label" htmlFor={id}>
+          {label}
+        </label>
         <InputIconContainer>
           <StyledPasswordInput
             id={id}
@@ -97,6 +99,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
             data-testid="password-input"
           />
           <ViewPasswordButton
+            data-testid="view-password-button"
             type="button"
             onClick={() => setPasswordIsVisible(prev => !prev)}
             svgColor={svgColor}
