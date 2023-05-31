@@ -68,11 +68,11 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
 };
 
 const CopyIcon = styled(CopySVG)<{
-  copyColor: string;
-  hoverColor: string;
-  focusColor: string;
-  height: number;
-  width: number;
+  copyColor?: string;
+  hoverColor?: string;
+  focusColor?: string;
+  height?: number;
+  width?: number;
 }>`
   fill: ${({ copyColor }) =>
     copyColor ? (copyColor as string) : colors.secondary.CasperGreen};
@@ -92,9 +92,9 @@ const CopyIcon = styled(CopySVG)<{
 `;
 
 const CopiedIcon = styled(CopiedSVG)<{
-  copiedColor: string;
-  width: number;
-  height: number;
+  copiedColor?: string;
+  width?: number;
+  height?: number;
 }>`
   width: ${({ width }) => (width ? `${pxToRem(width as number)}` : '1rem')};
   height: ${({ height }) => (height ? `${pxToRem(height as number)}` : '1rem')};
