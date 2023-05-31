@@ -5,30 +5,14 @@ import CopiedSVG from '../../../assets/svg/icons/copied-icon.svg';
 import CopySVG from '../../../assets/svg/icons/copy-icon.svg';
 import { pxToRem } from '../../../utils';
 
-interface CopyIconProps {
-  readonly width?: number;
-  readonly height?: number;
-  readonly copyColor?: string;
-  readonly focusColor?: string;
-  readonly hoverColor?: string;
-}
-
-interface CopiedIconProps {
-  readonly width?: number;
-  readonly height?: number;
-  readonly copyColor?: string;
-  readonly focusColor?: string;
-  readonly hoverColor?: string;
-}
-
 const copyToClipboard = (text: string) => {
   navigator.clipboard.writeText(text);
 };
 
 export interface CopyToClipboardProps {
   readonly textToCopy: string;
-  readonly width: number;
-  readonly height: number;
+  readonly width?: number;
+  readonly height?: number;
   readonly copyColor?: string;
   readonly focusColor?: string;
   readonly hoverColor?: string;
@@ -83,7 +67,13 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
   );
 };
 
-const CopyIcon = styled(CopySVG)<CopyIconProps>`
+const CopyIcon = styled(CopySVG)<{
+  copyColor: string;
+  hoverColor: string;
+  focusColor: string;
+  height: number;
+  width: number;
+}>`
   fill: ${({ copyColor }) =>
     copyColor ? (copyColor as string) : colors.secondary.CasperGreen};
   transition: all;
@@ -101,7 +91,11 @@ const CopyIcon = styled(CopySVG)<CopyIconProps>`
   }
 `;
 
-const CopiedIcon = styled(CopiedSVG)<CopiedIconProps>`
+const CopiedIcon = styled(CopiedSVG)<{
+  copiedColor: string;
+  width: number;
+  height: number;
+}>`
   width: ${({ width }) => (width ? `${pxToRem(width as number)}` : '1rem')};
   height: ${({ height }) => (height ? `${pxToRem(height as number)}` : '1rem')};
   background-color: ${({ copiedColor }) =>
