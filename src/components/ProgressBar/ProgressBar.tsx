@@ -4,23 +4,28 @@ import React from 'react';
 import { defaultTheme } from '../../theme';
 
 export interface ProgressBarProps {
-  processSteps: string[];
-  currentStep: string;
-  className?: string;
+  readonly processSteps: string[];
+  readonly currentStep: string;
+  readonly className?: string;
+  readonly progressBarDataCy?: string;
+  readonly nodeIndicatorDataCy?: string;
 }
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
   currentStep,
   processSteps,
   className,
+  progressBarDataCy,
+  nodeIndicatorDataCy,
 }) => {
   return (
-    <ProgressBarWrapper data-testid="progress-bar">
+    <ProgressBarWrapper data-testid="progress-bar" data-cy={progressBarDataCy}>
       {processSteps.map(step => {
         return (
           <div className={className} key={step}>
             <NodeIndicator
               data-testid="node-indicator"
+              data-cy={nodeIndicatorDataCy}
               checked={currentStep === step}
             />
             <NodeLabel>{step}</NodeLabel>

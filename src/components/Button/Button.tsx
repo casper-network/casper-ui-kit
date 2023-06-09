@@ -25,6 +25,7 @@ export interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   readonly className?: string;
   readonly children: React.ReactNode;
   readonly onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  readonly dataCy?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -47,6 +48,7 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   children,
   onClick,
+  dataCy,
   ...baseButtonProps
 }) => {
   return (
@@ -69,6 +71,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={className}
       onClick={onClick}
+      data-cy={dataCy}
       {...baseButtonProps}>
       {children}
     </StyledButton>

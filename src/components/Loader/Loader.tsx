@@ -3,10 +3,13 @@ import styled from 'src/styled';
 import LoaderSVG from '../../assets/svg/icons/loader-icon.svg';
 
 export interface LoaderProps {
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  readonly size?: 'xs' | 'sm' | 'md' | 'lg';
+  readonly dataCy?: string;
 }
 
-export const Loader: React.FC<LoaderProps> = ({ size } = { size: 'lg' }) => {
+export const Loader: React.FC<LoaderProps> = (
+  { size, dataCy } = { size: 'lg' },
+) => {
   const getLoaderSize = (size?: LoaderProps['size']) => {
     switch (size) {
       case 'xs':
@@ -27,7 +30,8 @@ export const Loader: React.FC<LoaderProps> = ({ size } = { size: 'lg' }) => {
       <LoaderStatus
         size={getLoaderSize(size)}
         aria-label="Loading..."
-        role="status">
+        role="status"
+        data-cy={dataCy}>
         <LoaderIcon size={getLoaderSize(size)}>
           <LoaderSVG />
         </LoaderIcon>

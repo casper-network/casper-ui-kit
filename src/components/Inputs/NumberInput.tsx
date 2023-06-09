@@ -28,6 +28,7 @@ export interface NumberInputProps
   readonly required?: boolean;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
+  readonly dataCy?: string;
 }
 
 export const NumberInput: React.FC<NumberInputProps> = forwardRef(
@@ -52,6 +53,7 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
       maxNumberValue = 20,
       required,
       disabled,
+      dataCy,
       ...baseInputProps
     },
     ref,
@@ -106,6 +108,7 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
             required={required}
             disabled={disabled}
             onChange={onChangeHandler}
+            data-cy={dataCy}
             {...baseInputProps}
           />
           <ArrowsContainer>

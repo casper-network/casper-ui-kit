@@ -7,12 +7,13 @@ import { DropDownSelector, SelectOptions } from '../Selectors';
 import { SearchIcon, ErrorIcon } from '../Icon';
 
 export interface SearchBarProps {
-  onClick: () => void;
-  filters?: SelectOptions[];
-  currentFilter?: SelectOptions;
-  errorMessage?: any;
-  className?: string;
-  defaultValue?: PropsValue<SelectOptions>;
+  readonly onClick: () => void;
+  readonly filters?: SelectOptions[];
+  readonly currentFilter?: SelectOptions;
+  readonly errorMessage?: any;
+  readonly className?: string;
+  readonly defaultValue?: PropsValue<SelectOptions>;
+  readonly dataCy?: string;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({
@@ -22,13 +23,17 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   currentFilter,
   className,
   defaultValue,
+  dataCy,
 }) => {
   const handleSubmit = (event: React.FormEvent) => {
     onClick?.();
     event.preventDefault();
   };
   return (
-    <FormContainer data-testid="search-bar" className={className}>
+    <FormContainer
+      className={className}
+      data-testid="search-bar"
+      data-cy={dataCy}>
       <Form onSubmit={handleSubmit}>
         <SearchLabel htmlFor="default-search">Search</SearchLabel>
         <FormComponentsContainer>

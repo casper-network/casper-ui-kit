@@ -34,6 +34,7 @@ export interface IconProps {
   readonly color?: string;
   readonly stroke?: string;
   readonly strokeWidth?: number;
+  readonly dataCy?: string;
 }
 
 export const Icon: React.FC<IconProps> = ({
@@ -43,8 +44,9 @@ export const Icon: React.FC<IconProps> = ({
   color = 'white',
   stroke = 'grey',
   strokeWidth = 1,
+  dataCy,
 }) => (
-  <IconContainer data-testid="icon-component">
+  <IconContainer data-testid="icon-component" data-cy={dataCy}>
     <IconWrapper
       width={width}
       height={height}

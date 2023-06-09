@@ -15,15 +15,17 @@ export interface LogoProps {
   readonly logo: keyof typeof logos;
   readonly title: string;
   readonly width?: number;
+  readonly dataCy?: string;
 }
 
 export const Logo: React.FC<LogoProps> = ({
   logo = 'BlockExplorerGradientLogo',
   title = 'Red and black Casper Labs Logo',
   width = 250,
+  dataCy,
 }) => (
   <LogoContainer>
-    <StyledSvg width={width} role="img">
+    <StyledSvg width={width} role="img" data-cy={dataCy}>
       <title>{title}</title>
       {logos[logo]}
     </StyledSvg>
