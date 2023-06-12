@@ -5,6 +5,7 @@ export * from './Icon';
 export * from './Inputs';
 export * from './Loader';
 export * from './Logos';
+export * from './Heading';
 export * from './Tables';
 export * from './Toggles';
 export * from './Selectors';
