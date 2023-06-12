@@ -3,12 +3,13 @@ import styled from 'src/styled';
 import { defaultTheme } from '../../../theme';
 
 export interface ButtonToggleProps {
-  toggleOptions: string[];
-  buttonColor?: string;
-  selectedColor?: string;
-  buttonBorderColor?: string;
-  className?: string;
-  onToggle?: () => void;
+  readonly toggleOptions: string[];
+  readonly buttonColor?: string;
+  readonly selectedColor?: string;
+  readonly buttonBorderColor?: string;
+  readonly className?: string;
+  readonly onToggle?: () => void;
+  readonly buttonToggleDataCy?: string;
 }
 
 export const ButtonToggle: React.FC<ButtonToggleProps> = ({
@@ -18,6 +19,7 @@ export const ButtonToggle: React.FC<ButtonToggleProps> = ({
   buttonBorderColor,
   className,
   onToggle,
+  buttonToggleDataCy,
 }) => {
   const [selectedToggleOption, setSelectedToggleOption] = useState(
     toggleOptions[0],
@@ -28,7 +30,10 @@ export const ButtonToggle: React.FC<ButtonToggleProps> = ({
     onToggle?.();
   };
   return (
-    <div className={className} data-testid="button-toggle">
+    <div
+      className={className}
+      data-testid="button-toggle"
+      data-cy={buttonToggleDataCy}>
       {toggleOptions.map(toggleOption => (
         <ToggleButton
           key={toggleOption}

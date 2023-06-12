@@ -30,6 +30,7 @@ export interface PasswordInputProps
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
+  readonly dataCy?: string;
 }
 
 export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
@@ -56,6 +57,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
       onChange,
       required,
       disabled,
+      dataCy,
       ...baseInputProps
     },
     ref,
@@ -95,8 +97,9 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
             onChange={onChange}
             required={required}
             disabled={disabled}
-            {...baseInputProps}
             data-testid="password-input"
+            data-cy={dataCy}
+            {...baseInputProps}
           />
           <ViewPasswordButton
             data-testid="view-password-button"

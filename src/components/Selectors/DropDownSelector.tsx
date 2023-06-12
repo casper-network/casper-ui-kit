@@ -16,6 +16,7 @@ export interface DropDownSelectorProps {
   readonly onChange?: () => void;
   readonly noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
   className?: string;
+  readonly dataCy?: string;
 }
 
 export const DropDownSelector: React.FC<DropDownSelectorProps> = ({
@@ -26,6 +27,7 @@ export const DropDownSelector: React.FC<DropDownSelectorProps> = ({
   onChange,
   className,
   noOptionsMessage = () => null,
+  dataCy,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentOption, setCurrentOption] = useState<null | SelectOptions>(
@@ -41,7 +43,8 @@ export const DropDownSelector: React.FC<DropDownSelectorProps> = ({
     <SelectWrapper
       className={className}
       isMenuOpen={isMenuOpen}
-      data-testid="select-wrapper">
+      data-testid="select-wrapper"
+      data-cy={dataCy}>
       <SelectLabel htmlFor="select">Select</SelectLabel>
       <Select
         aria-label="select-button"

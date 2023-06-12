@@ -4,12 +4,18 @@ import { pxToRem } from '../../utils';
 import { defaultTheme } from '../../theme';
 
 export interface TypographyProps {
-  color?: string;
-  font?: string;
-  fontWeight?: number;
-  fontSize?: number;
-  textAlign?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit';
-  children: React.ReactNode;
+  readonly color?: string;
+  readonly font?: string;
+  readonly fontWeight?: number;
+  readonly fontSize?: number;
+  readonly textAlign?:
+    | 'left'
+    | 'right'
+    | 'center'
+    | 'justify'
+    | 'initial'
+    | 'inherit';
+  readonly children: React.ReactNode;
 }
 
 export const Typography: React.FC<TypographyProps> = ({

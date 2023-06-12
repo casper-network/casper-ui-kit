@@ -27,6 +27,7 @@ export interface EmailInputProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
+  readonly dataCy?: string;
 }
 
 export const EmailInput: React.FC<EmailInputProps> = forwardRef(
@@ -53,6 +54,7 @@ export const EmailInput: React.FC<EmailInputProps> = forwardRef(
       onChange,
       required,
       disabled,
+      dataCy,
       ...baseInputProps
     },
     ref,
@@ -84,8 +86,9 @@ export const EmailInput: React.FC<EmailInputProps> = forwardRef(
         onChange={onChange}
         required={required}
         disabled={disabled}
-        {...baseInputProps}
         data-testid="email-input"
+        data-cy={dataCy}
+        {...baseInputProps}
       />
     </LabelPasswordInputContainer>
   ),

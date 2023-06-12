@@ -101,6 +101,7 @@ const CopiedIcon = styled(CopiedSVG)<{
   background-color: ${({ copiedColor }) =>
     copiedColor ? (copiedColor as string) : colors.secondary.CasperGreen};
   border-radius: 0.125rem;
+  margin-left: ${pxToRem(5)};
 `;
 
 const CopyButton = styled.button`

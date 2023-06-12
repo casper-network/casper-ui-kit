@@ -22,6 +22,7 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
+  readonly dataCy?: string;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = forwardRef(
@@ -42,6 +43,7 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
       value,
       name,
       required,
+      dataCy,
       ...baseCheckboxProps
     },
     ref,
@@ -67,6 +69,7 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
             name={name}
             checked={checked}
             required={required}
+            data-cy={dataCy}
             {...baseCheckboxProps}
           />
           {isChecked && (

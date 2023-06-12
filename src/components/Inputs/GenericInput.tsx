@@ -34,6 +34,7 @@ export interface GenericInputProps
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
+  readonly dataCy?: string;
 }
 
 export const GenericInput: React.FC<GenericInputProps> = forwardRef(
@@ -63,6 +64,7 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
       onChange,
       required,
       disabled,
+      dataCy,
       ...baseInputProps
     },
     ref,
@@ -103,8 +105,9 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
             onChange={onChange}
             required={required}
             disabled={disabled}
-            {...baseInputProps}
             data-testid="generic-input"
+            data-cy={dataCy}
+            {...baseInputProps}
           />
           {passwordToggle && (
             <ViewPasswordButton

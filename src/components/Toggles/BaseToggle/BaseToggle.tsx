@@ -3,13 +3,14 @@ import React from 'react';
 import { defaultTheme } from '../../../theme';
 
 export interface BaseToggleProps {
-  toggleOptions: {
+  readonly toggleOptions: {
     left: string;
     right: string;
   };
-  color?: string;
-  className?: string;
-  onToggle?: () => void;
+  readonly color?: string;
+  readonly className?: string;
+  readonly onToggle?: () => void;
+  readonly baseToggleDataCy?: string;
 }
 
 export const BaseToggle: React.FC<BaseToggleProps> = ({
@@ -17,6 +18,7 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
   color = 'black',
   className,
   onToggle,
+  baseToggleDataCy,
 }) => {
   const [selectedToggleOption, setSelectedToggleOption] = React.useState(
     toggleOptions.left,
@@ -32,7 +34,10 @@ export const BaseToggle: React.FC<BaseToggleProps> = ({
   };
 
   return (
-    <BaseToggleWrapper data-testid="base-toggle" className={className}>
+    <BaseToggleWrapper
+      data-testid="base-toggle"
+      data-cy={baseToggleDataCy}
+      className={className}>
       <ToggleLabel>{toggleOptions.left}</ToggleLabel>
       <Label>
         <Input

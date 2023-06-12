@@ -3,20 +3,24 @@ import React from 'react';
 import { subComponentHelper } from '../../../utils';
 
 export interface Children {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 }
 
 export interface CardProps extends Children {
-  className?: string;
+  readonly className?: string;
+  readonly baseCardDataCy?: string;
 }
 
-export const Card = ({ children, className }: CardProps) => {
+export const Card = ({ children, className, baseCardDataCy }: CardProps) => {
   const subComponentList = Object.keys(Card);
 
   const subComponents = subComponentHelper(subComponentList, children);
 
   return (
-    <CardContentWrapper data-testid="base-card" className={className}>
+    <CardContentWrapper
+      data-testid="base-card"
+      data-cy={baseCardDataCy}
+      className={className}>
       {subComponents.map(component => component)}
     </CardContentWrapper>
   );
