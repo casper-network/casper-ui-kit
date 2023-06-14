@@ -22,6 +22,15 @@ const clickActionShoutOut = (storyName: string) => {
 export const Base = Template.bind({});
 
 Base.args = {
+  bgColor: '#02c1b0',
+  borderRadius: 10,
+  borderWidth: 2,
+  borderColor: '#02c1b0',
+  hoverBgColor: 'transparent',
+  hoverBorderColor: '#02c1b0',
+  focusBorderColor: '#02c1b0',
+  hoverFontColor: '#02c1b0',
+  hoverBgColorTransitionDuration: 300,
   children: ChildText,
   onClick: () => clickActionShoutOut('Base'),
   type: 'button',
@@ -30,15 +39,25 @@ Base.args = {
 export const RedButton = Template.bind({});
 
 RedButton.args = {
+  bgColor: 'red',
+  borderRadius: 10,
+  borderWidth: 2,
+  borderColor: 'red',
+  hoverBgColor: 'transparent',
+  hoverFontColor: 'red',
+  focusBorderColor: 'red',
+  hoverBgColorTransitionDuration: 300,
   children: ChildText,
   onClick: () => clickActionShoutOut('Required Button'),
-  bgColor: 'red',
   type: 'button',
 };
 
 export const DisabledButton = Template.bind({});
 
 DisabledButton.args = {
+  bgColor: 'grey',
+  borderRadius: 10,
+  borderWidth: 2,
   children: ChildText,
   disabled: true,
 };
