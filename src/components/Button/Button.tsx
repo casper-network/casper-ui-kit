@@ -136,6 +136,6 @@ const StyledButton = styled.button<{
     color: ${colors.secondary.White};
     background-color: ${colors.lowContrastSecondary.MediumGrey};
     border: ${({ borderColor, borderWidth }) =>
-      `solid ${borderWidth ?? 0} ${borderColor ?? 'initial'}`};
+      `solid ${borderWidth ?? 1} ${borderColor ?? 'transparent'}`};
   }
 `;
