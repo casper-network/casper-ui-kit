@@ -12,7 +12,7 @@ export interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   readonly paddingY?: number;
   readonly fontColor?: string;
   readonly hoverFontColor?: string;
-  readonly bgColor: string;
+  readonly bgColor?: string;
   readonly hoverBgColor?: string;
   readonly hoverBgColorTransitionDuration?: number;
   readonly borderColor?: string;
@@ -35,13 +35,13 @@ export const Button: React.FC<ButtonProps> = ({
   paddingY,
   fontColor,
   hoverFontColor,
-  bgColor = '#02c1b0',
+  bgColor,
   hoverBgColor,
   hoverBgColorTransitionDuration,
   borderColor,
-  hoverBorderColor = '#02c1b0',
+  hoverBorderColor,
   focusBorderColor,
-  borderWidth = 2,
+  borderWidth,
   borderRadius,
   minButtonWidth,
   disabled,
@@ -84,13 +84,13 @@ const StyledButton = styled.button<{
   paddingY?: number;
   fontColor?: string;
   hoverFontColor?: string;
-  bgColor: string;
+  bgColor?: string;
   hoverBgColor?: string;
   hoverBgColorTransitionDuration?: number;
   borderColor?: string;
-  hoverBorderColor: string;
+  hoverBorderColor?: string;
   focusBorderColor?: string;
-  borderWidth: number;
+  borderWidth?: number;
   borderRadius?: number;
   minButtonWidth?: number;
   disabled?: boolean;
@@ -105,37 +105,37 @@ const StyledButton = styled.button<{
 
     return `${yAxis} ${xAxis}`;
   }};
-  border: ${({ borderColor, borderWidth, bgColor }) => {
-    const color = borderColor ?? bgColor;
-    const width = borderWidth ? pxToRem(borderWidth) : '0.125rem';
+  border: ${({ borderColor, borderWidth }) => {
+    const color = borderColor ?? 'transparent';
+    const width = borderWidth ? pxToRem(borderWidth) : 0;
     return `solid ${color} ${width}`;
   }};
-  border-radius: ${({ borderRadius }) => pxToRem(borderRadius ?? 10)};
+  border-radius: ${({ borderRadius }) => pxToRem(borderRadius ?? 0)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   min-width: ${({ minButtonWidth }) => pxToRem(minButtonWidth ?? 0)};
 
   &:focus {
     border: ${({ focusBorderColor, borderWidth }) => {
-      const width = borderWidth ? pxToRem(borderWidth) : '0.125rem';
-      const color = focusBorderColor ?? `${colors.secondary.CasperBlue}`;
+      const width = borderWidth ? pxToRem(borderWidth) : 0;
+      const color = focusBorderColor ?? 'transparent';
       return `solid ${color} ${width} `;
     }};
     outline: none;
   }
 
   &:hover {
-    color: ${({ hoverFontColor, bgColor }) => hoverFontColor ?? bgColor};
+    color: ${({ hoverFontColor }) => hoverFontColor};
     border: ${({ hoverBorderColor, borderWidth }) =>
-      `solid ${borderWidth} ${hoverBorderColor}`};
-    background-color: ${({ hoverBgColor }) => hoverBgColor ?? 'transparent'};
+      `solid ${borderWidth ?? 1} ${hoverBorderColor ?? 'transparent'}`};
+    background-color: ${({ hoverBgColor }) => hoverBgColor};
     transition: ${({ hoverBgColorTransitionDuration }) =>
       `background-color ${hoverBgColorTransitionDuration ?? 300}ms`};
   }
 
   &:disabled {
-    color: ${colors.lowContrastSecondary.MediumGrey};
-    background-color: transparent;
-    border: ${({ borderColor, borderWidth, bgColor }) =>
-      `solid ${borderWidth} ${borderColor ?? bgColor}`};
+    color: ${colors.secondary.White};
+    background-color: ${colors.lowContrastSecondary.MediumGrey};
+    border: ${({ borderColor, borderWidth }) =>
+      `solid ${borderWidth ?? 1} ${borderColor ?? 'transparent'}`};
   }
 `;
