@@ -116,7 +116,7 @@ const StyledButton = styled.button<{
 
   &:focus {
     border: ${({ focusBorderColor, borderWidth }) => {
-      const width = borderWidth ? pxToRem(borderWidth) : 0;
+      const width = borderWidth ? pxToRem(borderWidth) : 'inherit';
       const color = focusBorderColor ?? 'transparent';
       return `solid ${color} ${width} `;
     }};
@@ -126,7 +126,7 @@ const StyledButton = styled.button<{
   &:hover {
     color: ${({ hoverFontColor }) => hoverFontColor};
     border: ${({ hoverBorderColor, borderWidth }) =>
-      `solid ${borderWidth ?? 1} ${hoverBorderColor ?? 'transparent'}`};
+      `solid ${borderWidth ?? 'inherit'} ${hoverBorderColor ?? 'inherit'}`};
     background-color: ${({ hoverBgColor }) => hoverBgColor};
     transition: ${({ hoverBgColorTransitionDuration }) =>
       `background-color ${hoverBgColorTransitionDuration ?? 300}ms`};
@@ -136,6 +136,6 @@ const StyledButton = styled.button<{
     color: ${colors.secondary.White};
     background-color: ${colors.lowContrastSecondary.MediumGrey};
     border: ${({ borderColor, borderWidth }) =>
-      `solid ${borderWidth ?? 1} ${borderColor ?? 'transparent'}`};
+      `solid ${borderWidth ?? 'inherit'} ${borderColor ?? 'inherit'}`};
   }
 `;
