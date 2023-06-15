@@ -27,7 +27,6 @@ Base.args = {
   borderWidth: 2,
   borderColor: '#02c1b0',
   hoverBgColor: 'transparent',
-  hoverBorderColor: '#02c1b0',
   focusBorderColor: '#02c1b0',
   hoverFontColor: '#02c1b0',
   hoverBgColorTransitionDuration: 300,
@@ -48,7 +47,7 @@ RedButton.args = {
   focusBorderColor: 'red',
   hoverBgColorTransitionDuration: 300,
   children: ChildText,
-  onClick: () => clickActionShoutOut('Required Button'),
+  onClick: () => clickActionShoutOut('Red Button'),
   type: 'button',
 };
 
