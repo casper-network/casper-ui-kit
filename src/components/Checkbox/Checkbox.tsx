@@ -23,6 +23,7 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
   readonly dataCy?: string;
+  readonly className?: string;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = forwardRef(
@@ -44,6 +45,7 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
       name,
       required,
       dataCy,
+      className,
       ...baseCheckboxProps
     },
     ref,
@@ -51,7 +53,10 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
     const [isChecked, setIsChecked] = useState(checked);
 
     return (
-      <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
+      <LabelCheckboxContainer
+        className={className}
+        labelPosition={labelPosition}
+        gapSize={gapSize}>
         <label htmlFor={id}>{label}</label>
         <CheckboxContainer
           onClick={() => setIsChecked(prev => !prev)}

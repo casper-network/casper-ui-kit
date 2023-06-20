@@ -19,6 +19,7 @@ export interface RadioButtonBoxProps {
   readonly name?: string;
   readonly value?: string | number;
   readonly onChange?: () => void;
+  readonly className?: string;
 }
 
 export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
@@ -35,9 +36,13 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
   value,
   name,
   required,
+  className,
 }) => {
   return (
-    <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
+    <LabelCheckboxContainer
+      className={className}
+      labelPosition={labelPosition}
+      gapSize={gapSize}>
       <label>{label}</label>
       <CheckboxContainer width={width}>
         <StyledCheckbox

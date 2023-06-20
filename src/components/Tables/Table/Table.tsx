@@ -52,6 +52,7 @@ export interface TableProps<T> {
   placeholderData?: { [key: string]: any };
   isLastPage: boolean;
   theme?: TableThemeProps;
+  readonly className?: string;
 }
 
 export function Table<T extends unknown>({
@@ -67,6 +68,7 @@ export function Table<T extends unknown>({
   placeholderData,
   isLastPage,
   theme,
+  className,
 }: TableProps<T>) {
   const defaultTheme = {
     bgColor: 'white',
@@ -123,6 +125,7 @@ export function Table<T extends unknown>({
 
   return (
     <TableWrapper
+      className={className}
       bgColor={fullTheme.bgColor}
       borderColor={fullTheme.borderColor}
       borderWidth={fullTheme.borderWidth}

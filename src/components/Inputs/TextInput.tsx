@@ -27,6 +27,7 @@ export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
+  readonly className?: string;
   readonly dataCy?: string;
 }
 
@@ -54,12 +55,14 @@ export const TextInput: React.FC<TextInputProps> = forwardRef(
       onChange,
       required,
       disabled,
+      className,
       dataCy,
       ...baseInputProps
     },
     ref,
   ) => (
     <LabelPasswordInputContainer
+      className={className}
       labelPosition={labelPosition}
       gapSize={gapSize}>
       <label htmlFor={id} data-testid="text-input-label">

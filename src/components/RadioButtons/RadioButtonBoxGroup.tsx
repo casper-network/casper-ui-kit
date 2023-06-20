@@ -8,12 +8,14 @@ export interface RadioButtonBoxGroupProps {
   readonly options: RadioButtonBoxGroupOptions[];
   readonly width?: number;
   readonly orientation?: string;
+  readonly className?: string;
 }
 
 export const RadioButtonBoxGroup: React.FC<RadioButtonBoxGroupProps> = ({
   options,
   width,
   orientation,
+  className,
 }) => {
   const renderOptions = () => {
     return options.map(
@@ -43,6 +45,7 @@ export const RadioButtonBoxGroup: React.FC<RadioButtonBoxGroupProps> = ({
 
   return (
     <RadioButtonBoxContainer
+      className={className}
       width={width}
       orientation={orientation}
       data-testid="radio-button-box-container">

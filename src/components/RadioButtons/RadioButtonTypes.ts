@@ -9,6 +9,7 @@ export interface BaseRadioButtonProps
   readonly centerColor?: string;
   readonly required?: boolean;
   readonly disabled?: boolean;
+  readonly className?: string;
 }
 
 export type RadioButtonLabelPositions = 'top' | 'right' | 'bottom' | 'left';
@@ -19,6 +20,7 @@ export interface RadioButtonBoxGroupOptions {
   readonly color?: string;
   readonly required?: boolean;
   readonly disabled?: boolean;
+  readonly className?: string;
 }
 
 export interface OptionProps {
@@ -31,4 +33,5 @@ export interface OptionProps {
   readonly centerColor?: string;
   readonly required?: boolean;
   readonly disabled?: boolean;
+  readonly className?: string;
 }

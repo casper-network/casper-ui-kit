@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import styled from 'src/styled';
 import { pxToRem } from '../../utils';
 import { defaultTheme } from '../../theme';
@@ -12,8 +12,8 @@ export enum HeadingType {
   H6 = 'h6',
 }
 
-export interface HeadingProps {
-  readonly type: HeadingType;
+export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
+  readonly children: React.ReactNode;
   readonly className?: string;
   readonly color?: string;
   readonly font?: string;
@@ -26,90 +26,59 @@ export interface HeadingProps {
     | 'justify'
     | 'initial'
     | 'inherit';
-  readonly children: React.ReactNode;
   readonly dataCy?: string;
 }
 
 export const Heading: React.FC<HeadingProps> = ({
-  type,
   color = defaultTheme.colors.primary.Black,
   font = defaultTheme.typography.fonts.Inter,
   fontWeight = defaultTheme.typography.fontWeights.bold,
-  fontSize,
   textAlign = 'inherit',
   children,
-  dataCy,
-  className,
+  ...restOfProps
 }) => {
   const props = {
     textColor: color,
     fontFamily: font,
     fontWeight,
     textAlign,
-    // satisfy ts; should never take this value
     fontSize: 1,
-    className,
+    ...restOfProps,
   };
 
-  switch (type) {
-    case HeadingType.H1:
-      props.fontSize = fontSize || 40;
-      return (
-        <H1 {...props} data-cy={dataCy}>
-          {children}
-        </H1>
-      );
-    case HeadingType.H2:
-      props.fontSize = fontSize || 32;
-      return (
-        <H2 {...props} data-cy={dataCy}>
-          {children}
-        </H2>
-      );
-    case HeadingType.H3:
-      props.fontSize = fontSize || 28;
-      props.fontWeight =
-        fontWeight || defaultTheme.typography.fontWeights.medium;
-      return (
-        <H3 {...props} data-cy={dataCy}>
-          {children}
-        </H3>
-      );
-    case HeadingType.H4:
-      props.fontSize = fontSize || 24;
-      props.fontWeight =
-        fontWeight || defaultTheme.typography.fontWeights.medium;
-      return (
-        <H4 {...props} data-cy={dataCy}>
-          {children}
-        </H4>
-      );
-    case HeadingType.H5:
-      props.fontWeight =
-        fontWeight || defaultTheme.typography.fontWeights.normal;
-      props.fontSize = fontSize || 20;
-      return (
-        <H5 {...props} data-cy={dataCy}>
-          {children}
-        </H5>
-      );
-    case HeadingType.H6:
-      props.fontWeight =
-        fontWeight || defaultTheme.typography.fontWeights.normal;
-      props.fontSize = fontSize || 16;
-      return (
-        <H6 {...props} data-cy={dataCy}>
-          {children}
-        </H6>
-      );
-    default:
-      props.fontSize = fontSize || 40;
-      return (
-        <H1 {...props} data-cy={dataCy}>
-          {children}
-        </H1>
-      );
-  }
+  // switch (type) {
+  //   case HeadingType.H1:
+  //     if (!props.fontSize) props.fontSize = 40;
+  //     return <H1 {...props} />;
+  //   case HeadingType.H2:
+  //     if (!props.fontSize) props.fontSize = 32;
+  //     return <H2 {...props} />;
+  //   case HeadingType.H3:
+  //     if (!props.fontSize) props.fontSize = 28;
+  //     props.fontWeight =
+  //       fontWeight || defaultTheme.typography.fontWeights.medium;
+  //     return <H3 {...props} />;
+  //   case HeadingType.H4:
+  //     if (!props.fontSize) props.fontSize = 24;
+  //     props.fontWeight =
+  //       fontWeight || defaultTheme.typography.fontWeights.medium;
+  //     return <H4 {...props} />;
+  //   case HeadingType.H5:
+  //     props.fontWeight =
+  //       fontWeight || defaultTheme.typography.fontWeights.normal;
+  //     if (!props.fontSize) props.fontSize = 20;
+  //     return <H5 {...props} />;
+  //   case HeadingType.H6:
+  //     props.fontWeight =
+  //       fontWeight || defaultTheme.typography.fontWeights.normal;
+  //     if (!props.fontSize) props.fontSize = 16;
+  //     return <H6 {...props} />;
+  //   default:
+  //     if (!props.fontSize) props.fontSize = 40;
+  //     return <H1 {...props} />;
+  // }
+
+  return <H1 {...props}>{children}</H1>;
 };
 
 interface HeadingTextProps {
@@ -118,6 +87,7 @@ interface HeadingTextProps {
   fontWeight: number;
   fontSize: number;
   textAlign: string;
+  children: React.ReactNode;
 }
 
 const H1 = styled.h1<HeadingTextProps>`
