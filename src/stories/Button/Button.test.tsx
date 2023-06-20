@@ -6,12 +6,12 @@ import { Base, DisabledButton, RedButton } from './Button.stories';
 describe('Button.stories', () => {
   it('should render the Base button', () => {
     render(
-      <Base type="button" bgColor="blue" {...Base.args}>
+      <Base type="button" bgColor="#02c1b0" {...Base.args}>
         base button
       </Base>,
     );
     expect(screen.getByRole('button')).toHaveTextContent('base button');
-    expect(screen.getByRole('button')).toHaveStyle('background-color: blue');
+    expect(screen.getByRole('button')).toHaveStyle('background-color: #02c1b0');
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
