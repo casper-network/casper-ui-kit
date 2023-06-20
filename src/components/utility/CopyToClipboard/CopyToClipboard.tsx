@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { colors } from 'src/theme/colors';
 import CopiedSVG from '../../../assets/svg/icons/copied-icon.svg';
@@ -17,6 +17,8 @@ export interface CopyToClipboardProps {
   readonly focusColor?: string;
   readonly hoverColor?: string;
   readonly copiedColor?: string;
+  readonly isCopied: boolean;
+  readonly setIsCopied: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
@@ -27,11 +29,11 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
   copiedColor,
   width,
   height,
+  isCopied,
+  setIsCopied,
 }) => {
-  const [isCopied, setCopied] = useState(false);
-
   const copyFn = () => {
-    setCopied(true);
+    setIsCopied(true);
     copyToClipboard(textToCopy);
   };
 
@@ -39,13 +41,13 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
     let timeoutId: NodeJS.Timeout;
 
     if (isCopied) {
-      timeoutId = setTimeout(() => setCopied(false), 3000);
+      timeoutId = setTimeout(() => setIsCopied(false), 3000);
     }
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [isCopied]);
+  }, [isCopied, setIsCopied]);
 
   return (
     <CopyButton type="button" disabled={isCopied} onClick={copyFn}>

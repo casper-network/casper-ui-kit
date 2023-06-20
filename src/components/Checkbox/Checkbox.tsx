@@ -1,5 +1,5 @@
 import styled from 'src/styled';
-import React, { InputHTMLAttributes, forwardRef, useState } from 'react';
+import React, { InputHTMLAttributes, forwardRef } from 'react';
 import { pxToRem } from '../../utils';
 import XSvg from '../../assets/svg/icons/x-icon.svg';
 
@@ -23,6 +23,10 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
   readonly dataCy?: string;
+  readonly isChecked: boolean;
+  readonly setIsChecked: React.Dispatch<
+    React.SetStateAction<boolean | undefined>
+  >;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = forwardRef(
@@ -44,12 +48,12 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
       name,
       required,
       dataCy,
+      setIsChecked,
+      isChecked,
       ...baseCheckboxProps
     },
     ref,
   ) => {
-    const [isChecked, setIsChecked] = useState(checked);
-
     return (
       <LabelCheckboxContainer labelPosition={labelPosition} gapSize={gapSize}>
         <label htmlFor={id}>{label}</label>
