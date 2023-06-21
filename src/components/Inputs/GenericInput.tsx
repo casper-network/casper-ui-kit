@@ -34,6 +34,7 @@ export interface GenericInputProps
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
+  readonly className?: string;
   readonly dataCy?: string;
 }
 
@@ -64,6 +65,7 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
       onChange,
       required,
       disabled,
+      className,
       dataCy,
       ...baseInputProps
     },
@@ -78,6 +80,7 @@ export const GenericInput: React.FC<GenericInputProps> = forwardRef(
 
     return (
       <LabelPasswordInputContainer
+        className={className}
         labelPosition={labelPosition}
         gapSize={gapSize}>
         <label data-testid="generic-input-label" htmlFor={id}>

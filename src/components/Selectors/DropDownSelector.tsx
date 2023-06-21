@@ -14,7 +14,7 @@ export interface DropDownSelectorProps {
   readonly options: SelectOptions[];
   readonly onChange?: () => void;
   readonly noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
-  className?: string;
+  readonly className?: string;
   readonly dataCy?: string;
   readonly isMenuOpen: boolean;
   readonly setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;

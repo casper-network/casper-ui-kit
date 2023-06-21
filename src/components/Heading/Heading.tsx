@@ -14,6 +14,7 @@ export enum HeadingType {
 
 export interface HeadingProps {
   readonly type: HeadingType;
+  readonly className?: string;
   readonly color?: string;
   readonly font?: string;
   readonly fontWeight?: number;
@@ -38,6 +39,7 @@ export const Heading: React.FC<HeadingProps> = ({
   textAlign = 'inherit',
   children,
   dataCy,
+  className,
 }) => {
   const props = {
     textColor: color,
@@ -46,6 +48,7 @@ export const Heading: React.FC<HeadingProps> = ({
     textAlign,
     // satisfy ts; should never take this value
     fontSize: 1,
+    className,
   };
 
   switch (type) {

@@ -19,6 +19,7 @@ export interface CopyToClipboardProps {
   readonly copiedColor?: string;
   readonly isCopied: boolean;
   readonly setIsCopied: React.Dispatch<React.SetStateAction<boolean>>;
+  readonly className?: string;
 }
 
 export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
@@ -31,6 +32,7 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
   height,
   isCopied,
   setIsCopied,
+  className,
 }) => {
   const copyFn = () => {
     setIsCopied(true);
@@ -50,7 +52,11 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
   }, [isCopied, setIsCopied]);
 
   return (
-    <CopyButton type="button" disabled={isCopied} onClick={copyFn}>
+    <CopyButton
+      className={className}
+      type="button"
+      disabled={isCopied}
+      onClick={copyFn}>
       {isCopied ? (
         <CopiedIconWrapper
           data-testid="copied-icon"
