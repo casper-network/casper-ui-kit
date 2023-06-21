@@ -7,14 +7,24 @@ const testToggleOptions = ['testOption1', 'testOption2'];
 
 describe('ButtonToggle', () => {
   it('should render button toggle', () => {
-    render(<ButtonToggle toggleOptions={testToggleOptions} />);
+    render(
+      <ButtonToggle
+        selectedToggleOption="testOption1"
+        setSelectedToggleOption={jest.fn}
+        toggleOptions={testToggleOptions}
+      />,
+    );
 
     expect(screen.getByTestId('button-toggle')).toBeInTheDocument();
   });
 
   it('should disable selected option', () => {
     const { getByText } = render(
-      <ButtonToggle toggleOptions={testToggleOptions} />,
+      <ButtonToggle
+        selectedToggleOption="testOption2"
+        setSelectedToggleOption={jest.fn}
+        toggleOptions={testToggleOptions}
+      />,
     );
 
     const testDeselectedOption = getByText(
@@ -24,7 +34,6 @@ describe('ButtonToggle', () => {
       testToggleOptions[1],
     ) as HTMLButtonElement;
 
-    fireEvent.click(testSelectedOption);
     expect(testSelectedOption.disabled).toEqual(true);
     expect(testDeselectedOption.disabled).toEqual(false);
   });

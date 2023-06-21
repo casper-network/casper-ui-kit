@@ -10,14 +10,24 @@ const testToggleOptions = {
 
 describe('BaseToggle', () => {
   it('should render base toggle', () => {
-    render(<BaseToggle toggleOptions={testToggleOptions} />);
+    render(
+      <BaseToggle
+        selectedToggleOption=""
+        setSelectedToggleOption={jest.fn}
+        toggleOptions={testToggleOptions}
+      />,
+    );
 
     expect(screen.getByTestId('base-toggle')).toBeInTheDocument();
   });
 
   it('should be checked on click', () => {
     const { getByTestId } = render(
-      <BaseToggle toggleOptions={testToggleOptions} />,
+      <BaseToggle
+        selectedToggleOption=""
+        setSelectedToggleOption={jest.fn}
+        toggleOptions={testToggleOptions}
+      />,
     );
 
     const baseToggleCheckbox = getByTestId(

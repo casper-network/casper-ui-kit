@@ -22,10 +22,16 @@ describe('DropDownSelector', () => {
     name: mockName,
     options: mockSelectOptions,
     onChange: jest.fn,
+    setCurrentOption: jest.fn,
   };
 
   it('should render customSelect with "Option 1" as default value', async () => {
-    render(<DropDownSelector {...mockProps} />);
+    render(
+      <DropDownSelector
+        {...mockProps}
+        currentOption={{ value: 'value1', label: 'Option 1' }}
+      />,
+    );
 
     expect(
       screen.getByRole('combobox', { name: 'select-button' }),
@@ -36,7 +42,10 @@ describe('DropDownSelector', () => {
 
   it('should open menu on user click', async () => {
     const { getByLabelText, queryByText, queryAllByText, getByText } = render(
-      <DropDownSelector {...mockProps} />,
+      <DropDownSelector
+        currentOption={{ value: 'value1', label: 'Option 1' }}
+        {...mockProps}
+      />,
     );
 
     const option1 = queryAllByText('Option 1');
@@ -52,15 +61,15 @@ describe('DropDownSelector', () => {
     expect(getByText('Option 4')).toBeInTheDocument();
   });
 
-  it('should call onChange when an option is selected and display the selected option', async () => {
-    const { getByLabelText, getByTestId } = render(
-      <DropDownSelector {...mockProps} />,
+  it('should display selected option 4', async () => {
+    const { getByTestId } = render(
+      <DropDownSelector
+        currentOption={{ value: 'value4', label: 'Option 4' }}
+        {...mockProps}
+      />,
     );
 
     const selectWrapper = getByTestId('select-wrapper');
-    const selectLabel = getByLabelText('Select');
-
-    await selectEvent.select(selectLabel, 'Option 4');
 
     expect(selectWrapper).toHaveTextContent('Option 4');
     expect(selectWrapper).not.toHaveTextContent('Option 3');
