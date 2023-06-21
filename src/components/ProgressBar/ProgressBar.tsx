@@ -19,10 +19,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   nodeIndicatorDataCy,
 }) => {
   return (
-    <ProgressBarWrapper data-testid="progress-bar" data-cy={progressBarDataCy}>
+    <ProgressBarWrapper
+      className={className}
+      data-testid="progress-bar"
+      data-cy={progressBarDataCy}>
       {processSteps.map(step => {
         return (
-          <div className={className} key={step}>
+          <div key={step}>
             <NodeIndicator
               data-testid="node-indicator"
               data-cy={nodeIndicatorDataCy}

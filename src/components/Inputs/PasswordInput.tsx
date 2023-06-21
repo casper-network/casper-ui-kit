@@ -30,6 +30,7 @@ export interface PasswordInputProps
   readonly onChange?: React.ChangeEventHandler<HTMLInputElement>;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
+  readonly className?: string;
   readonly dataCy?: string;
 }
 
@@ -57,6 +58,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
       onChange,
       required,
       disabled,
+      className,
       dataCy,
       ...baseInputProps
     },
@@ -71,6 +73,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = forwardRef(
 
     return (
       <LabelPasswordInputContainer
+        className={className}
         labelPosition={labelPosition}
         gapSize={gapSize}>
         <label data-testid="password-input-label" htmlFor={id}>

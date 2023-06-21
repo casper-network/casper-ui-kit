@@ -4,6 +4,7 @@ import { pxToRem } from '../../utils';
 import { defaultTheme } from '../../theme';
 
 export interface TypographyProps {
+  readonly children: React.ReactNode;
   readonly color?: string;
   readonly font?: string;
   readonly fontWeight?: number;
@@ -15,7 +16,7 @@ export interface TypographyProps {
     | 'justify'
     | 'initial'
     | 'inherit';
-  readonly children: React.ReactNode;
+  readonly className?: string;
 }
 
 export const Typography: React.FC<TypographyProps> = ({
@@ -24,10 +25,12 @@ export const Typography: React.FC<TypographyProps> = ({
   fontWeight = defaultTheme.typography.fontWeights.normal,
   fontSize,
   textAlign = 'inherit',
+  className,
   children,
 }) => {
   return (
     <TypographyText
+      className={className}
       textColor={color}
       fontFamily={font}
       fontWeight={fontWeight}

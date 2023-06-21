@@ -28,6 +28,7 @@ export interface NumberInputProps
   readonly required?: boolean;
   readonly ref?: React.ForwardedRef<HTMLInputElement>;
   readonly id?: string;
+  readonly className?: string;
   readonly dataCy?: string;
 }
 
@@ -53,6 +54,7 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
       maxNumberValue = 20,
       required,
       disabled,
+      className,
       dataCy,
       ...baseInputProps
     },
@@ -81,6 +83,7 @@ export const NumberInput: React.FC<NumberInputProps> = forwardRef(
 
     return (
       <LabelPasswordInputContainer
+        className={className}
         labelPosition={labelPosition}
         gapSize={gapSize}>
         <label data-testid="number-input-label" htmlFor={id}>

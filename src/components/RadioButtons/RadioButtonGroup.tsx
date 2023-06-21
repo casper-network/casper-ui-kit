@@ -11,6 +11,7 @@ export interface OptionGroupProps {
   readonly verticalPadding?: number;
   readonly orientation?: string;
   readonly onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  readonly className?: string;
   readonly dataCy?: string;
 }
 
@@ -19,6 +20,7 @@ export const RadioButtonGroup: React.FC<OptionGroupProps> = ({
   width,
   orientation,
   onChange,
+  className,
   dataCy,
 }) => {
   const renderOptions = () => {
@@ -40,6 +42,7 @@ export const RadioButtonGroup: React.FC<OptionGroupProps> = ({
 
         return (
           <LabelRadioButtonContainer
+            className={className}
             key={optionId}
             labelPosition={labelPosition}
             gapSize={gapSize}

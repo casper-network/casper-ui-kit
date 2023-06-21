@@ -4,11 +4,12 @@ import LoaderSVG from '../../assets/svg/icons/loader-icon.svg';
 
 export interface LoaderProps {
   readonly size?: 'xs' | 'sm' | 'md' | 'lg';
+  readonly className?: string;
   readonly dataCy?: string;
 }
 
 export const Loader: React.FC<LoaderProps> = (
-  { size, dataCy } = { size: 'lg' },
+  { size, className, dataCy } = { size: 'lg' },
 ) => {
   const getLoaderSize = (size?: LoaderProps['size']) => {
     switch (size) {
@@ -26,7 +27,7 @@ export const Loader: React.FC<LoaderProps> = (
   };
 
   return (
-    <LoaderWrapper>
+    <LoaderWrapper className={className}>
       <LoaderStatus
         size={getLoaderSize(size)}
         aria-label="Loading..."
