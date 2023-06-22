@@ -1,5 +1,5 @@
 import styled from 'src/styled';
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import Select, { PropsValue } from 'react-select';
 import { defaultTheme } from '../../theme';
 
@@ -9,7 +9,6 @@ export interface SelectOptions {
 }
 
 export interface DropDownSelectorProps {
-  readonly currentSelection: SelectOptions;
   readonly name: string;
   readonly defaultValue: PropsValue<SelectOptions>;
   readonly options: SelectOptions[];
@@ -17,10 +16,15 @@ export interface DropDownSelectorProps {
   readonly noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
   readonly className?: string;
   readonly dataCy?: string;
+  readonly isMenuOpen: boolean;
+  readonly setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  readonly currentOption: SelectOptions | null;
+  readonly setCurrentOption: React.Dispatch<
+    React.SetStateAction<SelectOptions | null>
+  >;
 }
 
 export const DropDownSelector: React.FC<DropDownSelectorProps> = ({
-  currentSelection,
   name,
   defaultValue,
   options,
@@ -28,12 +32,11 @@ export const DropDownSelector: React.FC<DropDownSelectorProps> = ({
   className,
   noOptionsMessage = () => null,
   dataCy,
+  isMenuOpen,
+  setIsMenuOpen,
+  currentOption,
+  setCurrentOption,
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentOption, setCurrentOption] = useState<null | SelectOptions>(
-    currentSelection,
-  );
-
   const handleChange = (selectedOption: SelectOptions | null) => {
     onChange?.();
     setCurrentOption(selectedOption);

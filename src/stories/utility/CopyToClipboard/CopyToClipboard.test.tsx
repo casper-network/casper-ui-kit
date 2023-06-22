@@ -14,21 +14,23 @@ describe(CopyToClipboard, () => {
   jest.spyOn(navigator.clipboard, 'writeText');
 
   it('should render the copy icon on first load', () => {
-    const { getByTestId } = render(<CopyToClipboard textToCopy="copy this" />);
+    const { getByTestId } = render(
+      <CopyToClipboard
+        isCopied={false}
+        setIsCopied={jest.fn}
+        textToCopy="copy this"
+      />,
+    );
 
     const copyIcon = getByTestId('copy-icon');
 
     expect(copyIcon).toBeInTheDocument();
   });
 
-  it('should render copied icon after copy icon click', async () => {
-    const { getByTestId, findByTestId } = render(
-      <CopyToClipboard textToCopy="copy this" />,
+  it('should render copied icon after copy', async () => {
+    const { findByTestId } = render(
+      <CopyToClipboard isCopied setIsCopied={jest.fn} textToCopy="copy this" />,
     );
-
-    const copyIcon = getByTestId('copy-icon');
-
-    fireEvent.click(copyIcon);
 
     const copiedIcon = await findByTestId('copied-icon');
 
@@ -40,7 +42,11 @@ describe(CopyToClipboard, () => {
     jest.spyOn(global, 'setTimeout');
 
     const { getByTestId, findByTestId } = render(
-      <CopyToClipboard textToCopy="copy this" />,
+      <CopyToClipboard
+        isCopied={false}
+        setIsCopied={jest.fn}
+        textToCopy="copy this"
+      />,
     );
 
     const copyIcon = getByTestId('copy-icon');

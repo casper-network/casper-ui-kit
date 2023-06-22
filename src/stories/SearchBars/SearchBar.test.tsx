@@ -11,6 +11,7 @@ describe('SearchBar.stories', () => {
   it('should render the Base SearchBar', () => {
     render(
       <BaseSearchBar
+        currentFilter={{ value: 'val1', label: 'val1' }}
         onClick={() => {
           // eslint-disable-next-line no-console
           console.log('clicked');

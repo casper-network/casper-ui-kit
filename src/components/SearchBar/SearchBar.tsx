@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'src/styled';
 import { PropsValue } from 'react-select';
 
@@ -9,7 +9,7 @@ import { SearchIcon, ErrorIcon } from '../Icon';
 export interface SearchBarProps {
   readonly onClick: () => void;
   readonly filters?: SelectOptions[];
-  readonly currentFilter?: SelectOptions;
+  readonly currentFilter: SelectOptions;
   readonly errorMessage?: any;
   readonly className?: string;
   readonly defaultValue?: PropsValue<SelectOptions>;
@@ -29,6 +29,11 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     onClick?.();
     event.preventDefault();
   };
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentOption, setCurrentOption] = useState<SelectOptions | null>(
+    currentFilter,
+  );
   return (
     <FormContainer
       className={className}
@@ -42,8 +47,11 @@ export const SearchBar: React.FC<SearchBarProps> = ({
               <DropDownSelector
                 options={filters}
                 name=""
-                currentSelection={currentFilter}
                 defaultValue={defaultValue}
+                setCurrentOption={setCurrentOption}
+                currentOption={currentOption}
+                isMenuOpen={isMenuOpen}
+                setIsMenuOpen={setIsMenuOpen}
               />
             </div>
           )}

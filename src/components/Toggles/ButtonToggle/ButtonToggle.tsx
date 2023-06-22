@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'src/styled';
 import { defaultTheme } from '../../../theme';
 
@@ -10,6 +10,10 @@ export interface ButtonToggleProps {
   readonly className?: string;
   readonly onToggle?: () => void;
   readonly buttonToggleDataCy?: string;
+  readonly selectedToggleOption: string;
+  readonly setSelectedToggleOption: React.Dispatch<
+    React.SetStateAction<string>
+  >;
 }
 
 export const ButtonToggle: React.FC<ButtonToggleProps> = ({
@@ -20,11 +24,9 @@ export const ButtonToggle: React.FC<ButtonToggleProps> = ({
   className,
   onToggle,
   buttonToggleDataCy,
+  selectedToggleOption,
+  setSelectedToggleOption,
 }) => {
-  const [selectedToggleOption, setSelectedToggleOption] = useState(
-    toggleOptions[0],
-  );
-
   const handleToggle = (toggleOption: string) => {
     setSelectedToggleOption(toggleOption);
     onToggle?.();
