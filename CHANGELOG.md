@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Convert to controlled components
+- Fix Card component in production environments
 
 ## [0.8.4] - 2023-06-21
 
