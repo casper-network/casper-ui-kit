@@ -13,15 +13,20 @@ export const subComponentHelper = (
     .map((key: string) => {
       return React.Children.map(children, (child: React.ReactNode) => {
         // don't allow any other children apart from declared sub-components render
-        if (!child || typeof child !== 'object' || !('type' in child)) {
+        if (
+          !child ||
+          typeof child !== 'object' ||
+          !('type' in child) ||
+          typeof child.type === 'string'
+        ) {
           return null;
         }
 
-        if (typeof child.type === 'string') {
-          return child;
+        if ('displayName' in child.type) {
+          return child.type.displayName === key ? child : null;
         }
 
-        return child.type.name === key ? child : null;
+        return null;
       });
     })
     .filter(child => !!child);

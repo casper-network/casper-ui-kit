@@ -2,11 +2,12 @@ import styled from 'src/styled';
 import React from 'react';
 import { subComponentHelper } from '../../../utils';
 
-export interface Children {
+export interface ComponentProps {
   readonly children: React.ReactNode;
+  readonly className?: string;
 }
 
-export interface CardProps extends Children {
+export interface CardProps extends ComponentProps {
   readonly className?: string;
   readonly baseCardDataCy?: string;
 }
@@ -26,25 +27,28 @@ export const Card = ({ children, className, baseCardDataCy }: CardProps) => {
   );
 };
 
-const Header: React.FC<Children> = ({ children }) => (
-  <div data-testid="base-card-header" className="header">
+const Header: React.FC<ComponentProps> = ({ children, className }) => (
+  <div data-testid="base-card-header" className={`header ${className || ''}`}>
     {children}
   </div>
 );
+Header.displayName = 'Header';
 Card.Header = Header;
 
-const Body: React.FC<Children> = ({ children }) => (
-  <div data-testid="base-card-body" className="body">
+const Body: React.FC<ComponentProps> = ({ children, className }) => (
+  <div data-testid="base-card-body" className={`body ${className || ''}`}>
     {children}
   </div>
 );
+Body.displayName = 'Body';
 Card.Body = Body;
 
-const Footer: React.FC<Children> = ({ children }) => (
-  <div data-testid="base-card-footer" className="footer">
+const Footer: React.FC<ComponentProps> = ({ children, className }) => (
+  <div data-testid="base-card-footer" className={`footer ${className || ''}`}>
     {children}
   </div>
 );
+Footer.displayName = 'Footer';
 Card.Footer = Footer;
 
 export const CardContentWrapper = styled.div`
