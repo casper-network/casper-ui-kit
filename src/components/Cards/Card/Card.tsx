@@ -28,7 +28,7 @@ export const Card = ({ children, className, baseCardDataCy }: CardProps) => {
 };
 
 const Header: React.FC<ComponentProps> = ({ children, className }) => (
-  <div data-testid="base-card-header" className={`header ${className}`}>
+  <div data-testid="base-card-header" className={`header ${className || ''}`}>
     {children}
   </div>
 );
@@ -36,7 +36,7 @@ Header.displayName = 'Header';
 Card.Header = Header;
 
 const Body: React.FC<ComponentProps> = ({ children, className }) => (
-  <div data-testid="base-card-body" className={`body ${className}`}>
+  <div data-testid="base-card-body" className={`body ${className || ''}`}>
     {children}
   </div>
 );
@@ -44,7 +44,7 @@ Body.displayName = 'Body';
 Card.Body = Body;
 
 const Footer: React.FC<ComponentProps> = ({ children, className }) => (
-  <div data-testid="base-card-footer" className={`footer ${className}`}>
+  <div data-testid="base-card-footer" className={`footer ${className || ''}`}>
     {children}
   </div>
 );
