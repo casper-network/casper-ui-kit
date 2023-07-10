@@ -10,9 +10,9 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import Skeleton from 'react-loading-skeleton';
-import styled from '@emotion/styled';
-import { pxToRem } from 'src/utils';
 import { css } from '@emotion/react';
+import { pxToRem } from 'src/utils';
+import styled from '../../../styled';
 import DownArrowLight from '../../../assets/svg/icons/down-icon-light.svg';
 import DownArrowDark from '../../../assets/svg/icons/down-icon-dark.svg';
 
