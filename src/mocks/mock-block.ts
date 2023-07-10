@@ -51,7 +51,7 @@ export const mockBlock: Block = {
   proofs: [],
 };
 
-export const createMockBlocks = (numberOfBlocks: number = 10) => {
+export const createMockBlocks = (numberOfBlocks = 10) => {
   const blocks = new Array(numberOfBlocks).fill(mockBlock) as Block[];
 
   return blocks.map((block, index) => {
