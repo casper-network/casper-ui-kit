@@ -10,9 +10,9 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import Skeleton from 'react-loading-skeleton';
-import styled from '@emotion/styled';
-import { pxToRem } from 'src/utils';
 import { css } from '@emotion/react';
+import { pxToRem } from 'src/utils';
+import styled from '../../../styled';
 import DownArrowLight from '../../../assets/svg/icons/down-icon-light.svg';
 import DownArrowDark from '../../../assets/svg/icons/down-icon-dark.svg';
 
@@ -35,24 +35,24 @@ interface TableThemeProps {
 }
 
 export interface TableProps<T> {
+  readonly className?: string;
   readonly header?: React.ReactNode;
   readonly columns: ColumnDef<T>[];
   readonly data: T[];
   readonly footer?: React.ReactNode;
-  onSortingChange?: OnChangeFn<SortingState>;
-  sorting?: SortingState;
-  initialSorting?: SortingState;
-  tableBodyLoading?: boolean;
-  currentPageSize?: number;
+  readonly onSortingChange?: OnChangeFn<SortingState>;
+  readonly sorting?: SortingState;
+  readonly initialSorting?: SortingState;
+  readonly tableBodyLoading?: boolean;
+  readonly currentPageSize?: number;
   /*
   - used for deeply nested accessor values to allow for skeleton loaders to work
   - parsing tableData will throw error without
   - placeholderData can be anything, it just has to match nested data type
   */
-  placeholderData?: { [key: string]: any };
-  isLastPage: boolean;
-  theme?: TableThemeProps;
-  readonly className?: string;
+  readonly placeholderData?: { [key: string]: any };
+  readonly isLastPage?: boolean;
+  readonly theme?: TableThemeProps;
 }
 
 export function Table<T extends unknown>({
@@ -105,7 +105,7 @@ export function Table<T extends unknown>({
     return tableBodyLoading
       ? columns.map(column => ({
           ...column,
-          cell: () => <Skeleton />,
+          cell: () => <Skeleton containerTestId="skeleton-loader" />,
         }))
       : columns;
   }, [tableBodyLoading, columns]);
@@ -130,7 +130,8 @@ export function Table<T extends unknown>({
       borderColor={fullTheme.borderColor}
       borderWidth={fullTheme.borderWidth}
       boxShadow={fullTheme.boxShadow}
-      textColor={fullTheme.color}>
+      textColor={fullTheme.color}
+      data-testid="base-table">
       <Header>{header}</Header>
       <StyledTable bgColor={fullTheme.bgColor}>
         <TableHead bgColor={fullTheme.tableHeadBgColor}>
