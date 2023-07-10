@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { defaultTheme } from 'src/theme';
+import { pxToRem } from 'src/utils';
 
 export const TableHead = styled.div<{ color: string }>`
   display: flex;
@@ -18,4 +20,15 @@ export const TotalRows = styled.p`
   white-space: nowrap;
 `;
 
-export const TableFooter = styled.div``;
+export const TableFooter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: ${pxToRem(20)} 1.5rem;
+  min-width: ${pxToRem(450)};
+
+  @media (min-width: ${defaultTheme.breakpoints.lg}) {
+    justify-content: flex-end;
+    padding: ${pxToRem(20)} 2rem;
+  }
+`;
