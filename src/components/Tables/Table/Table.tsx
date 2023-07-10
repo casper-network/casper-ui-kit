@@ -105,7 +105,7 @@ export function Table<T extends unknown>({
     return tableBodyLoading
       ? columns.map(column => ({
           ...column,
-          cell: () => <Skeleton />,
+          cell: () => <Skeleton containerTestId="skeleton-loader" />,
         }))
       : columns;
   }, [tableBodyLoading, columns]);
@@ -130,7 +130,8 @@ export function Table<T extends unknown>({
       borderColor={fullTheme.borderColor}
       borderWidth={fullTheme.borderWidth}
       boxShadow={fullTheme.boxShadow}
-      textColor={fullTheme.color}>
+      textColor={fullTheme.color}
+      data-testid="base-table">
       <Header>{header}</Header>
       <StyledTable bgColor={fullTheme.bgColor}>
         <TableHead bgColor={fullTheme.tableHeadBgColor}>
