@@ -35,24 +35,24 @@ interface TableThemeProps {
 }
 
 export interface TableProps<T> {
+  readonly className?: string;
   readonly header?: React.ReactNode;
   readonly columns: ColumnDef<T>[];
   readonly data: T[];
   readonly footer?: React.ReactNode;
-  onSortingChange?: OnChangeFn<SortingState>;
-  sorting?: SortingState;
-  initialSorting?: SortingState;
-  tableBodyLoading?: boolean;
-  currentPageSize?: number;
+  readonly onSortingChange?: OnChangeFn<SortingState>;
+  readonly sorting?: SortingState;
+  readonly initialSorting?: SortingState;
+  readonly tableBodyLoading?: boolean;
+  readonly currentPageSize?: number;
   /*
   - used for deeply nested accessor values to allow for skeleton loaders to work
   - parsing tableData will throw error without
   - placeholderData can be anything, it just has to match nested data type
   */
-  placeholderData?: { [key: string]: any };
-  isLastPage: boolean;
-  theme?: TableThemeProps;
-  readonly className?: string;
+  readonly placeholderData?: { [key: string]: any };
+  readonly isLastPage?: boolean;
+  readonly theme?: TableThemeProps;
 }
 
 export function Table<T extends unknown>({
