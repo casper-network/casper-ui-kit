@@ -17,6 +17,7 @@ export interface LogoProps {
   readonly width?: number;
   readonly className?: string;
   readonly dataCy?: string;
+  readonly ariaLabel?: string;
 }
 
 export const Logo: React.FC<LogoProps> = ({
@@ -25,9 +26,10 @@ export const Logo: React.FC<LogoProps> = ({
   width = 250,
   className,
   dataCy,
+  ariaLabel,
 }) => (
   <LogoContainer className={className}>
-    <StyledSvg width={width} role="img" data-cy={dataCy}>
+    <StyledSvg aria-label={ariaLabel} width={width} role="img" data-cy={dataCy}>
       <title>{title}</title>
       {logos[logo]}
     </StyledSvg>

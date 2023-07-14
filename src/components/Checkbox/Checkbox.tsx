@@ -24,6 +24,7 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   readonly id?: string;
   readonly dataCy?: string;
   readonly className?: string;
+  readonly ariaLabel?: string;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = forwardRef(
@@ -46,6 +47,7 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
       required,
       dataCy,
       className,
+      ariaLabel,
       ...baseCheckboxProps
     },
     ref,
@@ -75,6 +77,7 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
             checked={checked}
             required={required}
             data-cy={dataCy}
+            aria-label={label ? '' : ariaLabel}
             {...baseCheckboxProps}
           />
           {isChecked && (

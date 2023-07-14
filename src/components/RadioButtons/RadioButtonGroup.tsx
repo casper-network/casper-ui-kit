@@ -69,6 +69,7 @@ export const RadioButtonGroup: React.FC<OptionGroupProps> = ({
 
   return (
     <RadioButtonsContainer
+      role="radiogroup"
       width={width}
       orientation={orientation}
       data-testid="radio-buttons-container"

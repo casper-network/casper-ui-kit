@@ -26,6 +26,7 @@ export interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   readonly children: React.ReactNode;
   readonly onClick?: React.MouseEventHandler<HTMLButtonElement>;
   readonly dataCy?: string;
+  readonly ariaLabel?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -49,6 +50,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
   dataCy,
+  ariaLabel,
   ...baseButtonProps
 }) => {
   return (
@@ -72,6 +74,7 @@ export const Button: React.FC<ButtonProps> = ({
       className={className}
       onClick={onClick}
       data-cy={dataCy}
+      aria-label={ariaLabel}
       {...baseButtonProps}>
       {children}
     </StyledButton>
