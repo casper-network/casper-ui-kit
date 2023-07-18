@@ -55,6 +55,7 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
     <CopyButton
       className={className}
       type="button"
+      aria-label="copy to clipboard"
       disabled={isCopied}
       onClick={copyFn}>
       {isCopied ? (
