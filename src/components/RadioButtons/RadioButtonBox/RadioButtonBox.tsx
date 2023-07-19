@@ -20,6 +20,7 @@ export interface RadioButtonBoxProps {
   readonly value?: string | number;
   readonly onChange?: () => void;
   readonly className?: string;
+  readonly ariaLabel?: string;
 }
 
 export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
@@ -37,6 +38,7 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
   name,
   required,
   className,
+  ariaLabel,
 }) => {
   return (
     <LabelCheckboxContainer
@@ -56,6 +58,7 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
           name={name}
           required={required}
           defaultChecked={defaultChecked}
+          aria-label={label ? '' : ariaLabel}
         />
 
         <CheckboxSvgWrapper width={width} checkmarkSize={checkmarkSize}>

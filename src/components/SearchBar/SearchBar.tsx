@@ -58,7 +58,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
 
           <InputAndButtonContainer>
             <SearchInput type="search" id="search" placeholder="" required />
-            <SubmitButton type="submit">
+            <SubmitButton aria-label="Search submit" type="submit">
               <SearchIcon
                 strokeWidth={1}
                 color={defaultTheme.colors.secondary.White}

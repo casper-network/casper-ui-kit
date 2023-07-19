@@ -36,6 +36,7 @@ export interface IconProps {
   readonly strokeWidth?: number;
   readonly className?: string;
   readonly dataCy?: string;
+  readonly ariaLabel?: string;
 }
 
 export const Icon: React.FC<IconProps> = ({
@@ -47,6 +48,7 @@ export const Icon: React.FC<IconProps> = ({
   strokeWidth = 1,
   className,
   dataCy,
+  ariaLabel,
 }) => (
   <IconContainer
     className={className}
@@ -57,7 +59,8 @@ export const Icon: React.FC<IconProps> = ({
       height={height}
       currentColor={color}
       stroke={stroke}
-      strokeWidth={strokeWidth}>
+      strokeWidth={strokeWidth}
+      aria-label={ariaLabel}>
       {icons[icon]}
     </IconWrapper>
   </IconContainer>
